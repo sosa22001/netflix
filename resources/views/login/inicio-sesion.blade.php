@@ -7,6 +7,7 @@
     <title>Netflix login – Watch TV Shows Online, Watch Movies Online | do not enter you any of the information</title>
     <meta name="description" content="This is a frontend only clone of netflix - Watch Netflix movies & TV shows online or stream right to your smart TV, game console, PC, Mac, mobile, tablet and more.">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="{{ asset('images/nficon2016.ico') }}" type="image/x-icon">
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <link rel="stylesheet" href="{{ asset('css/landing.css') }}">
 </head>
@@ -44,7 +45,7 @@
                         </button>
                         
                         <p class="signUpText para">
-                            Nuevo en Netflix? <span class="signUp"><a href="{{ route('registro.mostrar') }}">Registrate ahora</a></span>
+                            Nuevo en Netflix? <span class="signUp"><a href="{{ route('registro.formulario') }}">Registrate ahora</a></span>
                         </p>
                     </form>
                 </div>

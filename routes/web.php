@@ -5,12 +5,17 @@ use App\Http\Controllers\AutenticacionController;
 use App\Http\Controllers\PerfilController;
 
 
-Route::get('/iniciar/sesion', [AutenticacionController::class,'mostrarLogin']);
+Route::get('/login', [AutenticacionController::class,'mostrarLogin'])->name('login.formulario');
 
-Route::post('/iniciar/sesion', [AutenticacionController::class,'verificacion'])->name('login.verificacion');
+Route::get('/registro', [AutenticacionController::class,'mostrarRegistro'])->name('registro.formulario');
 
-Route::get('/registro/mostrar', [AutenticacionController::class,'mostrarRegistro'])->name('registro.mostrar');
+Route::post('/iniciar/sesion', [AutenticacionController::class,'verificarUsuario'])->name('login.verificacion');
 
 //perfiles
-Route::get('/mostrar/perfiles/{idUsuario}',[PerfilController::class,'renderizarPerfiles']);
+Route::get('/usuarios/{idUsuario}/perfiles',[PerfilController::class,'mostrarPerfiles'])->name('perfiles.mostrar');
+
+Route::get('/usuarios/{idUsuario}/perfiles/{idPerfil}', [PerfilController::class,'mostrarLogin'])->name('perfil.formulario');
+Route::get('/usuarios/{idUsuario}/perfiles/{idPerfil}/verificar', [PerfilController::class,'verificarPerfil'])->name('perfil.verificacion');
+
+
 

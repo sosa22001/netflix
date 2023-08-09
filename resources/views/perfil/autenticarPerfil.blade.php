@@ -18,18 +18,18 @@
 
 
     <!--main script file-->
+    <script src="../assets/js/main-script.js"></script>
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.min.css"
         integrity="sha256-t2kyTgkh+fZJYRET5l9Sjrrl4UDain5jxdbqe8ejO8A=" crossorigin="anonymous" />
 
     <link rel="stylesheet" href="{{ asset('css/browse.css') }}">
     <link rel="stylesheet" href="{{ asset('css/global.css') }}">
-    <script src="{{asset('js/main-script.js')}}"></script>
+    <link rel="stylesheet" href="{{ asset('css/owl.carrousel.css') }}">
 
-    <script src="asset('lib/jquery 3.5.0.js')"></script>
-    <script src="{{asset('lib/owl.carousel.js')}}"></script>
-    <script src="{{asset('js/main-script.js')}}"></script>
+    <script>
 
+    </script>
     <style>
         .user-icon {
             width: 80%;
@@ -70,7 +70,6 @@
                     </div>              
                 </div>             
             </div>
-
         </header>
 
         
@@ -79,46 +78,13 @@
 
 
     </main>
-    <div class="d-flex p-t-40 flex-middle flex-center">
-        <div class="p-t-40">
-            
-            <div class="p-4">
-                <h1 style="text-align:center">¿Quien esta viendo ahora?</h1>
-                <div class="d-flex flex-no-wrap"margin-left: auto; margin-right: auto" id="perfiles-usuario">
-                    <a href="{{route('perfil.formulario', ['idUsuario' => 1, 'idPerfil' => 2])}}" class="perfil">
-                        <img src="{{ asset('images/user1.png') }}" alt="">
-                        <p>Lola</p>
-                    </a>
-                    <a href="{{route('perfil.formulario', ['idUsuario' => 1, 'idPerfil' => 2])}}" class="perfil">
-                        <img src="{{ asset('images/user1.png') }}" alt="">
-                        <p>Lola</p>
-                    </a>                    
-                    <a href="{{route('perfil.formulario', ['idUsuario' => 1, 'idPerfil' => 2])}}" class="perfil">
-                        <img src="{{ asset('images/user2.png') }}" alt="">
-                        <p>Lola</p>
-                    </a>
-                    
-                
-                    {{--                         <div class="perfil">
-                            <a href="">
-
-                            </a>
-                            <img src="{{ asset('images/user1.png') }}" alt="">
-                            <p>Lola</p>
-                        </div>
-                        <div class="perfil">
-                            <img src="{{ asset('images/user1.png') }}" alt="">
-                            <p>Lola</p>
-                        </div>
-                        <div class="perfil">
-                            <a href="">
-
-                                <img src="{{ asset('images/user2.png') }}" alt="">
-                                <p>Añadir perfil</p>
-                            </a>
-                        </div> --}}
-            </div>
-        </div>
+    <div id="pag-pin">
+        <span style="color: #aaa;">El bloqueo de perfil esta activado.</span>
+        <h1>Ingresar tu PIN para acceder a este perfil.</h1>
+        <form action="{{route('perfil.verificacion', ['idPerfil' => 1, 'idUsuario' => 2])}}" class="form-perfil">
+            <input type="number" class="pin-input">
+            <button type="submit" class="netflix-button">Listo</button>
+        </form>
     </div>
     <script src="https://kit.fontawesome.com/8b44041adf.js" crossorigin="anonymous"></script>
     <script src="/assets/js/profile-controller.js"></script>

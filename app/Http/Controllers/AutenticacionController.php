@@ -10,7 +10,7 @@ class AutenticacionController extends Controller
         return view('login.inicio-sesion');
     }
 
-    public function verificacion(Request $request){
+    public function verificarUsuario(Request $request){
         //al verificar con el backend
         //si todo está bien
         //lo redirijo a los perfiles.
