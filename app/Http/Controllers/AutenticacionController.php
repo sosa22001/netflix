@@ -48,14 +48,55 @@ class AutenticacionController extends Controller
     }
 
     public function formularioRegistro(Request $request){
-        //recibo la información
+        $nombre = $request->input('nombre');
+        $apellido = $request->input('apellido');
+        $correo = $request->input('correo');
+        $contra = $request->input('contraseña');
 
-        //vista de los planes:
-        return redirect()->route('registro.planes');
+        $informacion = [
+            'nombre' =>$nombre,
+            'apellido' =>$apellido,
+            'correo'=>$correo,
+            'contrasenia' =>$contra
+        ];
+
+        return view('plan.planes', compact('informacion'));
     }
 
-    public function mostrarPlanes(){
-        return view('plan.planes');
+    public function formularioPlanes(Request $request){
+
+        $informacionUsuarioPlan = $request;
+
+        return view('tarjeta.crearTarjeta', compact('informacionUsuarioPlan'));
+    }
+
+    public function store(Request $request){
+        $cliente = new Client();
+
+        $headers = [
+            'Content-Type' => 'application/json'
+        ];
+
+        $body =[ 
+            "nombre" =>$request->get('nombre'),
+            "apellido" => $request->get('apellido'),
+            "correo" =>$request->get('correo'),
+            "contrasena" =>$request->get('contrasenia'),
+            "idPlan" =>(int)$request->get('idPlan'),
+            "numeroTarjeta" =>(int)$request->get('numeroTarjeta'),
+            "cvv" =>(int)$request->get('cvv'),
+            "fechaVencimiento" =>$request->get('fechaVencimiento'),
+            "tipoTarjeta"=>$request->get('tipoTarjeta')
+        ];
+
+        $jsonBody = json_encode($body);
+        $resultado = $cliente->post('http://localhost:8080/api/usuario/crear',[
+            'headers' => $headers,
+            'body' => $jsonBody
+        ]);
+
+        $resultadoBackend = json_decode($resultado->getBody(),true);
+        return $resultadoBackend;
     }
 
 }

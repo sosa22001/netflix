@@ -24,7 +24,7 @@
     
     <main style="">
         <section id="login-form-section">
-            
+
             <div class="contenedor-planes">
 
                 <div class="card" style="width: 18rem;">
@@ -37,18 +37,52 @@
                     </div>
                   </div>
 
+                  <div class="card" style="width: 18rem;">
+                    <div class="card-body">
+                      <h5 class="card-title">Plan Estándar</h5>
+                      <p class="card-text">Con este plan, podrás disfrutar de contenido en alta definición HD, para disfrutar con toda la familia</p>
+                      <p class="card-text">Lps. 250</p>
+                      <p class="card-text">Cantidad perfiles: 3</p>
+                      <p class="card-text">Resolución: 1080p</p>
+                    </div>
+                  </div>
+
+                  <div class="card" style="width: 18rem;">
+                    <div class="card-body">
+                      <h5 class="card-title">Plan Premium</h5>
+                      <p class="card-text"> Este plan te permite disfrutar de contenido en calidad ultra alta definición (UHD o 4K) en hasta cuatro dispositivos al mismo tiempoo</p>
+                      <p class="card-text">Lps. 400</p>
+                      <p class="card-text">Cantidad perfiles: 4</p>
+                      <p class="card-text">Resolución: 4k</p>
+                    </div>
+                  </div>
+
             </div>
 
             <div class="loginContainer d-flex direction-column">
-                
-                <form action="" id="loginForm" class="d-flex direction-column" method="post" name="loginForm">
+
+                <form action="{{route('planes.siguiente')}}" id="loginForm" class="d-flex direction-column" method="post" name="loginForm">
                     @csrf
-                    <select name="seleccionar-plan" id="">
-                        <option value="">1. Plan básico</option>
-                        <option value="">1. Plan estándar</option>
-                        <option value="">1. Plan premium</option>
+                    
+                    <!-- Campos ocultos para enviar información desde la vista -->
+                    <input type="hidden" name="nombre" value="{{ $informacion['nombre'] }}">
+                    <input type="hidden" name="apellido" value="{{ $informacion['apellido'] }}">
+                    <input type="hidden" name="correo" value="{{ $informacion['correo'] }}">
+                    <input type="hidden" name="contrasenia" value="{{ $informacion['contrasenia'] }}">
+
+                    <select class="form-select form-select-lg mb-2" aria-label="Large select example" name="seleccionar-plan">
+                        <option selected>Seleccionar plan</option>
+                        <option value="1">1. Plan básico</option>
+                        <option value="2">2. Plan estándar</option>
+                        <option value="3">3. Plan premium</option>
                     </select>
+
+                      <button type="submit" class="button submitButton" id="signInButton">
+                        Siguiente
+                      </button>
+
                 </form>
+
             </div>
         </section>
     </main>
