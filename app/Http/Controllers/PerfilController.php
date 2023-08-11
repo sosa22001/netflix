@@ -54,7 +54,7 @@ class PerfilController extends Controller
     public function mostrarPerfiles($idUsuario) {
         $perfiles = $this->obtenerPerfiles($idUsuario);
         
-        return view('perfil.mostrarPerfiles', compact('perfiles'));
+        return view('perfil.mostrarPerfiles', compact('perfiles', 'idUsuario'));
     }
 
     //renderiza la pagina PIN del perfil
@@ -86,11 +86,11 @@ class PerfilController extends Controller
         return view('usuario.ayuda');
     }
 
-    public function crearPerfilVista(){
-        return view('perfil.crear');
+    public function crearPerfilVista($idUsuario){
+        return view('perfil.crear', compact('idUsuario'));
     }
 
-    public function crearPerfil(Request $request){
+    public function crearPerfil(Request $request, $idUsuario){
         $cliente = new Client();
 
         $headers = [
@@ -100,11 +100,11 @@ class PerfilController extends Controller
         $body = [
             'nombre' => $request->input('nombre'),
             'contraseniaperfil' => $request->input('psw'),
-            'imagen' => $request->input('imagen')
+            'imagen' => $request->input('icono'),
         ];
 
   
-        $resultado = $cliente->get("http://localhost:8080/api/perfil/crear", [
+        $resultado = $cliente->post("http://localhost:8080/api/perfil/crear/{$idUsuario}", [
             'headers' => $headers,
             'body' => json_encode($body)
         ]);

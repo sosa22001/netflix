@@ -533,6 +533,8 @@ footer ul li{
     gap: 1rem;
     flex-wrap: wrap;
     text-align: center;
+    width: 90%;
+    margin: 0 auto;
   }
 .perfil {
     display: flex;
