@@ -7,8 +7,9 @@
     <meta name="description" content="Watch Netflix movies & TV shows online or stream right to your smart TV, game console, PC, Mac, mobile, tablet and more.">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" href="{{ asset('images/nficon2016.ico') }}" type="image/x-icon">
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+
     <link rel="stylesheet" href="{{ asset('css/landing.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/planes.css') }}">
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
 </head>
@@ -21,17 +22,22 @@
         }
     </style>
     
-    <main style="padding: 0px 10px;  width:400px">
-        <header class="d-flex space-between middle-align">
-            <a href="/">
-                <h2 class="titulo">Netflix</h2>
-            </a> 
-            <!-- <button class="button"><a href="/login.html"> Sign In</a></button> -->
-        </header>
+    <main style="">
         <section id="login-form-section">
-            <div>Plan 1</div>
-            <div>Plan 2</div>
-            <div>Plan 3</div>
+            
+            <div class="contenedor-planes">
+
+                <div class="card" style="width: 18rem;">
+                    <div class="card-body">
+                      <h5 class="card-title">Plan Básico</h5>
+                      <p class="card-text">Con este plan, podrás disfrutar de una amplia variedad de películas, series y documentales a un bajo precio</p>
+                      <p class="card-text">Lps. 120</p>
+                      <p class="card-text">Cantidad perfiles: 2</p>
+                      <p class="card-text">Resolución: 720p</p>
+                    </div>
+                  </div>
+
+            </div>
 
             <div class="loginContainer d-flex direction-column">
                 
