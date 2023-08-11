@@ -23,7 +23,7 @@ main{
     text-decoration: underline;
 }
 #userprofilecontainer{
-    max-width: 1000px;
+    max-width: 700px;
     margin: auto;
     padding-bottom: 80px;
 }
@@ -36,6 +36,7 @@ main{
     width: 100%;
     background: rgba(27, 27, 27, 0.315);
     margin: 10px 0px;
+    margin-top: 2.5rem;
 }
 .headline{
     color: rgb(99, 99, 99);
@@ -186,4 +187,47 @@ main{
 #footer{
     background-color: black;
     padding-bottom: 20px;
+}
+
+.netflix-input {
+    padding: 10px;
+    border: none;
+    border-radius: 25px;
+    width: 300px;
+    background-color: #fff;
+    color: #333;
+    font-size: 16px;
+    outline: none;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-left: auto;
+}
+
+.netflix-input::placeholder {
+    color: #aaa;
+}
+
+.netflix-input:focus {
+    background-color: #f5f5f5;
+}
+
+#grid{
+    margin-top: 1rem;
+    display: grid;
+    grid-template-columns: 31% 31% 31%;
+    gap: 1rem;
+    width: 100%;
+    margin-bottom: 2rem;
+}
+
+#grid > img {
+    width: 100%;
+}
+
+#grid > img:hover {
+    border: 3px solid #ffffffe8;
+    transform: scale(1.03);    
+}
+
+.seleccionado {
+    border: 1px solid red;
 }

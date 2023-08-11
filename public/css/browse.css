@@ -540,11 +540,24 @@ footer ul li{
     gap: 1rem;
     max-width: 25%;
 }
+
 .perfil > img {
     border-radius: .3rem;
 }
 .perfil > img:hover {
     border: 3px solid #ffffffe8;
+    transform: scale(1.03);    
+
+}
+.perfil-add{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    max-width: 25%; 
+}
+.perfil-add > img:hover{
+    border: none;
+    transform: scale(1.03);    
 }
 
 .pin-input{

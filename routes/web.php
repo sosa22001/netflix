@@ -14,9 +14,14 @@ Route::post('/iniciar/sesion', [AutenticacionController::class,'verificarUsuario
 //perfiles
 Route::get('/usuarios/{idUsuario}/perfiles',[PerfilController::class,'mostrarPerfiles'])->name('perfiles.mostrar');
 
-Route::get('/perfiles/{idPerfil}', [PerfilController::class,'mostrarPIN'])->name('perfil.formulario');
+Route::get('/perfiles/{idPerfil}', [PerfilController::class,'crearPerfilVista'])->name('perfil.formulario');
 
 Route::get('/perfiles/{idPerfil}/verificar', [PerfilController::class,'verificarPerfil'])->name('perfil.verificacion');
+
+Route::get('/perfiles/crearVista', [PerfilController::class,'crearPerfilVista'])->name('perfil.crearVista');
+
+Route::post('/perfiles/crear', [PerfilController::class,'crearPerfil'])->name('perfil.crear');
+
 
 //dashboard
 Route::get('/inicio',[PerfilController::class,'mostrarInicio'])->name('perfiles.inicio');

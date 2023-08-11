@@ -67,7 +67,7 @@ class PerfilController extends Controller
 
         //comparamos contrasenias
         if($perfil->contraseniaperfil == $request->input('pin')){
-            return view('usuario.inicio');
+            return view('usuario.inicio', compact('perfil'));
         } else {
             return redirect()->route('perfil.formulario', ['idPerfil' => $idPerfil])  ->with('mensaje', 'PIN incorrecto, por favor intenta nuevamente.');
         }
@@ -85,8 +85,33 @@ class PerfilController extends Controller
         return view('usuario.ayuda');
     }
 
-    
+    public function crearPerfilVista(){
+        return view('perfil.crear');
+    }
 
-    
+    public function crearPerfil(Request $request){
+        $cliente = new Client();
+
+        $headers = [
+            'Content-Type' => 'application/json'
+        ];
+
+        $body = [
+            'nombre' => $request->input('nombre'),
+            'contraseniaperfil' => $request->input('psw'),
+            'imagen' => $request->input('imagen')
+        ];
+
+  
+        $resultado = $cliente->get("http://localhost:8080/api/perfil/crear", [
+            'headers' => $headers,
+            'body' => json_encode($body)
+        ]);
+               
+        // retorna el perfil creado
+        $perfil = json_decode($resultado->getBody());
+        
+        return view('usuario.inicio', compact('perfil'));
+    }
 
 }

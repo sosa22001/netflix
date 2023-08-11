@@ -85,10 +85,11 @@
                         </a>
                     @endforeach
                     
-                        <a href="#" class="perfil">
-                            <img src="{{ asset('images/user2.png') }}" alt="">
+                        <a href="{{route('perfil.crearVista')}}"  class="perfil-add">
+                            <img src="{{ asset('images/add.png') }}" alt="">
                             <p style="color:#aaa">Añadir perfil</p>
                         </a>
+                        
             </div>
         </div>
     </div>
