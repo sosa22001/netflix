@@ -233,7 +233,7 @@ button:focus {
 
 .inputs {
     margin: 30px 0;
-    height: 20px;
+    height: 40px;
 }
 @keyframes shake {
     0%, 100% {

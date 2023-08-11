@@ -220,3 +220,7 @@ body{
     color: black;
     background-color: white;
 }
+
+.inputs {
+    margin-bottom: 10px;
+}
