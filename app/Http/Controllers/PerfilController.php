@@ -10,21 +10,15 @@ class PerfilController extends Controller
 {
 
     //obtiene todos los perfiles dado un usuario
-    public function obtenerPerfiles($idUsuario, Request $request) {
+    public function obtenerPerfiles($idUsuario) {
         $cliente = new Client();
 
         $headers = [
             'Content-Type' => 'application/json'
         ];
        
-        $body = '{
-            "correo": "' . $request->input('email') . '",
-            "contrasena": "' . $request->input('contraseña') . '"
-        }';
-       
-        $resultado = $cliente->get("http://localhost:8080/api/perfil/perfiles/4", [
+        $resultado = $cliente->get("http://localhost:8080/api/perfil/perfiles/{$idUsuario}", [
             'headers' => $headers,
-            'body' => $body
         ]);
                
         // en perfiles espero un arreglo
@@ -33,6 +27,7 @@ class PerfilController extends Controller
         return $perfiles;
     }
 
+    //sin impl
     public function obtenerPerfil($idPerfil){
         $cliente = new Client();
 
@@ -49,16 +44,14 @@ class PerfilController extends Controller
         return $perfil;
     }
 
+    //sin impl
     public function obtenerUsuario($idPerfil){
 
     }
 
-
-
-
     //renderiza los perfiles y obtiene los perfiles de la funcion -> obtenerPerfiles
-    public function mostrarPerfiles($idUsuario, Request $request) {
-        $perfiles = $this->obtenerPerfiles($idUsuario, $request);
+    public function mostrarPerfiles($idUsuario) {
+        $perfiles = $this->obtenerPerfiles($idUsuario);
         
         return view('perfil.mostrarPerfiles', compact('perfiles'));
     }
