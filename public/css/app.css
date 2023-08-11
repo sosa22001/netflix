@@ -214,3 +214,9 @@ button:focus {
         padding-right: 3px;
     }
 }
+
+
+body{
+    color: black;
+    background-color: white;
+}

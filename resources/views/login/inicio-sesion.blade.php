@@ -41,9 +41,9 @@
                         <input type="password" name="contraseña" id="password" placeholder="Contraseña"/>
 
                         @if(session('mensaje'))
-                        <div class="alert">
-                            <span class="close-btn">{{ session('mensaje') }}</span>
-                        </div>
+                            <div class="alert">
+                                <span class="close-btn">{{ session('mensaje') }}</span>
+                            </div>
                         @endif
 
                         <button type="submit" class="button submitButton" id="signInButton">

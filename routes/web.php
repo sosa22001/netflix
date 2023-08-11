@@ -4,12 +4,17 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AutenticacionController;
 use App\Http\Controllers\PerfilController;
 
-//Login - Registro
+//Login
 Route::get('/login', [AutenticacionController::class,'mostrarLogin'])->name('login.formulario');
 
+Route::post('/iniciar/sesion', [AutenticacionController::class,'verificarUsuario'])->name('login.verificacion');
+
+//registro
 Route::get('/registro', [AutenticacionController::class,'mostrarRegistro'])->name('registro.formulario');
 
-Route::post('/iniciar/sesion', [AutenticacionController::class,'verificarUsuario'])->name('login.verificacion');
+Route::post('/registro', [AutenticacionController::class,'formularioRegistro'])->name('registro.siguiente');
+
+Route::get('/registro/planes', [AutenticacionController::class, 'mostrarPlanes'])->name('registro.planes');
 
 //perfiles
 Route::get('/usuarios/{idUsuario}/perfiles',[PerfilController::class,'mostrarPerfiles'])->name('perfiles.mostrar');

@@ -17,10 +17,11 @@ class PerfilController extends Controller
             'Content-Type' => 'application/json'
         ];
        
+        //los perfiles
         $resultado = $cliente->get("http://localhost:8080/api/perfil/perfiles/{$idUsuario}", [
             'headers' => $headers,
         ]);
-               
+
         // en perfiles espero un arreglo
         $perfiles = json_decode($resultado->getBody());
         
@@ -38,7 +39,7 @@ class PerfilController extends Controller
         $resultado = $cliente->get("http://localhost:8080/api/perfil/cambiar/estado/{$idPerfil}", [
             'headers' => $headers,
         ]);
-               
+
         $perfil = json_decode($resultado->getBody());
         
         return $perfil;
