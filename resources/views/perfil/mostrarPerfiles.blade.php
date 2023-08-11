@@ -16,9 +16,6 @@
     <script src="../assets/lib/jquery 3.5.0.js"></script>
     <script src="../assets/lib/owl.carousel.js"></script>
 
-
-    <!--main script file-->
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.min.css"
         integrity="sha256-t2kyTgkh+fZJYRET5l9Sjrrl4UDain5jxdbqe8ejO8A=" crossorigin="anonymous" />
 
@@ -49,11 +46,6 @@
                 </a>
             </div>
             <div class="flex">
-                <div>
-                    <a href="{{route('perfiles.mostrar', ['idUsuario' => 3])}}">
-                        <i class="fa-solid fa-xmark" style="color: #aaa; font-size:2rem;"></i>
-                    </a>
-                </div>
                 <div class="righticons d-flex flex-end flex-middle">
                     <div class="dropdown">
                         <i class="fa-solid fa-grip-lines" style="color: #aaa; font-size:2rem;"></i>
@@ -61,9 +53,9 @@
                         <div class="dropdown-content">
                             <div class="line"></div>
                             <div class="links d-flex direction-column">
-                                <a href="user-profile/home.html">Cuenta</a>
-                                <a href="#">Ayuda</a>
-                                <a href="/">Salir de Netflix</a>
+                                <a href="{{route('usuario.cuentaConfig')}}">Cuenta</a>
+                                <a href="{{route('usuario.ayuda')}}">Ayuda</a>
+                                <a href="{{route('login.formulario')}}">Salir de Netflix</a>
                             </div>
                             
                         </div>
@@ -85,38 +77,18 @@
             <div class="p-4">
                 <h1 style="text-align:center">¿Quien esta viendo ahora?</h1>
                 <div class="d-flex flex-no-wrap"margin-left: auto; margin-right: auto" id="perfiles-usuario">
-                    <a href="{{route('perfil.formulario', ['idUsuario' => 1, 'idPerfil' => 2])}}" class="perfil">
-                        <img src="{{ asset('images/user1.png') }}" alt="">
-                        <p>Lola</p>
-                    </a>
-                    <a href="{{route('perfil.formulario', ['idUsuario' => 1, 'idPerfil' => 2])}}" class="perfil">
-                        <img src="{{ asset('images/user1.png') }}" alt="">
-                        <p>Lola</p>
-                    </a>                    
-                    <a href="{{route('perfil.formulario', ['idUsuario' => 1, 'idPerfil' => 2])}}" class="perfil">
-                        <img src="{{ asset('images/user2.png') }}" alt="">
-                        <p>Lola</p>
-                    </a>
+
+                    @foreach ($perfiles as $perfil )
+                        <a href="{{route('perfil.formulario', ['idPerfil' => $perfil->idPerfil])}}" class="perfil">
+                            <img src="{{ asset('images/' . $perfil->imagen) }}" alt="Imagen del perfil">
+                            <p>{{$perfil->nombre}}</p>
+                        </a>
+                    @endforeach
                     
-                
-                    {{--                         <div class="perfil">
-                            <a href="">
-
-                            </a>
-                            <img src="{{ asset('images/user1.png') }}" alt="">
-                            <p>Lola</p>
-                        </div>
-                        <div class="perfil">
-                            <img src="{{ asset('images/user1.png') }}" alt="">
-                            <p>Lola</p>
-                        </div>
-                        <div class="perfil">
-                            <a href="">
-
-                                <img src="{{ asset('images/user2.png') }}" alt="">
-                                <p>Añadir perfil</p>
-                            </a>
-                        </div> --}}
+                        <a href="#" class="perfil">
+                            <img src="{{ asset('images/user2.png') }}" alt="">
+                            <p style="color:#aaa">Añadir perfil</p>
+                        </a>
             </div>
         </div>
     </div>

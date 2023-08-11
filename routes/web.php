@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AutenticacionController;
 use App\Http\Controllers\PerfilController;
 
-
+//Login - Registro
 Route::get('/login', [AutenticacionController::class,'mostrarLogin'])->name('login.formulario');
 
 Route::get('/registro', [AutenticacionController::class,'mostrarRegistro'])->name('registro.formulario');
@@ -14,8 +14,20 @@ Route::post('/iniciar/sesion', [AutenticacionController::class,'verificarUsuario
 //perfiles
 Route::get('/usuarios/{idUsuario}/perfiles',[PerfilController::class,'mostrarPerfiles'])->name('perfiles.mostrar');
 
-Route::get('/usuarios/{idUsuario}/perfiles/{idPerfil}', [PerfilController::class,'mostrarLogin'])->name('perfil.formulario');
-Route::get('/usuarios/{idUsuario}/perfiles/{idPerfil}/verificar', [PerfilController::class,'verificarPerfil'])->name('perfil.verificacion');
+Route::get('/perfiles/{idPerfil}', [PerfilController::class,'mostrarPIN'])->name('perfil.formulario');
+
+Route::get('/perfiles/{idPerfil}/verificar', [PerfilController::class,'verificarPerfil'])->name('perfil.verificacion');
+
+//dashboard
+Route::get('/inicio',[PerfilController::class,'mostrarInicio'])->name('perfiles.inicio');
+
+Route::get('/cuenta',[PerfilController::class,'mostrarCuenta'])->name('usuario.cuentaConfig');
+
+Route::get('/ayuda',[PerfilController::class,'mostrarAyuda'])->name('usuario.ayuda');
+
+
+
+
 
 
 

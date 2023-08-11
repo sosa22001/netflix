@@ -1,43 +1,23 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!-->
 <html class="no-js">
-<!--<![endif]-->
-
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Netflix world – Watch TV Shows Online, Watch Movies Online</title>
+    <title>Netflix</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="../assets/lib/owl.carousel.css" />
-    <script src="../assets/lib/jquery 3.5.0.js"></script>
-    <script src="../assets/lib/owl.carousel.js"></script>
+    <link rel="stylesheet" href="{{asset(''css/owl.carrousel.css)}}>
 
-    <!--main script file-->
-    <script src="../assets/js/main-script.js"></script>
+    <script src="{{asset('lib/owl.carousel.js')}}></script>
+    <script src="{{asset('lib/jquery 3.5.0.js')}}"></script>
+    <script src="{{asset('js/main-script.js')}}"></script>
 
-
-    <link rel="stylesheet" href="../assets/css/global.css">
-    <link rel="stylesheet" href="../assets/css/browse.css">
+    <link rel="stylesheet" href="{{asset('css/global.css')}}>
+    <link rel="stylesheet" href="{{asset('css/browse.css')}}>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.min.css" integrity="sha256-t2kyTgkh+fZJYRET5l9Sjrrl4UDain5jxdbqe8ejO8A=" crossorigin="anonymous" />
-
-    <!-- owl carousel script -->
-    <script>
-
-    </script>
 </head>
 
 <body>
-    <!--[if lt IE 7]>
-            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
-
-
-    <!-- dashboard/browse page block start | home page after login | -->
-
     <main id="mainContainer" class="p-b-40">
         <div>
             <header class="d-flex space-between flex-center flex-middle">

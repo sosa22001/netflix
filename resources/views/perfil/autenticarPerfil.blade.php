@@ -43,7 +43,7 @@
     <main id="mainContainer" class="p-b-40">
         <header class="d-flex space-between flex-center flex-middle">
             <div class="nav-links d-flex flex-center flex-middle">
-                <a href="/">
+                <a href="#">
                     <h2 class="logo logo-text red-color f-s-28 m-r-25">NETFLIX</h2>
                     <h2 class="second-logo-text red-color f-s-28">N</h2>
                 </a>
@@ -61,9 +61,9 @@
                         <div class="dropdown-content">
                             <div class="line"></div>
                             <div class="links d-flex direction-column">
-                                <a href="user-profile/home.html">Cuenta</a>
-                                <a href="#">Ayuda</a>
-                                <a href="/">Salir de Netflix</a>
+                                <a href="{{route('usuario.cuentaConfig')}}">Cuenta</a>
+                                <a href="{{route('usuario.ayuda')}}">Ayuda</a>
+                                <a href="{{route('login.formulario')}}">Salir de Netflix</a>
                             </div>
                             
                         </div>
@@ -76,13 +76,19 @@
         
         </div>
 
-
     </main>
     <div id="pag-pin">
-        <span style="color: #aaa;">El bloqueo de perfil esta activado.</span>
-        <h1>Ingresar tu PIN para acceder a este perfil.</h1>
-        <form action="{{route('perfil.verificacion', ['idPerfil' => 1, 'idUsuario' => 2])}}" class="form-perfil">
-            <input type="number" class="pin-input">
+        <div class="flex-column">
+            <span style="color: #aaa;">El bloqueo de perfil esta activado.</span>
+            <h1>Ingresar tu PIN para acceder a este perfil.</h1>
+        </div>
+        <form action="{{route('perfil.verificacion', ['idPerfil' => $idPerfil])}}" class="form-perfil">
+            <input type="password" class="pin-input" name="pin">
+                @if(session('mensaje'))
+                    <div class="alert">
+                        <span class="close-btn">{{ session('mensaje') }}</span>
+                    </div>
+                @endif
             <button type="submit" class="netflix-button">Listo</button>
         </form>
     </div>

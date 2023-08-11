@@ -8,6 +8,8 @@ use GuzzleHttp\Exception\RequestException;
 
 class AutenticacionController extends Controller
 {
+
+    //LOGIN FUNCIONES
     public function mostrarLogin(){
         return view('login.inicio-sesion');
     }
@@ -33,9 +35,10 @@ class AutenticacionController extends Controller
         $usuario = json_decode($resultado->getBody(), true);
 
         if($usuario ==null){
-            return "No existe el usuario";
+            return redirect()->route('login.formulario')->with('mensaje', 'Oops! No pudimos encontrar tu cuenta');
         }else{
             return redirect()->route('perfiles.mostrar', ['idUsuario' => $usuario['idUsuario']]);
+
         }
         
     }
@@ -43,4 +46,5 @@ class AutenticacionController extends Controller
     public function mostrarRegistro(){
         return view('login.registro');
     }
+
 }

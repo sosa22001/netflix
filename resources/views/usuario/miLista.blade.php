@@ -1,50 +1,32 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!-->
 <html class="no-js">
-<!--<![endif]-->
-
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Netflix world – Watch TV Shows Online, Watch Movies Online</title>
+    <title>Netflix</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="../assets/lib/jquery 3.5.0.js"></script>
-     <!--main script file-->
-     <script src="../assets/js/main-script.js"></script>
 
-    <link rel="stylesheet" href="../assets/css/global.css">
-    <link rel="stylesheet" href="../assets/css/browse.css">
-    <!-- owl carousel script -->
-    <script>
+    <script src="{{asset('lib/jquery 3.5.0.js')}}"></script>
+    <script src="{{asset('js/main-script.js')}}"></script>
 
-    </script>
+    <link rel="stylesheet" href="{{asset('css/global.css')}}>
+    <link rel="stylesheet" href="{{asset('css/browse.css')}}>
 </head>
 
 <body>
-    <!--[if lt IE 7]>
-            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
-
-
-    <!-- dashboard/browse page block start | home page after login | -->
 
     <main id="mainContainer" class="p-b-40">
         <div>
             <header class="d-flex space-between flex-center flex-middle" style="z-index: 20; background-color: black;">
                 <div class="nav-links d-flex flex-center flex-middle">
-                    <a href="/">
+                    <a href="{{route('perfiles.inicio')}}">
                         <h2 class="logo logo-text red-color f-s-28 m-r-25">NETFLIX</h2>
                         <h2 class="second-logo-text red-color f-s-28">N</h2>
                     </a>
-                    <a href="browse.html" class="nav-item home">Home</a>
-                    <a href="tvshow.html" class="nav-item">TV Show</a>
-                    <a href="movies.html" class="nav-item">Movies</a>
-                    <a href="latest.html" class="nav-item latest">Latest</a>
-                    <a href="mylist.html" class="nav-item">My List</a>
+                    <a href="tvshow.html" class="nav-item">Peliculas</a>
+                    <a href="latest.html" class="nav-item latest">Mi Lista</a>
+                    <a href="mylist.html" class="nav-item">Continuar Viendo</a>
                 </div>
                 <div class="righticons d-flex flex-end flex-middle">
                     <a href="search.html"><img src="../images/icons/search.svg" alt="search icon"></a>
