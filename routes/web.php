@@ -12,7 +12,9 @@ Route::post('/iniciar/sesion', [AutenticacionController::class,'verificarUsuario
 //registro
 Route::get('/registro', [AutenticacionController::class,'mostrarRegistro'])->name('registro.formulario');
 
-Route::post('/registro/planes', [AutenticacionController::class,'formularioRegistro'])->name('registro.siguiente');
+Route::post('/registro', [AutenticacionController::class,'formularioRegistro'])->name('registro.siguiente');
+
+Route::get('/registro/planes', [AutenticacionController::class, 'mostrarPlanes'])->name('registro.planes');
 
 //perfiles
 Route::get('/usuarios/{idUsuario}/perfiles',[PerfilController::class,'mostrarPerfiles'])->name('perfiles.mostrar');

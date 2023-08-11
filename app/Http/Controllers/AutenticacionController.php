@@ -51,7 +51,11 @@ class AutenticacionController extends Controller
         //recibo la información
 
         //vista de los planes:
-        return view('plan.planes', compact('request'));
+        return redirect()->route('registro.planes');
+    }
+
+    public function mostrarPlanes(){
+        return view('plan.planes');
     }
 
 }

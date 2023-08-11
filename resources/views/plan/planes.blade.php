@@ -9,6 +9,8 @@
     <link rel="icon" href="{{ asset('images/nficon2016.ico') }}" type="image/x-icon">
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <link rel="stylesheet" href="{{ asset('css/landing.css') }}">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
 </head>
 <body style="background-color: white">
     
@@ -27,20 +29,21 @@
             <!-- <button class="button"><a href="/login.html"> Sign In</a></button> -->
         </header>
         <section id="login-form-section">
-                <div class="loginContainer d-flex direction-column">
-                    <div>Plan 1</div>
-                    <div>Plan 2</div>
-                    <div>Plan 3</div>
-                    <form action="{{route('')}}" id="loginForm" class="d-flex direction-column" method="post" name="loginForm">
-                        @csrf
+            <div>Plan 1</div>
+            <div>Plan 2</div>
+            <div>Plan 3</div>
 
-                        <select name="seleccionar-plan" id="">
-                            <option value="">1. Plan básico</option>
-                            <option value="">1. Plan estándar</option>
-                            <option value="">1. Plan premium</option>
-                        </select>
-                    </form>
-                </div>
+            <div class="loginContainer d-flex direction-column">
+                
+                <form action="" id="loginForm" class="d-flex direction-column" method="post" name="loginForm">
+                    @csrf
+                    <select name="seleccionar-plan" id="">
+                        <option value="">1. Plan básico</option>
+                        <option value="">1. Plan estándar</option>
+                        <option value="">1. Plan premium</option>
+                    </select>
+                </form>
+            </div>
         </section>
     </main>
 </body>

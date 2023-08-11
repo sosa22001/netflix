@@ -48,7 +48,7 @@
                             Siguiente
                         </button>
                         <p class="signUpText para">
-                            Tengo una cuenta? <span class="signUp"><a href="/login.html">Iniciar sesión</a></span>
+                            Tengo una cuenta?
                         </p>
                     </form>
                 </div>
