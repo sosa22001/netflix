@@ -28,28 +28,17 @@
         </header>
         <section id="login-form-section">
                 <div class="loginContainer d-flex direction-column">
-                    <h2 class="formtitle">
-                        Registra tu cuenta
-                    </h2>
-                    <form action="{{route('registro.siguiente')}}" id="loginForm" class="d-flex direction-column" method="post" name="loginForm">
+                    <div>Plan 1</div>
+                    <div>Plan 2</div>
+                    <div>Plan 3</div>
+                    <form action="{{route('')}}" id="loginForm" class="d-flex direction-column" method="post" name="loginForm">
                         @csrf
 
-                        <input type="text" class="inputs" placeholder="Nombre" name="nombre">
-
-                        <input type="text" class="inputs" name="apellido" id="" placeholder="Apellido" name="apellido">
-
-                        <input type="text" name="correo" id="email" class="email" placeholder="Correo" required/>
-                        <p id="errorEmail">Please enter a valid email address or phone number.</p>
-
-                        <input type="password" name="contraseña" id="password" placeholder="Contraseña" required/>
-                        <p id="errorPassword">Your password must contain between 4 and 60 characters.</p>
-
-                        <button type="submit" class="button submitButton" id="signInButton">
-                            Siguiente
-                        </button>
-                        <p class="signUpText para">
-                            Tengo una cuenta? <span class="signUp"><a href="/login.html">Iniciar sesión</a></span>
-                        </p>
+                        <select name="seleccionar-plan" id="">
+                            <option value="">1. Plan básico</option>
+                            <option value="">1. Plan estándar</option>
+                            <option value="">1. Plan premium</option>
+                        </select>
                     </form>
                 </div>
         </section>

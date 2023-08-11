@@ -32,7 +32,7 @@ class AutenticacionController extends Controller
             'body' => $body
         ]);
         
-        $usuario = json_decode($resultado->getBody(), true);
+        $usuario = json_decode($resultado->getBody(),true);
 
         if($usuario ==null){
             return redirect()->route('login.formulario')->with('mensaje', 'Oops! No pudimos encontrar tu cuenta');
@@ -45,6 +45,13 @@ class AutenticacionController extends Controller
 
     public function mostrarRegistro(){
         return view('login.registro');
+    }
+
+    public function formularioRegistro(Request $request){
+        //recibo la información
+
+        //vista de los planes:
+        return view('plan.planes', compact('request'));
     }
 
 }
