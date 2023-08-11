@@ -64,7 +64,7 @@
 
             <div class="line"></div>
 
-            <form action="{{route('perfil.crear')}}" method="POST">
+            <form action="{{route('perfil.crear', ['idUsuario' => $idUsuario])}}" method="POST">
                 @csrf
                 {{-- perfil nombre --}}
                 <div class="membership d-flex flex-no-wrap space-between">
@@ -95,16 +95,21 @@
                 <!--icono-->
                 <div class="settings d-flex ">
                     <div class="left">
-                        <h4 class="headline">ICONO</h4> 
+                        <h4 class="headline">SELECCIONA TU ICONO</h4> 
                     </div>
                     <div id="grid">
-                        <input type="hidden" name="icono" id="iconoSeleccionado" value="1"> <!-- Campo oculto para el icono seleccionado -->
-                        <img src="{{ asset('images/user1.png') }}" alt="" onclick="seleccionarIcono(1)">
-                        <img src="{{ asset('images/user2.png') }}" alt="" onclick="seleccionarIcono(2)">
-                        <img src="{{ asset('images/user3.png') }}" alt="" onclick="seleccionarIcono(3)">
-                        <img src="{{ asset('images/user4.png') }}" alt="" onclick="seleccionarIcono(4)">
-                        <img src="{{ asset('images/user5.png') }}" alt="" onclick="seleccionarIcono(5)">
+                        <input type="hidden" name="icono" id="iconoSeleccionado" value="1">
+                        <img src="{{ asset('images/user1.png') }}" alt="" data-value="1" onclick="seleccionarIcono(1)">
+                        <img src="{{ asset('images/user2.png') }}" alt="" data-value="2" onclick="seleccionarIcono(2)">
+                        <img src="{{ asset('images/user3.png') }}" alt="" data-value="3" onclick="seleccionarIcono(3)">
+                        <img src="{{ asset('images/user4.png') }}" alt="" data-value="4" onclick="seleccionarIcono(4)">
+                        <img src="{{ asset('images/user5.png') }}" alt="" data-value="5" onclick="seleccionarIcono(5)">
                     </div>
+
+                    {{-- Id usuario --}}
+                    <input type="hidden" name="idUsuario"  value="{{$idUsuario}}">
+
+                    
 
                 <button type="submit" class="netflix-button" style="width:40%;">¡Crear!</button>
             </form>
@@ -114,17 +119,18 @@
         </div>
 
     </main> 
-    <script>
-        function seleccionarIcono(valor) {
-            document.getElementById('iconoSeleccionado').value = valor;
-    
-            const imagenes = document.querySelectorAll('#grid img');
-            for (let i = 0; i < imagenes.length; i++) {
-                imagenes[i].classList.remove('seleccionado');
+
+        <script>
+            function seleccionarIcono(valor) {
+                var imagenes = document.querySelectorAll('#grid img');
+                imagenes.forEach(function(imagen) {
+                    imagen.classList.remove('seleccionado');
+                });
+
+                var imagenSeleccionada = document.querySelector('#grid img[data-value="' + valor + '"]');
+                imagenSeleccionada.classList.add('seleccionado');
+                document.getElementById('iconoSeleccionado').value = `user${valor}.png`;
             }
-/*             document.querySelector('#grid img[value="' + valor + '"]').classList.add('seleccionado');
- */        }
-        console.log(valor);
     </script>
 
     <script src="https://kit.fontawesome.com/8b44041adf.js" crossorigin="anonymous"></script>

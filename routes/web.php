@@ -27,9 +27,9 @@ Route::get('/perfiles/{idPerfil}', [PerfilController::class,'crearPerfilVista'])
 
 Route::get('/perfiles/{idPerfil}/verificar', [PerfilController::class,'verificarPerfil'])->name('perfil.verificacion');
 
-Route::get('/perfiles/crearVista', [PerfilController::class,'crearPerfilVista'])->name('perfil.crearVista');
+Route::get('/usuarios/{idUsuario}/perfiles/crearVista', [PerfilController::class,'crearPerfilVista'])->name('perfil.crearVista');
 
-Route::post('/perfiles/crear', [PerfilController::class,'crearPerfil'])->name('perfil.crear');
+Route::post('/perfiles/crear/{idUsuario}', [PerfilController::class,'crearPerfil'])->name('perfil.crear');
 
 
 //dashboard

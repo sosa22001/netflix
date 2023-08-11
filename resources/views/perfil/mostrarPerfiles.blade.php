@@ -79,13 +79,13 @@
                 <div class="d-flex flex-no-wrap"margin-left: auto; margin-right: auto" id="perfiles-usuario">
 
                     @foreach ($perfiles as $perfil )
-                        <a href="{{route('perfil.formulario', ['idPerfil' => $perfil->idPerfil])}}" class="perfil">
+                        <a href="{{route('perfil.verificacion', ['idPerfil' => $perfil->idPerfil])}}" class="perfil">
                             <img src="{{ asset('images/' . $perfil->imagen) }}" alt="Imagen del perfil">
                             <p>{{$perfil->nombre}}</p>
                         </a>
                     @endforeach
                     
-                        <a href="{{route('perfil.crearVista')}}"  class="perfil-add">
+                        <a href="{{route('perfil.crearVista', ['idUsuario' => $idUsuario] )}}"  class="perfil-add">
                             <img src="{{ asset('images/add.png') }}" alt="">
                             <p style="color:#aaa">Añadir perfil</p>
                         </a>
