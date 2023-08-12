@@ -14,7 +14,11 @@ Route::get('/registro', [AutenticacionController::class,'mostrarRegistro'])->nam
 
 Route::post('/registro', [AutenticacionController::class,'formularioRegistro'])->name('registro.siguiente');
 
-Route::get('/registro/planes', [AutenticacionController::class, 'mostrarPlanes'])->name('registro.planes');
+Route::get('/registro/planes/{nombre}', [AutenticacionController::class, 'mostrarPlanes'])->name('registro.planes');
+
+Route::post('/registro/planes', [AutenticacionController::class, 'formularioPlanes'])->name('planes.siguiente');
+
+Route::post('/registro/planes/tarjeta', [AutenticacionController::class,'store'])->name('tarjeta.siguiente');
 
 //perfiles
 //renderiza los perfiles de un usuario
