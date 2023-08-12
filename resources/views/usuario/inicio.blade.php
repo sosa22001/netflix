@@ -22,23 +22,35 @@
         <div>
             <header class="d-flex space-between flex-center flex-middle">
                 <div class="nav-links d-flex flex-center flex-middle">
-                    <a href="{{route('perfiles.inicio')}}">
+                    <a href="{{route('perfiles.inicio', ['idUsuario' => $idUsuario, 'idPerfil' => $perfil->idPerfil])}}">
                         <h2 class="logo logo-text red-color f-s-28 m-r-25">NETFLIX</h2>
                         <h2 class="second-logo-text red-color f-s-28">N</h2>
                     </a>
-                    <a href="tvshow.html" class="nav-item">Peliculas</a>
-                    <a href="latest.html" class="nav-item latest">Mi Lista</a>
-                    <a href="mylist.html" class="nav-item">Continuar Viendo</a>
+                    <a href="{{route('peliculas.mostrar')}}" class="nav-item">Peliculas</a>
+                    <a href="{{route('perfil.miLista', ['idPerfil' => $perfil->idPerfil])}}" class="nav-item latest">Mi Lista</a>
+                    <a href="{{route('perfil.continuarViendo', ['idPerfil' => $perfil->idPerfil])}}" class="nav-item">Continuar Viendo</a>
                 </div>
                 <div class="righticons d-flex flex-end flex-middle">
                     <div class="dropdown">
-                        <i class="fa-solid fa-grip-lines" style="color: #aaa; font-size:2rem;"></i>
-    
+                        <img src="{{asset('images/' . $perfil->imagen)}}" alt="user profile icon" class="user-icon"> <span class="profile-arrow"></span>
+   
                         <div class="dropdown-content">
+                            <div class="profile-links">
+                                 @foreach ($perfiles as $perfilIt)
+                                    @if ($perfilIt->idPerfil != $perfil->idPerfil)
+                                        <a href="{{route('perfil.formulario', ['idUsuario' => $idUsuario, 'idPerfil' => $perfilIt->idPerfil])}}" class="profile-item d-flex flex-middle">
+                                            <img src="{{asset('images/'.$perfilIt->imagen)}}" alt="user profile icon" class="user-icon">
+                                            <span>{{$perfilIt->nombre}}</span>
+                                        </a>
+                                    @endif
+                                @endforeach 
+                                <br>
+                                <a href="{{route('perfil.crearVista', ['idUsuario' => $idUsuario, 'idPerfil' => $perfil->idPerfil])}}" class="profile-item last">CrearPerfil</a>
+                            </div>
                             <div class="line"></div>
                             <div class="links d-flex direction-column">
-                                <a href="{{route('usuario.cuentaConfig')}}">Cuenta</a>
-                                <a href="{{route('usuario.ayuda')}}">Ayuda</a>
+                                <a href="{{route('usuario.cuentaConfig', ['idUsuario' => $idUsuario])}}">Cuenta</a>
+                                <a href="{{route('usuario.ayuda', ['idUsuario' => $idUsuario])}}">Ayuda</a>
                                 <a href="{{route('login.formulario')}}">Salir de Netflix</a>
                             </div>
                         </div>
@@ -126,7 +138,7 @@
                 <section id="mylist" class="container">
 
                     <h4 class="mylist-heading">
-                        My List
+                        Mi Lista
                     </h4>
                     <div class="mylist-container d-flex flex-start flex-middle flex-no-wrap owl-carousel">
                         <div class="video">
@@ -230,11 +242,10 @@
                 </section>
 
 
-
-                <!--continure watching-->
+                <!--continuar viendo-->
                 <section id="continue-watching" class="container p-t-40">
                     <h4 class="continue-watching-heading">
-                        Continue watching for Rajesh Royal
+                        Continuar viendo contenido de {{$perfil->nombre}}
                     </h4>
                     <div class="continue-watching-container d-flex flex-start flex-middle flex-no-wrap owl-carousel">
 
@@ -402,10 +413,68 @@
                     </div>
                 </section>
 
-                <!--Romantic Movies-->
+                <!--peliculas romanticas-->
                 <section id="romantic" class="container p-t-40">
                     <h4 class="romantic-heading">
-                        Romantic Movies
+                        Peliculas Romanticas
+                    </h4>
+                    <div class="romantic-container d-flex flex-start flex-middle flex-no-wrap owl-carousel">
+                        <a href="#">
+                            <img src="../images/movies/horrible-bosses-middle-poster.webp" alt=""
+                                class="mylist-img p-r-10 p-t-10 image-size item"></a>
+                        <a href="#">
+                            <img src="../images/movies/kabir-singh-poster.webp" alt=""
+                                class="mylist-img p-r-10 p-t-10 image-size item"></a>
+                        <a href="#">
+                            <img src="../images/movies/extraction-poster.jpg" alt=""
+                                class="mylist-img p-r-10 p-t-10 image-size item"></a>
+                        <a href="#">
+                            <img src="../images/tv-show/poster/never-have-ever-short poster.jpg" alt=""
+                                class="mylist-img p-r-10 p-t-10 image-size item"></a>
+                        <a href="#">
+                            <img src="../images/movies/we-are-the-milers-poster-little.webp" alt=""
+                                class="mylist-img p-r-10 p-t-10 image-size item"></a>
+
+                        <a href="#">
+                            <img src="../images/movies/we-are-the-milers-poster-little.webp" alt=""
+                                class="mylist-img p-r-10 p-t-10 image-size item"></a>
+
+                    </div>
+                </section>
+
+                {{-- miedo --}}
+                <section id="romantic" class="container p-t-40">
+                    <h4 class="romantic-heading">
+                        Thrillers que hielan la sangre
+                    </h4>
+                    <div class="romantic-container d-flex flex-start flex-middle flex-no-wrap owl-carousel">
+                        <a href="#">
+                            <img src="../images/movies/horrible-bosses-middle-poster.webp" alt=""
+                                class="mylist-img p-r-10 p-t-10 image-size item"></a>
+                        <a href="#">
+                            <img src="../images/movies/kabir-singh-poster.webp" alt=""
+                                class="mylist-img p-r-10 p-t-10 image-size item"></a>
+                        <a href="#">
+                            <img src="../images/movies/extraction-poster.jpg" alt=""
+                                class="mylist-img p-r-10 p-t-10 image-size item"></a>
+                        <a href="#">
+                            <img src="../images/tv-show/poster/never-have-ever-short poster.jpg" alt=""
+                                class="mylist-img p-r-10 p-t-10 image-size item"></a>
+                        <a href="#">
+                            <img src="../images/movies/we-are-the-milers-poster-little.webp" alt=""
+                                class="mylist-img p-r-10 p-t-10 image-size item"></a>
+
+                        <a href="#">
+                            <img src="../images/movies/we-are-the-milers-poster-little.webp" alt=""
+                                class="mylist-img p-r-10 p-t-10 image-size item"></a>
+
+                    </div>
+                </section>
+
+                {{-- Comedia --}}
+                <section id="romantic" class="container p-t-40">
+                    <h4 class="romantic-heading">
+                        Comedia
                     </h4>
                     <div class="romantic-container d-flex flex-start flex-middle flex-no-wrap owl-carousel">
                         <a href="#">
@@ -491,10 +560,10 @@
                 </section>
 
 
-                <!--Get In On the Action-->
+                <!--accion-->
                 <section id="romantic" class="container p-t-40">
                     <h4 class="romantic-heading">
-                        Get In On the Action
+                        Ponte en accion
                     </h4>
                     <div class="romantic-container d-flex flex-start flex-middle flex-no-wrap owl-carousel">
                         <a href="#">
@@ -520,10 +589,10 @@
                     </div>
                 </section>
 
-                <!--Bingeworthy TV Shows-->
+                <!--series-->
                 <section id="romantic" class="container p-t-40">
                     <h4 class="romantic-heading">
-                        Bingeworthy TV Shows
+                        Series
                     </h4>
                     <div class="romantic-container d-flex flex-start flex-middle flex-no-wrap owl-carousel">
                         <a href="#">

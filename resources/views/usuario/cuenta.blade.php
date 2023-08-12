@@ -22,72 +22,23 @@
 
         <header class="d-flex space-between flex-center flex-middle">
             <div class="nav-links d-flex flex-center flex-middle">
-                <a href="{{route('perfiles.inicio')}}">
+                <a href="#">
                     <h2 class="logo logo-text red-color f-s-28 m-r-25">NETFLIX</h2>
                     <h2 class="second-logo-text red-color f-s-28">N</h2>
                 </a>
-                <a href="tvshow.html" class="nav-item">Peliculas</a>
-                <a href="latest.html" class="nav-item latest">Mi Lista</a>
-                <a href="mylist.html" class="nav-item">Continuar Viendo</a>
             </div>
             <div class="righticons d-flex flex-end flex-middle">
-                <a href="../search.html">
-                <img src="../../images/icons/search.svg" alt="search icon">
-            </a>
-            <div class="dropdown notification">
-                <img src="../../images/icons/notification.svg" alt="notificatio icon">
-                <div class="dropdown-content">
-                    <a href="#" class="profile-item d-flex flex-middle">
-                        <img src="../../images/icons/user2.png" alt="user profile icon" class="user-icon">
-                        <span>You have new notification from <span>User 123</span></span>
-                    </a>
-                    <a href="#" class="profile-item d-flex flex-middle">
-                        <img src="../../images/icons/user1.png" alt="user profile icon" class="user-icon">
-                        <span>You have new notification from <span>User 123</span></span>
-                    </a>
-                    <a href="#" class="profile-item d-flex flex-middle">
-                        <img src="../../images/icons/user4.png" alt="user profile icon" class="user-icon">
-                        <span>You have new notification from <span>User 123</span></span>
-                    </a>
-                    <a href="#" class="profile-item d-flex flex-middle">
-                        <img src="../../images/icons/user3.png" alt="user profile icon" class="user-icon">
-                        <span>You have new notification from <span>User 123</span></span>
-                    </a>
-                </div>
-            </div>
-                
                 <div class="dropdown">
-                    <img src="../../images/icons/user-image-green.png" alt="user profile icon" class="user-icon"> <span
-                        class="profile-arrow"></span>
+                    <i class="fa-solid fa-grip-lines" style="color: #aaa; font-size:2rem;"></i>
 
-                    <div class="dropdown-content">
-                        <div class="profile-links">
-                            <a href="#" class="profile-item d-flex flex-middle">
-                                <img src="../../images/icons/user1.png" alt="user profile icon" class="user-icon">
-                                <span>Rajesh</span>
-                            </a>
-                            <a href="#" class="profile-item d-flex flex-middle">
-                                <img src="../../images/icons/user2.png" alt="user profile icon" class="user-icon">
-                                <span>Karan</span>
-                            </a>
-                            <a href="#" class="profile-item d-flex flex-middle">
-                                <img src="../../images/icons/user3.png" alt="user profile icon" class="user-icon">
-                                <span>Pappy</span>
-                            </a>
-                            <a href="#" class="profile-item d-flex flex-middle" style="margin-bottom: 13px;">
-                                <img src="../../images/icons/user4.png" alt="user profile icon" class="user-icon">
-                                <span>Denny</span>
-                            </a>
-                            <a href="#" class="profile-item last">Manage Profiles</a>
+                        <div class="dropdown-content">
+                            <div class="line"></div>
+                            <div class="links d-flex direction-column">
+                                <a href="{{route('usuario.ayuda', ['idUsuario' => $idUsuario])}}">Ayuda</a>
+                                <a href="{{route('login.formulario')}}">Salir de Netflix</a>
+                            </div>
+                            
                         </div>
-                        <div class="line"></div>
-                        <div class="links d-flex direction-column">
-                            <a href="home.html">Account</a>
-                            <a href="#">Help Center</a>
-                            <a href="/">Sign Out of Netflix</a>
-                        </div>
-
-                    </div>
                 </div>
 
             </div>
@@ -99,74 +50,57 @@
         <section class="userprofile" id="userprofilecontainer">
             <div>
                 <h2 class="heading f-s-40">
-                    Account
+                    Cuenta
                 </h2>
             </div>
             <div class="line"></div>
             <div class="membership d-flex flex-no-wrap space-between">
                 <div class="left">
                     <h4 class="headline">
-                        MEMBERSHIP & BILLING
+                        MEMBRESIA Y FACTURACION
                     </h4>
-                    <button class="button">Cancel Membership</button>
                 </div>
                 <div class="right">
                     <div class="d-flex space-between">
                         <div class="email">
-                            <strong>rajesh1234@gmail.com</strong>
+                            <strong>correo: {{$usuario->correo}}</strong>
                         </div>
                         <div class="link">
-                            <a href="#" class="link-item">
-                                Change account email
+                            <a href="{{route('usuario.editarUsuario', ['idUsuario' => $idUsuario])}}" class="link-item">
+                                Cambiar informacion
                             </a>
                         </div>
                     </div>
 
                     <div class="d-flex space-between">
                         <div class="password">
-                            Password: *********
-                        </div>
-                        <div class="link">
-                            <a href="#" class="link-item">
-                                Change password
-                            </a>
+                            Contraseña: ********* 
                         </div>
                     </div>
 
                     <div class="d-flex space-between">
                         <div class="email">
-                            Phone: 095210 21826
+                            Nombre: {{$usuario->nombre}}
                         </div>
-                        <div class="link">
-                            <a href="#" class="link-item">
-                                Change phone number
-                            </a>
+                    </div>
+
+                    <div class="d-flex space-between">
+                        <div class="email">
+                            Apellido: {{$usuario->apellido}}
                         </div>
+
                     </div>
                     <div class="line"></div>
 
-                    <div class="carddetail d-flex space-between flex-middle">
+                    <div class="carddetail d-flex space-between">
                         <div class="card">
                             <h4><span class="icon-visa">VISA</span> •••• •••• •••• 5350</h4>
                         </div>
                         <div class="link">
-                            <a href="#" class="link-item">
-                                Update payment info
-                            </a>
-                            <a href="#" class="link-item">
-                                Biling detials
+                            <a href="{{route('usuario.editarFormaPago', ['idUsuario' => $idUsuario])}}" class="link-item">
+                                Actualizar informacion de pago
                             </a>
                         </div>
-                    </div>
-                    <div class="line"></div>
-
-                    <div class="gift-card d-flex direction-column">
-                        <a href="#" class="link-item">
-                            Redeem gift card or promo code
-                        </a>
-                        <a href="#" class="link-item">
-                            Where to buy gift cards
-                        </a>
                     </div>
                 </div>  
             </div>
@@ -175,27 +109,11 @@
             <!--plan details-->
             <div class=" plan-details d-flex flex-middle space-between">
                 <div class="left">
-                    <h4 class="headline">PLAN DETAILS</h4>
+                    <h4 class="headline">DETALLES DEL PLAN</h4>
                 </div>
                 <div class="right d-flex space-between">
-                    <p>Mobile</p>
-                    <a href="#" class="link-item">Change plan</a>
-                </div>
-            </div>
-            <div class="line"></div>
-
-            <!--settings-->
-            <div class="settings d-flex ">
-                <div class="left">
-                    <h4 class="headline">SETTINGS</h4>
-                </div>
-                <div class="right d-flex direction-column">
-                    <a href="#" class="link-item">Test participation</a>
-                    <a href="#" class="link-item">Manage download devices</a>
-                    <a href="#" class="link-item">Activate a device</a>
-                    <a href="#" class="link-item">Recent device streaming activity</a>
-                    <a href="#" class="link-item">Sign out of all devices</a>
-                    <a href="#" class="link-item">Download your personal information</a>
+                    <p>{{$usuario->plan->nombrePlan}}</p>
+                    <a href="{{route('usuario.editarPlan', ['idUsuario' => $idUsuario])}}" class="link-item">Cambiar Plan</a>
                 </div>
             </div>
             <div class="line"></div>
@@ -204,65 +122,31 @@
 
             <div class="parental-control d-flex">
                 <div class="left">
-                    <h4 class="headline">PROFILE & PARENTAL CONTROLS</h4>
+                    <h4 class="headline">PERFILES</h4>
                 </div>
                 <div class="right">
+                    @foreach ( $perfiles as $perfilIt )
                     <div class="">
                         <div class="info-container d-flex flex-middle space-between">
                             <div class="name d-flex">
-                                <img src="../../images/icons/user1.png" alt="user" class="user-icon" />
+                                <img src="{{ asset('images/' . $perfilIt->imagen) }}" alt="user" class="user-icon" style="border:1px solid #aaa;"/>
                                 <div class="content">
-                                    <p class="username">Rajesh</p>
-                                    <p class="maturity">All Maturity Rating</p>
+                                    <p class="username">{{$perfilIt->nombre}}</p>
                                 </div>
                             </div>
     
                             <div class="righticon">
-                                <svg class="chevron-down" viewBox="0 0 18 18">
-                                    <path fill="#aaa" d="M11.56 5.56L10.5 4.5 6 9l4.5 4.5 1.06-1.06L8.12 9z"></path>
-                                </svg>
-                            </div>
-                        </div>
-                        <div class="line"></div>
-                    </div>
-
-                    <div class="">
-                        <div class="info-container d-flex flex-middle space-between">
-                            <div class="name d-flex">
-                                <img src="../../images/icons/user2.png" alt="user" class="user-icon" />
-                                <div class="content">
-                                    <p class="username">Rajesh</p>
-                                    <p class="maturity">All Maturity Rating</p>
+                                <div class="link">
+                                    <a href="{{route('usuario.editarPerfil', ['idUsuario' => $idUsuario, 'idPerfil' => $perfilIt->idPerfil])}}" class="link-item">
+                                        Actualizar
+                                    </a>
                                 </div>
                             </div>
-    
-                            <div class="righticon">
-                                <svg class="chevron-down" viewBox="0 0 18 18">
-                                    <path fill="#aaa" d="M11.56 5.56L10.5 4.5 6 9l4.5 4.5 1.06-1.06L8.12 9z"></path>
-                                </svg>
-                            </div>
                         </div>
                         <div class="line"></div>
                     </div>
-
-                    <div class="">
-                        <div class="info-container d-flex flex-middle space-between">
-                            <div class="name d-flex">
-                                <img src="../../images/icons/user3.png" alt="user" class="user-icon" />
-                                <div class="content">
-                                    <p class="username">Rajesh</p>
-                                    <p class="maturity">All Maturity Rating</p>
-                                </div>
-                            </div>
-    
-                            <div class="righticon">
-                                <svg class="chevron-down" viewBox="0 0 18 18">
-                                    <path fill="#aaa" d="M11.56 5.56L10.5 4.5 6 9l4.5 4.5 1.06-1.06L8.12 9z"></path>
-                                </svg>
-                            </div>
-                        </div>
-                        <div class="line"></div>
-                    </div>
+                        
+                    @endforeach
                 </div>
                 
                 
@@ -334,6 +218,7 @@
         </a>
     </div>
 
+    <script src="https://kit.fontawesome.com/8b44041adf.js" crossorigin="anonymous"></script>
 
 </body>
 

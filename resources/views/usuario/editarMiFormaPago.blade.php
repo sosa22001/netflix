@@ -28,6 +28,11 @@
                 </a>
             </div>
             <div class="flex">
+                <div>
+                    <a href="{{route('perfiles.mostrar', ['idUsuario' => 1])}}">
+                        <i class="fa-solid fa-xmark" style="color: #aaa; font-size:2rem;"></i>
+                    </a>
+                </div>
                 <div class="righticons d-flex flex-end flex-middle">
                     <div class="dropdown">
                         <i class="fa-solid fa-grip-lines" style="color: #aaa; font-size:2rem;"></i>
@@ -36,7 +41,7 @@
                             <div class="line"></div>
                             <div class="links d-flex direction-column">
                                 <a href="{{route('usuario.cuentaConfig', ['idUsuario' => $idUsuario])}}">Cuenta</a>
-                                <a href="{{route('usuario.ayuda', ['idUsuario' => $idUsuario])}}">Ayuda</a>
+                                <a href="{{route('usuario.ayuda')}}">Ayuda</a>
                                 <a href="{{route('login.formulario')}}">Salir de Netflix</a>
                             </div>
                             
@@ -53,24 +58,25 @@
 
             <div>
                 <h2 class="heading f-s-40">
-                    Perfil Nuevo
+                    Editar Mi Forma De Pago
                 </h2>
             </div>
 
             <div class="line"></div>
 
-            <form action="{{route('perfil.crear', ['idUsuario' => $idUsuario])}}" method="POST">
+            <form action="{{route('usuario.guardarFormaPagoEditada', ['idUsuario' => $idUsuario])}}" method="POST">
                 @csrf
+                @method('PUT')
                 {{-- perfil nombre --}}
                 <div class="membership d-flex flex-no-wrap space-between">
                     <div class="left">
                         <h4 class="headline">
-                            NOMBRE DEL PERFIL
+                            NUMERO DE TARJETA
                         </h4>
                     </div>
                     <div class="right">
                         <div class="d-flex space-between">
-                            <input type="text" class="netflix-input" placeholder="Capitan Cine" required name="nombre">
+                            <input type="text" class="netflix-input" value="{{$usuario->tarjeta->numeroTarjeta}}" required name="numero">
                         </div>
                     </div>  
                 </div>
@@ -79,34 +85,29 @@
                 <!--contrasenia-->
                 <div class=" plan-details d-flex flex-middle space-between">
                     <div class="left">
-                        <h4 class="headline">PIN</h4>
+                        <h4 class="headline">CVV</h4>
                     </div>
                     <div class="right d-flex space-between">
-                        <input type="password" class="netflix-input" placeholder="¡AbreteSesamo2023!" required name="psw">
+                        <input type="text" class="netflix-input" value="{{$usuario->tarjeta->cvv}}" required name="cvv">
+                    </div>
+                </div>
+                <div class="line"></div>
+
+                <!--fecha de vencimiento-->
+                <div class=" plan-details d-flex flex-middle space-between">
+                    <div class="left">
+                        <h4 class="headline">FECHA DE EXPIRACION</h4>
+                    </div>
+                    <div class="right d-flex space-between">
+                        <input type="date" class="netflix-input" value="{{$usuario->tarjeta->fechaVencimiento}}" required name="fecha">
                     </div>
                 </div>
                 <div class="line"></div>
     
-                <!--icono-->
-                <div class="settings d-flex ">
-                    <div class="left">
-                        <h4 class="headline">SELECCIONA TU ICONO</h4> 
-                    </div>
-                    <div id="grid">
-                        <input type="hidden" name="icono" id="iconoSeleccionado" value="1">
-                        <img src="{{ asset('images/user1.png') }}" alt="" data-value="1" onclick="seleccionarIcono(1)">
-                        <img src="{{ asset('images/user2.png') }}" alt="" data-value="2" onclick="seleccionarIcono(2)">
-                        <img src="{{ asset('images/user3.png') }}" alt="" data-value="3" onclick="seleccionarIcono(3)">
-                        <img src="{{ asset('images/user4.png') }}" alt="" data-value="4" onclick="seleccionarIcono(4)">
-                        <img src="{{ asset('images/user5.png') }}" alt="" data-value="5" onclick="seleccionarIcono(5)">
-                    </div>
+                {{-- Id usuario --}}
+                <input type="hidden" name="idTarjeta"  value="{{$usuario->tarjeta->numeroTarjeta}}">
 
-                    {{-- Id usuario --}}
-                    <input type="hidden" name="idUsuario"  value="{{$idUsuario}}">
-
-                    
-
-                <button type="submit" class="netflix-button" style="width:40%;">¡Crear!</button>
+                <button type="submit" class="netflix-button" style="width:40%;">¡Actualizar!</button>
             </form>
         </section>
 

@@ -14,307 +14,223 @@
     <link rel="stylesheet" href="{{asset('css/global.css')}}">
     <link rel="stylesheet" href="{{asset('css/userprofile.css')}}">
     <link rel="stylesheet" href="{{asset('css/browse.css')}}">
+
+    <style>
+        .container1 {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+    }
+    .section1 {
+        margin-bottom: 40px;
+        padding: 20px;
+        background-color: white;
+        border-radius: 5px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        padding-top: 5rem
+    }
+    .section h2 {
+        margin-top: 0;
+    }
+    .section p {
+        line-height: 1.6;
+    }
+    .container2 {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 20px;
+        font-family: Arial, sans-serif;
+    }
+    .faq {
+        margin-bottom: 20px;
+        padding: 10px;
+        background-color: white;
+        border-radius: 5px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    summary {
+        cursor: pointer;
+        font-weight: bold;
+    }
+        </style>
 </head>
 
 <body>
 
     <main id="mainContainer" class="p-b-40">
 
-        <header class="d-flex space-between flex-center flex-middle">
+        <header class="d-flex space-between flex-center flex-middle" style="padding-top: 2rem;">
             <div class="nav-links d-flex flex-center flex-middle">
-                <a href="{{route('perfiles.inicio')}}">
+                <a href="#">
                     <h2 class="logo logo-text red-color f-s-28 m-r-25">NETFLIX</h2>
                     <h2 class="second-logo-text red-color f-s-28">N</h2>
                 </a>
-                <a href="tvshow.html" class="nav-item">Peliculas</a>
-                <a href="latest.html" class="nav-item latest">Mi Lista</a>
-                <a href="mylist.html" class="nav-item">Continuar Viendo</a>
             </div>
-            <div class="righticons d-flex flex-end flex-middle">
-                <a href="../search.html">
-                <img src="../../images/icons/search.svg" alt="search icon">
-            </a>
-            <div class="dropdown notification">
-                <img src="../../images/icons/notification.svg" alt="notificatio icon">
-                <div class="dropdown-content">
-                    <a href="#" class="profile-item d-flex flex-middle">
-                        <img src="../../images/icons/user2.png" alt="user profile icon" class="user-icon">
-                        <span>You have new notification from <span>User 123</span></span>
-                    </a>
-                    <a href="#" class="profile-item d-flex flex-middle">
-                        <img src="../../images/icons/user1.png" alt="user profile icon" class="user-icon">
-                        <span>You have new notification from <span>User 123</span></span>
-                    </a>
-                    <a href="#" class="profile-item d-flex flex-middle">
-                        <img src="../../images/icons/user4.png" alt="user profile icon" class="user-icon">
-                        <span>You have new notification from <span>User 123</span></span>
-                    </a>
-                    <a href="#" class="profile-item d-flex flex-middle">
-                        <img src="../../images/icons/user3.png" alt="user profile icon" class="user-icon">
-                        <span>You have new notification from <span>User 123</span></span>
-                    </a>
-                </div>
-            </div>
-                
+            <div class="righticons d-flex flex-end flex-middle"> 
                 <div class="dropdown">
-                    <img src="../../images/icons/user-image-green.png" alt="user profile icon" class="user-icon"> <span
-                        class="profile-arrow"></span>
+                        <i class="fa-solid fa-grip-lines" style="color: #aaa; font-size:2rem;"></i>
 
-                    <div class="dropdown-content">
-                        <div class="profile-links">
-                            <a href="#" class="profile-item d-flex flex-middle">
-                                <img src="../../images/icons/user1.png" alt="user profile icon" class="user-icon">
-                                <span>Rajesh</span>
-                            </a>
-                            <a href="#" class="profile-item d-flex flex-middle">
-                                <img src="../../images/icons/user2.png" alt="user profile icon" class="user-icon">
-                                <span>Karan</span>
-                            </a>
-                            <a href="#" class="profile-item d-flex flex-middle">
-                                <img src="../../images/icons/user3.png" alt="user profile icon" class="user-icon">
-                                <span>Pappy</span>
-                            </a>
-                            <a href="#" class="profile-item d-flex flex-middle" style="margin-bottom: 13px;">
-                                <img src="../../images/icons/user4.png" alt="user profile icon" class="user-icon">
-                                <span>Denny</span>
-                            </a>
-                            <a href="#" class="profile-item last">Manage Profiles</a>
+                        <div class="dropdown-content">
+                            <div class="line"></div>
+                            <div class="links d-flex direction-column">
+                                <a href="{{route('usuario.cuentaConfig', ['idUsuario' => $idUsuario])}}">Cuenta</a>
+                                <a href="{{route('login.formulario')}}">Salir de Netflix</a>
+                            </div>
+                            
                         </div>
-                        <div class="line"></div>
-                        <div class="links d-flex direction-column">
-                            <a href="home.html">Account</a>
-                            <a href="#">Help Center</a>
-                            <a href="/">Sign Out of Netflix</a>
-                        </div>
-
-                    </div>
                 </div>
 
             </div>
+
+
         </header>
 
 
-
-        <!--profile section-->
-        <section class="userprofile" id="userprofilecontainer">
-            <div>
-                <h2 class="heading f-s-40">
-                    Account
-                </h2>
+        <!--Preguntas-->
+        <div class="container1">
+            <div class="section1">
+                <h2>Preguntas Frecuentes</h2>
+                <p>Encuentra respuestas a las preguntas más comunes sobre el uso de Netflix.</p>
+                <div class="container2">
+                    <div class="faq">
+                        <details>
+                            <summary>¿Cómo creo una cuenta en Netflix?</summary>
+                            <p>Para crear una cuenta en Netflix, sigue estos pasos:<br>
+                            1. Visita el sitio web de Netflix: www.netflix.com.<br>
+                            2. Haz clic en "Registrarse" o "Crear una cuenta".<br>
+                            3. Sigue las instrucciones para ingresar tu información personal y seleccionar un plan.<br>
+                            4. Proporciona la información de pago y completa el proceso de registro.<br>
+                            Una vez que hayas completado estos pasos, habrás creado una cuenta en Netflix y podrás comenzar a disfrutar de contenido en streaming.</p>
+                        </details>
+                    </div>
+                    <div class="faq">
+                        <details>
+                            <summary>¿Cómo puedo restablecer mi contraseña?</summary>
+                            <p>Si olvidaste tu contraseña de Netflix, sigue estos pasos:<br>
+                            1. Ve a la página de inicio de sesión de Netflix: www.netflix.com.<br>
+                            2. Haz clic en "¿Olvidaste tu contraseña?" o "¿Necesitas ayuda para iniciar sesión?".<br>
+                            3. Ingresa la dirección de correo electrónico asociada con tu cuenta de Netflix y sigue las instrucciones para restablecer tu contraseña.<br>
+                            Una vez que hayas completado estos pasos, recibirás un correo electrónico con instrucciones para restablecer tu contraseña.</p>
+                        </details>
+                    </div>
+                    <div class="faq">
+                        <details>
+                            <summary>¿Cómo cancelo mi suscripción?</summary>
+                            <p>Para cancelar tu suscripción a Netflix, sigue estos pasos:<br>
+                            1. Inicia sesión en tu cuenta de Netflix en el sitio web: www.netflix.com.<br>
+                            2. Ve a la sección de "Cuenta" o "Mi Cuenta".<br>
+                            3. Selecciona la opción "Cancelar membresía" o "Cancelar suscripción".<br>
+                            4. Sigue las instrucciones para confirmar la cancelación de tu suscripción.<br>
+                            Una vez que hayas completado estos pasos, tu suscripción se cancelará al final del ciclo de facturación actual.</p>
+                        </details>
+                    </div>
+                    <div class="faq">
+                        <details>
+                            <summary>¿Puedo descargar contenido para verlo sin conexión?</summary>
+                            <p>Sí, puedes descargar contenido de Netflix para verlo sin conexión. Sigue estos pasos:<br>
+                            1. Abre la aplicación de Netflix en tu dispositivo móvil o tablet.<br>
+                            2. Busca el título que deseas descargar y toca sobre él.<br>
+                            3. Busca el icono de descarga (generalmente una flecha apuntando hacia abajo) y toca sobre él.<br>
+                            4. El contenido se descargará y podrás verlo sin conexión en la sección "Mis descargas".<br>
+                            Ten en cuenta que no todo el contenido está disponible para descargar, y las descargas suelen tener una fecha de vencimiento.</p>
+                        </details>
+                    </div>
+                    <div class="faq">
+                        <details>
+                            <summary>¿Cómo cambio mi plan de suscripción?</summary>
+                            <p>Si deseas cambiar tu plan de suscripción en Netflix, sigue estos pasos:<br>
+                            1. Inicia sesión en tu cuenta de Netflix en el sitio web: www.netflix.com.<br>
+                            2. Ve a la sección de "Cuenta" o "Mi Cuenta".<br>
+                            3. Selecciona la opción "Cambiar plan de streaming".<br>
+                            4. Elige el nuevo plan que deseas y sigue las instrucciones para confirmar el cambio.<br>
+                            Ten en cuenta que el cambio de plan puede afectar la tarifa mensual y las características disponibles.</p>
+                        </details>
+                    </div>
+                <a href="#">Ir a Preguntas Frecuentes</a>
             </div>
-            <div class="line"></div>
-            <div class="membership d-flex flex-no-wrap space-between">
-                <div class="left">
-                    <h4 class="headline">
-                        MEMBERSHIP & BILLING
-                    </h4>
-                    <button class="button">Cancel Membership</button>
-                </div>
-                <div class="right">
-                    <div class="d-flex space-between">
-                        <div class="email">
-                            <strong>rajesh1234@gmail.com</strong>
-                        </div>
-                        <div class="link">
-                            <a href="#" class="link-item">
-                                Change account email
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="d-flex space-between">
-                        <div class="password">
-                            Password: *********
-                        </div>
-                        <div class="link">
-                            <a href="#" class="link-item">
-                                Change password
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="d-flex space-between">
-                        <div class="email">
-                            Phone: 095210 21826
-                        </div>
-                        <div class="link">
-                            <a href="#" class="link-item">
-                                Change phone number
-                            </a>
-                        </div>
-                    </div>
-                    <div class="line"></div>
-
-                    <div class="carddetail d-flex space-between flex-middle">
-                        <div class="card">
-                            <h4><span class="icon-visa">VISA</span> •••• •••• •••• 5350</h4>
-                        </div>
-                        <div class="link">
-                            <a href="#" class="link-item">
-                                Update payment info
-                            </a>
-                            <a href="#" class="link-item">
-                                Biling detials
-                            </a>
-                        </div>
-                    </div>
-                    <div class="line"></div>
-
-                    <div class="gift-card d-flex direction-column">
-                        <a href="#" class="link-item">
-                            Redeem gift card or promo code
-                        </a>
-                        <a href="#" class="link-item">
-                            Where to buy gift cards
-                        </a>
-                    </div>
-                </div>  
-            </div>
-            <div class="line"></div>
-
-            <!--plan details-->
-            <div class=" plan-details d-flex flex-middle space-between">
-                <div class="left">
-                    <h4 class="headline">PLAN DETAILS</h4>
-                </div>
-                <div class="right d-flex space-between">
-                    <p>Mobile</p>
-                    <a href="#" class="link-item">Change plan</a>
-                </div>
-            </div>
-            <div class="line"></div>
-
-            <!--settings-->
-            <div class="settings d-flex ">
-                <div class="left">
-                    <h4 class="headline">SETTINGS</h4>
-                </div>
-                <div class="right d-flex direction-column">
-                    <a href="#" class="link-item">Test participation</a>
-                    <a href="#" class="link-item">Manage download devices</a>
-                    <a href="#" class="link-item">Activate a device</a>
-                    <a href="#" class="link-item">Recent device streaming activity</a>
-                    <a href="#" class="link-item">Sign out of all devices</a>
-                    <a href="#" class="link-item">Download your personal information</a>
-                </div>
-            </div>
-            <div class="line"></div>
-
-            <!--parental control-->
-
-            <div class="parental-control d-flex">
-                <div class="left">
-                    <h4 class="headline">PROFILE & PARENTAL CONTROLS</h4>
-                </div>
-                <div class="right">
-                    <div class="">
-                        <div class="info-container d-flex flex-middle space-between">
-                            <div class="name d-flex">
-                                <img src="../../images/icons/user1.png" alt="user" class="user-icon" />
-                                <div class="content">
-                                    <p class="username">Rajesh</p>
-                                    <p class="maturity">All Maturity Rating</p>
-                                </div>
-                            </div>
-    
-                            <div class="righticon">
-                                <svg class="chevron-down" viewBox="0 0 18 18">
-                                    <path fill="#aaa" d="M11.56 5.56L10.5 4.5 6 9l4.5 4.5 1.06-1.06L8.12 9z"></path>
-                                </svg>
-                            </div>
-                        </div>
-                        <div class="line"></div>
-                    </div>
-
-                    <div class="">
-                        <div class="info-container d-flex flex-middle space-between">
-                            <div class="name d-flex">
-                                <img src="../../images/icons/user2.png" alt="user" class="user-icon" />
-                                <div class="content">
-                                    <p class="username">Rajesh</p>
-                                    <p class="maturity">All Maturity Rating</p>
-                                </div>
-                            </div>
-    
-                            <div class="righticon">
-                                <svg class="chevron-down" viewBox="0 0 18 18">
-                                    <path fill="#aaa" d="M11.56 5.56L10.5 4.5 6 9l4.5 4.5 1.06-1.06L8.12 9z"></path>
-                                </svg>
-                            </div>
-                        </div>
-                        <div class="line"></div>
-                    </div>
-
-                    <div class="">
-                        <div class="info-container d-flex flex-middle space-between">
-                            <div class="name d-flex">
-                                <img src="../../images/icons/user3.png" alt="user" class="user-icon" />
-                                <div class="content">
-                                    <p class="username">Rajesh</p>
-                                    <p class="maturity">All Maturity Rating</p>
-                                </div>
-                            </div>
-    
-                            <div class="righticon">
-                                <svg class="chevron-down" viewBox="0 0 18 18">
-                                    <path fill="#aaa" d="M11.56 5.56L10.5 4.5 6 9l4.5 4.5 1.06-1.06L8.12 9z"></path>
-                                </svg>
-                            </div>
-                        </div>
-                        <div class="line"></div>
-                    </div>
-                </div>
-                
-                
-            </div>
-        </section>
-
-        <!--footer section and footer fixed menu mobile-->
-
-        <footer class="mainfooter d-flex direction-column space-between" id="footer">
-            <div class="container footer-container flex-start">
-                <div class="widgets d-flex space-between">
-                    <div class="first-widget">
+            <div class="section1">
+                <h2>Contacto</h2>
+                <p>¿Necesitas ayuda adicional? Contáctanos para obtener asistencia personalizada.</p>
+                <div class="faq">
+                    <details>
+                        <summary>¿Necesitas ayuda adicional? Contáctanos para obtener asistencia personalizada.</summary>
+                        <p>Si necesitas ayuda adicional o tienes alguna pregunta que no se haya respondido en nuestras preguntas frecuentes, no dudes en ponerte en contacto con nosotros. Nuestro equipo de asistencia está aquí para ayudarte de manera personalizada.</p>
+                        <p>Puedes comunicarte con nuestro equipo de soporte a través de diferentes canales:</p>
                         <ul>
-                            <li class="list-item">Audio and Subtitles</li>
-                            <li class="list-item">Media Center</li>
-                            <li class="list-item">Privacy</li>
-                            <li class="list-item">Contact us</li>
+                            <li><strong>Chat en vivo:</strong> Habla con uno de nuestros agentes de soporte en tiempo real. Simplemente inicia sesión en tu cuenta y busca el botón de chat en la esquina inferior derecha de la pantalla.</li>
+                            <li><strong>Teléfono:</strong> Llámanos al número gratuito 1-800-NETFLIX para hablar directamente con uno de nuestros representantes de atención al cliente.</li>
+                            <li><strong>Correo electrónico:</strong> Envíanos un correo electrónico a support@netflix.com y te responderemos lo antes posible.</li>
                         </ul>
-                    </div>
-                    <div class="second-widget">
-                        <ul>
-                            <li class="list-item">Help Center</li>
-                            <li class="list-item">Cookie</li>
-                            <li class="list-item">Jobs</li>
-                        </ul>
-                    </div>
-                    <div class="third-widget">
-                        <ul>
-                            <li class="list-item">Audio Description</li>
-                            <li class="list-item">Investor Relations</li>
-                            <li class="list-item">Legal Notice</li>
-                        </ul>
-                    </div>
-                    <div class="forth-widget">
-                        <ul>
-                            <li class="list-item">Gift Card</li>
-                            <li class="list-item">Term Of Use</li>
-                            <li class="list-item">Corporate Information</li>
-                        </ul>
-                    </div>
+                        <p>Estamos comprometidos a brindarte la mejor experiencia posible, y estamos aquí para asegurarnos de que disfrutes al máximo de tu suscripción a Netflix. ¡No dudes en contactarnos si necesitas ayuda!</p>
+                    </details>
                 </div>
-                <button class="button service">Service Code</button>
-                <p class="copyright">@copyright 2020 Vanilacodes, Inc.</p>
+     
+          
+                <a href="#">Contactar con Soporte</a>
             </div>
+            <div class="section1">
+                <h2>Configuración de Cuenta</h2>
+                <p>Aprende a actualizar tu perfil, cambiar tu contraseña y más.</p>
+                <div class="faq">
+                    <details>
+                        <summary>¿Necesitas ayuda adicional? Contáctanos para obtener asistencia personalizada.</summary>
+                        <p>Si necesitas ayuda adicional o tienes alguna pregunta que no se haya respondido en nuestras preguntas frecuentes, no dudes en ponerte en contacto con nosotros. Nuestro equipo de asistencia está aquí para ayudarte de manera personalizada.</p>
+                        <p>Puedes comunicarte con nuestro equipo de soporte a través de diferentes canales:</p>
+                        <ul>
+                            <li><strong>Chat en vivo:</strong> Habla con uno de nuestros agentes de soporte en tiempo real. Simplemente inicia sesión en tu cuenta y busca el botón de chat en la esquina inferior derecha de la pantalla.</li>
+                            <li><strong>Teléfono:</strong> Llámanos al número gratuito 1-800-NETFLIX para hablar directamente con uno de nuestros representantes de atención al cliente.</li>
+                            <li><strong>Correo electrónico:</strong> Envíanos un correo electrónico a support@netflix.com y te responderemos lo antes posible.</li>
+                        </ul>
+                        <p>Estamos comprometidos a brindarte la mejor experiencia posible, y estamos aquí para asegurarnos de que disfrutes al máximo de tu suscripción a Netflix. ¡No dudes en contactarnos si necesitas ayuda!</p>
+                    </details>
+                </div>
+                <a href="#">Ir a Configuración de Cuenta</a>
+            </div>
+        </div>
 
-
-        </footer>
         </div>
 
 
     </main>
+    <footer class="mainfooter d-flex direction-column space-between" id="footer">
+        <div class="container footer-container flex-start">
+            <div class="widgets d-flex space-between">
+                <div class="first-widget">
+                    <ul>
+                        <li class="list-item">Audio and Subtitles</li>
+                        <li class="list-item">Media Center</li>
+                        <li class="list-item">Privacy</li>
+                        <li class="list-item">Contact us</li>
+                    </ul>
+                </div>
+                <div class="second-widget">
+                    <ul>
+                        <li class="list-item">Help Center</li>
+                        <li class="list-item">Cookie</li>
+                        <li class="list-item">Jobs</li>
+                    </ul>
+                </div>
+                <div class="third-widget">
+                    <ul>
+                        <li class="list-item">Audio Description</li>
+                        <li class="list-item">Investor Relations</li>
+                        <li class="list-item">Legal Notice</li>
+                    </ul>
+                </div>
+                <div class="forth-widget">
+                    <ul>
+                        <li class="list-item">Gift Card</li>
+                        <li class="list-item">Term Of Use</li>
+                        <li class="list-item">Corporate Information</li>
+                    </ul>
+                </div>
+            </div>
+            <button class="button service">Service Code</button>
+            <p class="copyright">@copyright 2020 Vanilacodes, Inc.</p>
+        </div>
 
+
+    </footer>
     <div class="footer-navigation d-flex space-between">
         <a href="browse.html" class="nav-item active">
             <i class="fa fa-home" aria-hidden="true"></i> </br>
@@ -334,6 +250,7 @@
         </a>
     </div>
 
+    <script src="https://kit.fontawesome.com/8b44041adf.js" crossorigin="anonymous"></script>
 
 </body>
 

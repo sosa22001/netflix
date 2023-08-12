@@ -53,8 +53,8 @@
                         <div class="dropdown-content">
                             <div class="line"></div>
                             <div class="links d-flex direction-column">
-                                <a href="{{route('usuario.cuentaConfig')}}">Cuenta</a>
-                                <a href="{{route('usuario.ayuda')}}">Ayuda</a>
+                                <a href="{{route('usuario.cuentaConfig', ['idUsuario' => $idUsuario])}}">Cuenta</a>
+                                <a href="{{route('usuario.ayuda', ['idUsuario' => $idUsuario])}}">Ayuda</a>
                                 <a href="{{route('login.formulario')}}">Salir de Netflix</a>
                             </div>
                             
@@ -76,10 +76,10 @@
             
             <div class="p-4">
                 <h1 style="text-align:center">¿Quien esta viendo ahora?</h1>
-                <div class="d-flex flex-no-wrap"margin-left: auto; margin-right: auto" id="perfiles-usuario">
+                <d8iv class="d-flex flex-no-wrap"margin-left: auto; margin-right: auto" id="perfiles-usuario">
 
                     @foreach ($perfiles as $perfil )
-                        <a href="{{route('perfil.verificacion', ['idPerfil' => $perfil->idPerfil])}}" class="perfil">
+                        <a href="{{route('perfil.formulario', ['idPerfil' => $perfil->idPerfil, 'idUsuario' => $idUsuario])}}" class="perfil">
                             <img src="{{ asset('images/' . $perfil->imagen) }}" alt="Imagen del perfil">
                             <p>{{$perfil->nombre}}</p>
                         </a>

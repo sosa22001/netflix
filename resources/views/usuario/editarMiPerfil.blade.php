@@ -20,7 +20,7 @@
 
      <main id="mainContainer" class="p-b-40">
 
-        <header class="d-flex space-between flex-center flex-middle">
+        <header class="d-flex space-between flex-center flex-middle" style="osition: fixed; top: 2rem;">
             <div class="nav-links d-flex flex-center flex-middle">
                 <a href="#">
                     <h2 class="logo logo-text red-color f-s-28 m-r-25">NETFLIX</h2>
@@ -28,6 +28,11 @@
                 </a>
             </div>
             <div class="flex">
+                <div>
+                    <a href="{{route('perfiles.mostrar', ['idUsuario' => 1])}}">
+                        <i class="fa-solid fa-xmark" style="color: #aaa; font-size:2rem;"></i>
+                    </a>
+                </div>
                 <div class="righticons d-flex flex-end flex-middle">
                     <div class="dropdown">
                         <i class="fa-solid fa-grip-lines" style="color: #aaa; font-size:2rem;"></i>
@@ -36,7 +41,7 @@
                             <div class="line"></div>
                             <div class="links d-flex direction-column">
                                 <a href="{{route('usuario.cuentaConfig', ['idUsuario' => $idUsuario])}}">Cuenta</a>
-                                <a href="{{route('usuario.ayuda', ['idUsuario' => $idUsuario])}}">Ayuda</a>
+                                <a href="{{route('usuario.ayuda')}}">Ayuda</a>
                                 <a href="{{route('login.formulario')}}">Salir de Netflix</a>
                             </div>
                             
@@ -51,16 +56,24 @@
         <!--profile section-->
         <section class="userprofile" id="userprofilecontainer">       
 
-            <div>
-                <h2 class="heading f-s-40">
-                    Perfil Nuevo
+            <div style="display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 6rem;">
+                <h2 class="heading f-s-40" style="padding: 0">
+                    Editar Mi Perfil
                 </h2>
+                <img src="{{ asset('images/' . $perfil->imagen) }}" alt="miIcono" style="width: 100px;
+                height: 100px;
+                border-radius: 50%;
+                object-fit: cover;">
             </div>
 
             <div class="line"></div>
 
-            <form action="{{route('perfil.crear', ['idUsuario' => $idUsuario])}}" method="POST">
+            <form action="{{route('usuario.guardarPerfilEditado', ['idUsuario' => $idUsuario,  'idPerfil' => $perfil->idPerfil])}}" method="POST">
                 @csrf
+                @method('PUT')
                 {{-- perfil nombre --}}
                 <div class="membership d-flex flex-no-wrap space-between">
                     <div class="left">
@@ -70,7 +83,7 @@
                     </div>
                     <div class="right">
                         <div class="d-flex space-between">
-                            <input type="text" class="netflix-input" placeholder="Capitan Cine" required name="nombre">
+                            <input type="text" class="netflix-input" value="{{$perfil->nombre}}" required name="nombre">
                         </div>
                     </div>  
                 </div>
@@ -82,7 +95,7 @@
                         <h4 class="headline">PIN</h4>
                     </div>
                     <div class="right d-flex space-between">
-                        <input type="password" class="netflix-input" placeholder="¡AbreteSesamo2023!" required name="psw">
+                        <input type="password" class="netflix-input" value="{{$perfil->contraseniaperfil}}" required name="psw">
                     </div>
                 </div>
                 <div class="line"></div>
@@ -90,7 +103,7 @@
                 <!--icono-->
                 <div class="settings d-flex ">
                     <div class="left">
-                        <h4 class="headline">SELECCIONA TU ICONO</h4> 
+                        <h4 class="headline">ICONOS</h4> 
                     </div>
                     <div id="grid">
                         <input type="hidden" name="icono" id="iconoSeleccionado" value="1">
@@ -102,11 +115,11 @@
                     </div>
 
                     {{-- Id usuario --}}
-                    <input type="hidden" name="idUsuario"  value="{{$idUsuario}}">
+                    <input type="hidden" name="idPerfil"  value="{{$perfil->idPerfil}}">
 
                     
 
-                <button type="submit" class="netflix-button" style="width:40%;">¡Crear!</button>
+                <button type="submit" class="netflix-button" style="width:40%;">¡Actualizar!</button>
             </form>
         </section>
 

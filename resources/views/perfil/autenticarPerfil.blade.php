@@ -50,7 +50,7 @@
             </div>
             <div class="flex">
                 <div>
-                    <a href="{{route('perfiles.mostrar', ['idUsuario' => 3])}}">
+                    <a href="{{route('perfiles.mostrar', ['idUsuario' => $idUsuario])}}">
                         <i class="fa-solid fa-xmark" style="color: #aaa; font-size:2rem;"></i>
                     </a>
                 </div>
@@ -61,8 +61,8 @@
                         <div class="dropdown-content">
                             <div class="line"></div>
                             <div class="links d-flex direction-column">
-                                <a href="{{route('usuario.cuentaConfig')}}">Cuenta</a>
-                                <a href="{{route('usuario.ayuda')}}">Ayuda</a>
+                                <a href="{{route('usuario.cuentaConfig', ['idUsuario' => $idUsuario])}}">Cuenta</a>
+                                <a href="{{route('usuario.ayuda', ['idUsuario' => $idUsuario])}}">Ayuda</a>
                                 <a href="{{route('login.formulario')}}">Salir de Netflix</a>
                             </div>
                             
@@ -82,7 +82,8 @@
             <span style="color: #aaa;">El bloqueo de perfil esta activado.</span>
             <h1>Ingresar tu PIN para acceder a este perfil.</h1>
         </div>
-        <form action="{{route('perfil.verificacion', ['idPerfil' => $idPerfil])}}" class="form-perfil">
+        <form action="{{ route('perfil.verificacion', ['idUsuario' => $idUsuario, 'idPerfil' => $idPerfil]) }}" class="form-perfil" method="GET">
+            @csrf
             <input type="password" class="pin-input" name="pin">
                 @if(session('mensaje'))
                     <div class="alert">
