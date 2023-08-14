@@ -3,14 +3,12 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Netflix login – Watch TV Shows Online, Watch Movies Online</title>
+    <title>Planes</title>
     <meta name="description" content="Watch Netflix movies & TV shows online or stream right to your smart TV, game console, PC, Mac, mobile, tablet and more.">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" href="{{ asset('images/nficon2016.ico') }}" type="image/x-icon">
-
     <link rel="stylesheet" href="{{ asset('css/landing.css') }}">
     <link rel="stylesheet" href="{{ asset('css/planes.css') }}">
-
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
 </head>
 <body style="background-color: white">
@@ -80,13 +78,6 @@
                               <input type="hidden" name="correo" value="{{ $informacion['correo'] }}">
                               <input type="hidden" name="contrasenia" value="{{ $informacion['contrasenia'] }}">
           
-      {{--                         <select class="form-select form-select-lg mb-2" aria-label="Large select example" name="seleccionar-plan">
-                                  <option selected>Seleccionar plan</option>
-                                  <option value="1">1. Plan básico</option>
-                                  <option value="2">2. Plan estándar</option>
-                                  <option value="3">3. Plan premium</option>
-                              </select> --}}
-          
                               <input type="hidden" name="seleccionar-plan" value="1" >
       
                                 <button type="submit" class="button submitButton" id="signInButton">
@@ -96,30 +87,6 @@
                         </div>
                     @endforeach
             </div>
-
-
-{{--                 <form action="{{route('planes.siguiente')}}" id="loginForm" class="d-flex direction-column" method="post" name="loginForm">
-                    @csrf
-                    
-                    <!-- Campos ocultos para enviar información desde la vista -->
-                    <input type="hidden" name="nombre" value="{{ $informacion['nombre'] }}">
-                    <input type="hidden" name="apellido" value="{{ $informacion['apellido'] }}">
-                    <input type="hidden" name="correo" value="{{ $informacion['correo'] }}">
-                    <input type="hidden" name="contrasenia" value="{{ $informacion['contrasenia'] }}">
-
-                    <select class="form-select form-select-lg mb-2" aria-label="Large select example" name="seleccionar-plan">
-                        <option selected>Seleccionar plan</option>
-                        <option value="1">1. Plan básico</option>
-                        <option value="2">2. Plan estándar</option>
-                        <option value="3">3. Plan premium</option>
-                    </select>
-
-                      <button type="submit" class="button submitButton" id="signInButton">
-                        Siguiente
-                      </button>
-
-                </form> --}}
-
         </section>
     </main>
 </body>

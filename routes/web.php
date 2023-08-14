@@ -23,6 +23,8 @@ Route::post('/registro/planes/tarjeta', [AutenticacionController::class,'store']
 
 Route::get('/registro/{idUsuario}/perfil', [AutenticacionController::class, 'crearPerfil'])->name('registro.crearPerfilVista');
 
+Route::get('/registro/{idUsuario}/perfil/{idPerfil}', [PerfilController::class, 'eliminarPerfil'])->name('perfil.eliminarPerfil');
+
 Route::post('/registro/perfil/guardar', [AutenticacionController::class, 'guardarPerfil'])->name('registro.crearPerfil');
 
 //perfiles
@@ -45,7 +47,7 @@ Route::post('/perfiles/crear/{idUsuario}', [PerfilController::class,'crearPerfil
 //dashboard
 Route::get('/usuarios/{idUsuario}/perfiles/{idPerfil}/inicio',[PerfilController::class,'mostrarInicio'])->name('perfiles.inicio');
 
-Route::get('usuarios/{idUsuario}/perfiles/ayuda', [PerfilController::class,'mostrarAyuda'])->name('usuario.ayuda');
+Route::get('/perfiles/ayuda', [PerfilController::class,'mostrarAyuda'])->name('usuario.ayuda');
 
 Route::get('/usuarios/{idUsuario}/cuenta', [PerfilController::class,'mostrarCuenta'])->name('usuario.cuentaConfig');
 

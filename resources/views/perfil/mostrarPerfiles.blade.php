@@ -6,7 +6,6 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
     <title>Perfiles</title>
     <meta name="description"
         content="Video streaming website Netflix clone. Frontend - HTML5, Pure CSS3 [flexbox], JS, OWL Carousel, JQuery |" />
@@ -15,18 +14,14 @@
     <link rel="stylesheet" href="../assets/lib/owl.carousel.css" />
     <script src="../assets/lib/jquery 3.5.0.js"></script>
     <script src="../assets/lib/owl.carousel.js"></script>
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.min.css"
         integrity="sha256-t2kyTgkh+fZJYRET5l9Sjrrl4UDain5jxdbqe8ejO8A=" crossorigin="anonymous" />
-
     <link rel="stylesheet" href="{{ asset('css/browse.css') }}">
     <link rel="stylesheet" href="{{ asset('css/global.css') }}">
     <script src="{{asset('js/main-script.js')}}"></script>
-
     <script src="asset('lib/jquery 3.5.0.js')"></script>
     <script src="{{asset('lib/owl.carousel.js')}}"></script>
     <script src="{{asset('js/main-script.js')}}"></script>
-
     <style>
         .user-icon {
             width: 80%;

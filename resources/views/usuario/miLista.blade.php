@@ -6,10 +6,9 @@
     <title>Netflix</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    <link rel="icon" href="{{ asset('images/nficon2016.ico') }}" type="image/x-icon">
     <script src="{{asset('lib/jquery 3.5.0.js')}}"></script>
     <script src="{{asset('js/main-script.js')}}"></script>
-
     <link rel="stylesheet" href="{{asset('css/global.css')}}>
     <link rel="stylesheet" href="{{asset('css/browse.css')}}>
 </head>

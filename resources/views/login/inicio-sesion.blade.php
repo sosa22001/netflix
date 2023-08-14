@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Netflix login – Watch TV Shows Online, Watch Movies Online | do not enter you any of the information</title>
+    <title>Netflix login</title>
     <meta name="description" content="This is a frontend only clone of netflix - Watch Netflix movies & TV shows online or stream right to your smart TV, game console, PC, Mac, mobile, tablet and more.">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" href="{{ asset('images/nficon2016.ico') }}" type="image/x-icon">

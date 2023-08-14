@@ -169,7 +169,21 @@ class PerfilController extends Controller
         //perfil creado
         $perfil = json_decode($resultado->getBody());
 
-        return $this->mostrarInicio($idUsuario, $perfil->idPerfil);
+        return redirect()->route('perfiles.mostrar', ['idUsuario' => $idUsuario]);
+    }
+
+    public function eliminarPerfil($idUsuario, $idPerfil){
+        $cliente = new Client();
+
+        $headers = [
+            'Content-Type' => 'application/json'
+        ];
+
+        $resultado = $cliente->get("http://localhost:8080/api/perfil/eliminar/{$idPerfil}", [
+            'headers' => $headers,
+        ]);
+               
+        return redirect()->route('usuario.cuentaConfig', ['idUsuario' => $idUsuario]);
     }
 
     public function mostrarEditarPerfil($idUsuario, $idPerfil){

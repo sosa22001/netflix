@@ -6,15 +6,12 @@
     <title>Cuenta</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-
+    <link rel="icon" href="{{ asset('images/nficon2016.ico') }}" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.min.css"
         integrity="sha256-t2kyTgkh+fZJYRET5l9Sjrrl4UDain5jxdbqe8ejO8A=" crossorigin="anonymous" />
-
     <link rel="stylesheet" href="{{asset('css/global.css')}}">
     <link rel="stylesheet" href="{{asset('css/userprofile.css')}}">
     <link rel="stylesheet" href="{{asset('css/browse.css')}}">
-
     <style>
             main {
             background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.2) 60%, rgba(0, 0, 0, 0.9) 100%),
@@ -34,10 +31,8 @@
         h2{
             color: white;
         }
-            #userprofilecontainer .heading {
+        #userprofilecontainer .heading {
             color: white;
-
-}
         }
     </style>
 </head>
