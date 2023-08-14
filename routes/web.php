@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AutenticacionController;
 use App\Http\Controllers\PerfilController;
+use App\Http\Controllers\PeliculaController;
 
 //Login
 Route::get('/login', [AutenticacionController::class,'mostrarLogin'])->name('login.formulario');
@@ -20,6 +21,10 @@ Route::post('/registro/planes', [AutenticacionController::class, 'formularioPlan
 
 Route::post('/registro/planes/tarjeta', [AutenticacionController::class,'store'])->name('tarjeta.siguiente');
 
+Route::get('/registro/{idUsuario}/perfil', [AutenticacionController::class, 'crearPerfil'])->name('registro.crearPerfilVista');
+
+Route::post('/registro/perfil/guardar', [AutenticacionController::class, 'guardarPerfil'])->name('registro.crearPerfil');
+
 //perfiles
 //renderiza los perfiles de un usuario
 Route::get('/usuarios/{idUsuario}/perfiles',[PerfilController::class,'mostrarPerfiles'])->name('perfiles.mostrar');
@@ -30,8 +35,6 @@ Route::get('/perfiles/{idUsuario}/{idPerfil}', [PerfilController::class,'mostrar
 //valida el PIN
 Route::get('/usuarios/{idUsuario}/perfiles/{idPerfil}/verificar', [PerfilController::class,'verificarPerfil'])->name('perfil.verificacion');
 
-/* Route::get('/perfiles/verificar/{idUsuario}/{idPerfil}', [PerfilController::class,'verificarPerfil'])->name('perfil.verificacion');
- */
 //entrega la vista para crear un perfil
 Route::get('/usuarios/{idUsuario}/perfiles/crearVista', [PerfilController::class,'crearPerfilVista'])->name('perfil.crearVista');
 
@@ -48,9 +51,12 @@ Route::get('/usuarios/{idUsuario}/cuenta', [PerfilController::class,'mostrarCuen
 
 Route::get('/perfiles/{idPerfil}/mi-lista', [PerfilController::class,'mostrarMiLista'])->name('perfil.miLista');
 
-Route::get('/perfiles/{idPerfil}/continuar-viendo', [PerfilController::class,'mostrarContinuarViendo'])->name('perfil.mostrarContinuarViendo');
+Route::get('/perfiles/{idPerfil}/continuar-viendo', [PerfilController::class,'mostrarContinuarViendo'])->name('perfil.continuarViendo');
 
-/* Actualizaciones del usuario */
+Route::get('/perfiles/{idPerfil}/inicio', [PeliculaController::class,'mostrarInicio'])->name('perfil.inicio');
+
+
+/* Ediciones hechas por el usuario */
 Route::get('/usuarios/{idUsuario}/perfiles/{idPerfil}/editar', [PerfilController::class,'mostrarEditarPerfil'])->name('usuario.editarPerfil');
 Route::put('/usuarios/{idUsuario}/perfiles/{idPerfil}/editar/guardar', [PerfilController::class, 'guardarPerfil'])->name('usuario.guardarPerfilEditado');
 
@@ -65,3 +71,5 @@ Route::get('/usuarios/{idUsuario}/guardar-plan/{idPlan}', [PerfilController::cla
 
 //peliculas
 Route::get('/peliculas', [PeliculaController::class, 'mostrarPeliculas'])->name('peliculas.mostrar');
+
+Route::get('/perfiles/{idPerfil}/ver-mas-tarde', [PeliculaController::class, 'mostrarVerMasTarde'])->name('peliculas.verMasTarde');

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\PeliculaController ;
 use Illuminate\Http\Request;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\RequestException;
@@ -109,22 +110,29 @@ class PerfilController extends Controller
         $perfil = $this->obtenerPerfil($idPerfil);
 
         //comparamos contrasenias
+        //si es correcta enviamos vista de inicio
+        //si no es correcta le pedimos que vuelva a ingresar contrasenia
         if($perfil->contraseniaperfil == $request->input('pin')){
-            $perfiles = $this->obtenerPerfiles($idUsuario);
-            return view('usuario.inicio', compact('perfil', 'perfiles', 'idUsuario'));
+            return $this->mostrarInicio($idUsuario, $idPerfil);
         } else {
             return redirect()->route('perfil.formulario', ['idPerfil' => $idPerfil, 'idUsuario' => $idUsuario])->with('mensaje', 'PIN incorrecto, por favor intenta nuevamente.');
         }
     }
     
-    public function mostrarInicio($idUsuario, $idPerfil ){
+    public function mostrarInicio($idUsuario, $idPerfil){
         $perfil = $this->obtenerPerfil($idPerfil);
         $perfiles = $this->obtenerPerfiles($idUsuario);
 
-        return view('usuario.inicio', compact('perfil', 'perfiles', 'idUsuario'));
+        //obtenemos peliculas para enviarselas a la vista
+        $peliculaController = new PeliculaController();
+        $peliculas = $peliculaController->obtenerPeliculas();
+        $miLista = $peliculaController->obtenerVerMasTarde($idPerfil);
+        $continuarViendo = $peliculaController->obtenerContinuarViendo($idPerfil);
+        
+        return view('usuario.inicio', compact('perfil', 'perfiles', 'idUsuario', 'peliculas', 'miLista', 'continuarViendo'));
     }
-
-    public function mostrarCuenta($idUsuario){
+  
+     public function mostrarCuenta($idUsuario){
         $perfiles = $this->obtenerPerfiles($idUsuario);
         $usuario = $this->obtenerUsuario($idUsuario);
         return view('usuario.cuenta', compact('perfiles', 'usuario', 'idUsuario'));
@@ -158,13 +166,10 @@ class PerfilController extends Controller
             'body' => json_encode($body)
         ]);
                
-        // retorna el perfil creado
+        //perfil creado
         $perfil = json_decode($resultado->getBody());
 
-        //obtiene los perfiles para mandarlos a la vista
-        $perfiles = $this->obtenerPerfiles($idUsuario);
-        
-        return view('usuario.inicio', compact('perfil', 'perfiles', 'idUsuario'));
+        return $this->mostrarInicio($idUsuario, $perfil->idPerfil);
     }
 
     public function mostrarEditarPerfil($idUsuario, $idPerfil){
@@ -279,10 +284,8 @@ class PerfilController extends Controller
     }
 
     public function mostrarMiLista($idPerfil){
-
     }
 
     public function mostrarContinuarViendo($idPerfil){
-
     }
 }

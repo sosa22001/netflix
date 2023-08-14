@@ -130,286 +130,38 @@
                 </section>
             </div>
 
+
             <!--paretn div with black bg after main hero section-->
             <div class="black-background">
 
-
-                <!--my list -->
+                <!--mi lista -->
                 <section id="mylist" class="container">
 
                     <h4 class="mylist-heading">
                         Mi Lista
                     </h4>
-                    <div class="mylist-container d-flex flex-start flex-middle flex-no-wrap owl-carousel">
-                        <div class="video">
-                            <video class="mylist-img p-r-10 p-t-10 video-item"
-                                poster="../images/tv-show/poster/never-have-ever-short poster.jpg">
-                                <source
-                                    src="../images/tv-show/videos/Never Have I Ever - Official Trailer - Netflix_2.mp4"
-                                    type="video/mp4">
-                                Your browser does not support the video tag.
-                            </video>
-
-                            <div class="video-description d-flex flex-end direction-column">
-                                <div class="play-button">
-                                    <svg viewBox="0 0 24 24">
-                                        <path d="M6 4l15 8-15 8z" fill="black"></path>
-                                    </svg>
-                                </div>
-                                <div>
-                                    <h4 class="heading f-w-8 text-shadow">
-                                        Never Have I Ever
-                                    </h4>
-                                </div>
-                                <div class="info d-flex flex-middle flex-no-wrap">
-                                    <p class="rated text-shadow"><strong>18+</strong></p>
-                                    <p class="season-count text-shadow"> 1 Season</p>
-                                </div>
-                                <div class="genere d-flex flex-no-wrap text-shadow">
-                                    <p>#Nudeity</p>
-                                    <p>#Romance</p>
-                                    <p>#Love</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="video">
-                            <video class="mylist-img p-r-10 p-t-10 video-item"
-                                poster="../images/movies/we-are-the-milers-poster-little.webp">
-                                <source
-                                    src="../images/movies/videos/We're the Millers - Official Trailer [HD].mp4"
-                                    type="video/mp4">
-                                Your browser does not support the video tag.
-                            </video>
-
-                            <div class="video-description d-flex flex-end direction-column">
-                                <div class="play-button">
-                                    <svg viewBox="0 0 24 24">
-                                        <path d="M6 4l15 8-15 8z" fill="black"></path>
-                                    </svg>
-                                </div>
-                                <div>
-                                    <h4 class="heading f-w-8 text-shadow">
-                                        WE'RE THE MILERS
-                                    </h4>
-                                </div>
-                                <div class="info d-flex flex-middle flex-no-wrap">
-                                    <p class="rated text-shadow"><strong>18+</strong></p>
-                                    <p class="season-count text-shadow">Movie</p>
-                                </div>
-                                <div class="genere d-flex flex-no-wrap text-shadow">
-                                    <p>#Nudeity</p>
-                                    <p>#fiction</p>
-                                    <p>#Comedy</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="video">
-                            <video class="mylist-img p-r-10 p-t-10 video-item"
-                                poster="../images/movies/extraction-poster.jpg">
-                                <source
-                                    src="../images/movies/videos/Murder Mystery - Trailer - Netflix.mp4"
-                                    type="video/mp4">
-                                Your browser does not support the video tag.
-                            </video>
-
-                            <div class="video-description d-flex flex-end direction-column">
-                                <div class="play-button">
-                                    <svg viewBox="0 0 24 24">
-                                        <path d="M6 4l15 8-15 8z" fill="black"></path>
-                                    </svg>
-                                </div>
-                                <div>
-                                    <h4 class="heading f-w-8 text-shadow">
-                                        Extraction
-                                    </h4>
-                                </div>
-                                <div class="info d-flex flex-middle flex-no-wrap">
-                                    <p class="rated text-shadow"><strong>18+</strong></p>
-                                    <p class="season-count text-shadow">Movie</p>
-                                </div>
-                                <div class="genere d-flex flex-no-wrap text-shadow">
-                                    <p>#Adrenalin</p>
-                                    <p>#Wild</p>
-                                    <p>#Action</p>
-                                </div>
-                            </div>
-                        </div>
-                        
+                    <div class="romantic-container d-flex flex-start flex-middle flex-no-wrap owl-carousel">
+                        @foreach ($miLista as $peliculaL)
+                            <a href="#">
+                                <img src="{{asset('images/movies/' . $peliculaL->imagen)}}" alt=""
+                                    class="mylist-img p-r-10 p-t-10 image-size item">
+                            </a>    
+                        @endforeach
                     </div>
-
                 </section>
-
 
                 <!--continuar viendo-->
                 <section id="continue-watching" class="container p-t-40">
                     <h4 class="continue-watching-heading">
                         Continuar viendo contenido de {{$perfil->nombre}}
                     </h4>
-                    <div class="continue-watching-container d-flex flex-start flex-middle flex-no-wrap owl-carousel">
-
-                                <div class="video">
-                                    <video class="mylist-img p-r-10 p-t-10 video-item"
-                                        poster="../images/movies/horrible-bosses-middle-poster.webp">
-                                        <source
-                                            src="../images/tv-show/videos/Never Have I Ever - Official Trailer - Netflix_2.mp4"
-                                            type="video/mp4">
-                                        Your browser does not support the video tag.
-                                    </video>
-        
-                                    <div class="video-description d-flex flex-end direction-column">
-                                        <div class="play-button">
-                                            <svg viewBox="0 0 24 24">
-                                                <path d="M6 4l15 8-15 8z" fill="black"></path>
-                                            </svg>
-                                        </div>
-                                        <div>
-                                            <h4 class="heading f-w-8 text-shadow">
-                                                Horrible Bosses
-                                            </h4>
-                                        </div>
-                                        <div class="info d-flex flex-middle flex-no-wrap">
-                                            <p class="rated text-shadow"><strong>18+</strong></p>
-                                            <p class="season-count text-shadow">Movie</p>
-                                        </div>
-                                        <div class="genere d-flex flex-no-wrap text-shadow">
-                                            <p>#Nudeity</p>
-                                            <p>#sex</p>
-                                            <p>#Comedy</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                        
-                                <div class="video">
-                                    <video class="mylist-img p-r-10 p-t-10 video-item"
-                                        poster="../images/movies/kabir-singh-poster.webp">
-                                        <source
-                                            src="../images/tv-show/videos/Never Have I Ever - Official Trailer - Netflix_2.mp4"
-                                            type="video/mp4">
-                                        Your browser does not support the video tag.
-                                    </video>
-        
-                                    <div class="video-description d-flex flex-end direction-column">
-                                        <div class="play-button">
-                                            <svg viewBox="0 0 24 24">
-                                                <path d="M6 4l15 8-15 8z" fill="black"></path>
-                                            </svg>
-                                        </div>
-                                        <div>
-                                            <h4 class="heading f-w-8 text-shadow">
-                                                Kabir Singh
-                                            </h4>
-                                        </div>
-                                        <div class="info d-flex flex-middle flex-no-wrap">
-                                            <p class="rated text-shadow"><strong>18+</strong></p>
-                                            <p class="season-count text-shadow">Movie</p>
-                                        </div>
-                                        <div class="genere d-flex flex-no-wrap text-shadow">
-                                            <p>#Nudeity</p>
-                                            <p>#crime</p>
-                                            <p>#Love</p>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="video">
-                                    <video class="mylist-img p-r-10 p-t-10 video-item"
-                                        poster="../images/tv-show/poster/never-have-ever-short poster.jpg">
-                                        <source
-                                            src="../images/tv-show/videos/Never Have I Ever - Official Trailer - Netflix_2.mp4"
-                                            type="video/mp4">
-                                        Your browser does not support the video tag.
-                                    </video>
-        
-                                    <div class="video-description d-flex flex-end direction-column">
-                                        <div class="play-button">
-                                            <svg viewBox="0 0 24 24">
-                                                <path d="M6 4l15 8-15 8z" fill="black"></path>
-                                            </svg>
-                                        </div>
-                                        <div>
-                                            <h4 class="heading f-w-8 text-shadow">
-                                                Never Have I Ever
-                                            </h4>
-                                        </div>
-                                        <div class="info d-flex flex-middle flex-no-wrap">
-                                            <p class="rated text-shadow"><strong>18+</strong></p>
-                                            <p class="season-count text-shadow"> 1 Season</p>
-                                        </div>
-                                        <div class="genere d-flex flex-no-wrap text-shadow">
-                                            <p>#Nudeity</p>
-                                            <p>#Romance</p>
-                                            <p>#Love</p>
-                                        </div>
-                                    </div>
-                                </div>
-        
-                                <div class="video">
-                                    <video class="mylist-img p-r-10 p-t-10 video-item"
-                                        poster="../images/movies/we-are-the-milers-poster-little.webp">
-                                        <source
-                                            src="../images/movies/videos/We're the Millers - Official Trailer [HD].mp4"
-                                            type="video/mp4">
-                                        Your browser does not support the video tag.
-                                    </video>
-        
-                                    <div class="video-description d-flex flex-end direction-column">
-                                        <div class="play-button">
-                                            <svg viewBox="0 0 24 24">
-                                                <path d="M6 4l15 8-15 8z" fill="black"></path>
-                                            </svg>
-                                        </div>
-                                        <div>
-                                            <h4 class="heading f-w-8 text-shadow">
-                                                WE'RE THE MILERS
-                                            </h4>
-                                        </div>
-                                        <div class="info d-flex flex-middle flex-no-wrap">
-                                            <p class="rated text-shadow"><strong>18+</strong></p>
-                                            <p class="season-count text-shadow">Movie</p>
-                                        </div>
-                                        <div class="genere d-flex flex-no-wrap text-shadow">
-                                            <p>#Nudeity</p>
-                                            <p>#fiction</p>
-                                            <p>#Comedy</p>
-                                        </div>
-                                    </div>
-                                </div>
-        
-                                <div class="video">
-                                    <video class="mylist-img p-r-10 p-t-10 video-item"
-                                        poster="../images/movies/extraction-poster.jpg">
-                                        <source
-                                            src="../images/movies/videos/Murder Mystery - Trailer - Netflix.mp4"
-                                            type="video/mp4">
-                                        Your browser does not support the video tag.
-                                    </video>
-        
-                                    <div class="video-description d-flex flex-end direction-column">
-                                        <div class="play-button">
-                                            <svg viewBox="0 0 24 24">
-                                                <path d="M6 4l15 8-15 8z" fill="black"></path>
-                                            </svg>
-                                        </div>
-                                        <div>
-                                            <h4 class="heading f-w-8 text-shadow">
-                                                Extraction
-                                            </h4>
-                                        </div>
-                                        <div class="info d-flex flex-middle flex-no-wrap">
-                                            <p class="rated text-shadow"><strong>18+</strong></p>
-                                            <p class="season-count text-shadow">Movie</p>
-                                        </div>
-                                        <div class="genere d-flex flex-no-wrap text-shadow">
-                                            <p>#Adrenalin</p>
-                                            <p>#Wild</p>
-                                            <p>#Action</p>
-                                        </div>
-                                    </div>
-                                </div>
-
+                    <div class="romantic-container d-flex flex-start flex-middle flex-no-wrap owl-carousel">
+                        @foreach ($continuarViendo as $cv)
+                            <a href="#">
+                                <img src="{{asset('images/movies/' . $peliculaL->imagen)}}" alt=""
+                                    class="mylist-img p-r-10 p-t-10 image-size item">
+                            </a>    
+                        @endforeach
                     </div>
                 </section>
 
@@ -419,26 +171,14 @@
                         Peliculas Romanticas
                     </h4>
                     <div class="romantic-container d-flex flex-start flex-middle flex-no-wrap owl-carousel">
-                        <a href="#">
-                            <img src="../images/movies/horrible-bosses-middle-poster.webp" alt=""
-                                class="mylist-img p-r-10 p-t-10 image-size item"></a>
-                        <a href="#">
-                            <img src="../images/movies/kabir-singh-poster.webp" alt=""
-                                class="mylist-img p-r-10 p-t-10 image-size item"></a>
-                        <a href="#">
-                            <img src="../images/movies/extraction-poster.jpg" alt=""
-                                class="mylist-img p-r-10 p-t-10 image-size item"></a>
-                        <a href="#">
-                            <img src="../images/tv-show/poster/never-have-ever-short poster.jpg" alt=""
-                                class="mylist-img p-r-10 p-t-10 image-size item"></a>
-                        <a href="#">
-                            <img src="../images/movies/we-are-the-milers-poster-little.webp" alt=""
-                                class="mylist-img p-r-10 p-t-10 image-size item"></a>
-
-                        <a href="#">
-                            <img src="../images/movies/we-are-the-milers-poster-little.webp" alt=""
-                                class="mylist-img p-r-10 p-t-10 image-size item"></a>
-
+                        @foreach ($peliculas as $pelicula)
+                            @if($pelicula->categoria->genero == "romantico")
+                                <a href="#">
+                                    <img src="{{asset('images/movies/' . $pelicula->imagen)}}" alt=""
+                                        class="mylist-img p-r-10 p-t-10 image-size item">
+                                </a>    
+                            @endif
+                        @endforeach
                     </div>
                 </section>
 
@@ -448,26 +188,14 @@
                         Thrillers que hielan la sangre
                     </h4>
                     <div class="romantic-container d-flex flex-start flex-middle flex-no-wrap owl-carousel">
-                        <a href="#">
-                            <img src="../images/movies/horrible-bosses-middle-poster.webp" alt=""
-                                class="mylist-img p-r-10 p-t-10 image-size item"></a>
-                        <a href="#">
-                            <img src="../images/movies/kabir-singh-poster.webp" alt=""
-                                class="mylist-img p-r-10 p-t-10 image-size item"></a>
-                        <a href="#">
-                            <img src="../images/movies/extraction-poster.jpg" alt=""
-                                class="mylist-img p-r-10 p-t-10 image-size item"></a>
-                        <a href="#">
-                            <img src="../images/tv-show/poster/never-have-ever-short poster.jpg" alt=""
-                                class="mylist-img p-r-10 p-t-10 image-size item"></a>
-                        <a href="#">
-                            <img src="../images/movies/we-are-the-milers-poster-little.webp" alt=""
-                                class="mylist-img p-r-10 p-t-10 image-size item"></a>
-
-                        <a href="#">
-                            <img src="../images/movies/we-are-the-milers-poster-little.webp" alt=""
-                                class="mylist-img p-r-10 p-t-10 image-size item"></a>
-
+                        @foreach ($peliculas as $pelicula)
+                            @if($pelicula->categoria->genero == "terror")
+                                <a href="#">
+                                    <img src="{{asset('images/movies/' . $pelicula->imagen)}}" alt=""
+                                        class="mylist-img p-r-10 p-t-10 image-size item">
+                                </a>    
+                            @endif
+                        @endforeach
                     </div>
                 </section>
 
@@ -477,30 +205,18 @@
                         Comedia
                     </h4>
                     <div class="romantic-container d-flex flex-start flex-middle flex-no-wrap owl-carousel">
-                        <a href="#">
-                            <img src="../images/movies/horrible-bosses-middle-poster.webp" alt=""
-                                class="mylist-img p-r-10 p-t-10 image-size item"></a>
-                        <a href="#">
-                            <img src="../images/movies/kabir-singh-poster.webp" alt=""
-                                class="mylist-img p-r-10 p-t-10 image-size item"></a>
-                        <a href="#">
-                            <img src="../images/movies/extraction-poster.jpg" alt=""
-                                class="mylist-img p-r-10 p-t-10 image-size item"></a>
-                        <a href="#">
-                            <img src="../images/tv-show/poster/never-have-ever-short poster.jpg" alt=""
-                                class="mylist-img p-r-10 p-t-10 image-size item"></a>
-                        <a href="#">
-                            <img src="../images/movies/we-are-the-milers-poster-little.webp" alt=""
-                                class="mylist-img p-r-10 p-t-10 image-size item"></a>
-
-                        <a href="#">
-                            <img src="../images/movies/we-are-the-milers-poster-little.webp" alt=""
-                                class="mylist-img p-r-10 p-t-10 image-size item"></a>
-
+                        @foreach ($peliculas as $pelicula)
+                            @if($pelicula->categoria->genero == "comedia")
+                                <a href="#">
+                                    <img src="{{asset('images/movies/' . $pelicula->imagen)}}" alt=""
+                                        class="mylist-img p-r-10 p-t-10 image-size item">
+                                </a>    
+                            @endif
+                        @endforeach
                     </div>
                 </section>
 
-                <!--big poster screen left poster right content-->
+                <!--Poster de pelicula mas nueva -->
                 <section class="big-section d-flex flex-start container">
                     <img src="../images/tv-show/poster/sex-education.webp" alt="">
 
@@ -559,33 +275,20 @@
                     </div>
                 </section>
 
-
                 <!--accion-->
                 <section id="romantic" class="container p-t-40">
                     <h4 class="romantic-heading">
                         Ponte en accion
                     </h4>
                     <div class="romantic-container d-flex flex-start flex-middle flex-no-wrap owl-carousel">
-                        <a href="#">
-                            <img src="../images/movies/horrible-bosses-middle-poster.webp" alt=""
-                                class="mylist-img p-r-10 p-t-10 image-size item"></a>
-                        <a href="#">
-                            <img src="../images/movies/kabir-singh-poster.webp" alt=""
-                                class="mylist-img p-r-10 p-t-10 image-size item"></a>
-                        <a href="#">
-                            <img src="../images/movies/extraction-poster.jpg" alt=""
-                                class="mylist-img p-r-10 p-t-10 image-size item"></a>
-                        <a href="#">
-                            <img src="../images/tv-show/poster/never-have-ever-short poster.jpg" alt=""
-                                class="mylist-img p-r-10 p-t-10 image-size item"></a>
-                        <a href="#">
-                            <img src="../images/movies/we-are-the-milers-poster-little.webp" alt=""
-                                class="mylist-img p-r-10 p-t-10 image-size item"></a>
-
-                        <a href="#">
-                            <img src="../images/movies/we-are-the-milers-poster-little.webp" alt=""
-                                class="mylist-img p-r-10 p-t-10 image-size item"></a>
-
+                        @foreach ($peliculas as $pelicula)
+                            @if($pelicula->categoria->genero == "accion")
+                                <a href="#">
+                                    <img src="{{asset('images/movies/' . $pelicula->imagen)}}" alt=""
+                                        class="mylist-img p-r-10 p-t-10 image-size item">
+                                </a>    
+                            @endif
+                        @endforeach
                     </div>
                 </section>
 
@@ -595,52 +298,31 @@
                         Series
                     </h4>
                     <div class="romantic-container d-flex flex-start flex-middle flex-no-wrap owl-carousel">
-                        <a href="#">
-                            <img src="../images/movies/horrible-bosses-middle-poster.webp" alt=""
-                                class="mylist-img p-r-10 p-t-10 image-size item"></a>
-                        <a href="#">
-                            <img src="../images/movies/kabir-singh-poster.webp" alt=""
-                                class="mylist-img p-r-10 p-t-10 image-size item"></a>
-                        <a href="#">
-                            <img src="../images/movies/extraction-poster.jpg" alt=""
-                                class="mylist-img p-r-10 p-t-10 image-size item"></a>
-                        <a href="#">
-                            <img src="../images/tv-show/poster/never-have-ever-short poster.jpg" alt=""
-                                class="mylist-img p-r-10 p-t-10 image-size item"></a>
-                        <a href="#">
-                            <img src="../images/movies/we-are-the-milers-poster-little.webp" alt=""
-                                class="mylist-img p-r-10 p-t-10 image-size item"></a>
-
-
-
+                        @foreach ($peliculas as $pelicula)
+                            @if($pelicula->categoria->genero == "serie")
+                                <a href="#">
+                                    <img src="{{asset('images/movies/' . $pelicula->imagen)}}" alt=""
+                                        class="mylist-img p-r-10 p-t-10 image-size item">
+                                </a>    
+                            @endif
+                        @endforeach
                     </div>
                 </section>
 
-
-                <!--Hollywood Action movies-->
+                <!--Animadas-->
                 <section id="romantic" class="container p-t-40">
                     <h4 class="romantic-heading">
                         Hollywood Action Movies
                     </h4>
                     <div class="romantic-container d-flex flex-start flex-middle flex-no-wrap owl-carousel">
-                        <a href="#">
-                            <img src="../images/movies/horrible-bosses-middle-poster.webp" alt=""
-                                class="mylist-img p-r-10 p-t-10 image-size item"></a>
-                        <a href="#">
-                            <img src="../images/movies/kabir-singh-poster.webp" alt=""
-                                class="mylist-img p-r-10 p-t-10 image-size item"></a>
-                        <a href="#">
-                            <img src="../images/movies/extraction-poster.jpg" alt=""
-                                class="mylist-img p-r-10 p-t-10 image-size item"></a>
-                        <a href="#">
-                            <img src="../images/tv-show/poster/never-have-ever-short poster.jpg" alt=""
-                                class="mylist-img p-r-10 p-t-10 image-size item"></a>
-                        <a href="#">
-                            <img src="../images/movies/we-are-the-milers-poster-little.webp" alt=""
-                                class="mylist-img p-r-10 p-t-10 image-size item"></a>
-
-
-
+                        @foreach ($peliculas as $pelicula)
+                            @if($pelicula->categoria->genero == "animadas")
+                                <a href="#">
+                                    <img src="{{asset('images/movies/' . $pelicula->imagen)}}" alt=""
+                                        class="mylist-img p-r-10 p-t-10 image-size item">
+                                </a>    
+                            @endif
+                        @endforeach
                     </div>
                 </section>
 
@@ -688,7 +370,6 @@
         </footer>
         </div>
 
-        
     </main>
 
     <div class="footer-navigation d-flex space-between">

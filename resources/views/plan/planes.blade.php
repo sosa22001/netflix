@@ -20,48 +20,85 @@
             background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0.2) 60%, rgba(0, 0, 0, 0.9) 100%),
                               url("{{ asset('images/netflix-clone.jpg') }}");
         }
+        #cartas{
+            margin: 0 auto;
+            display: flex;
+            height: 80vh;
+            align-items: center;
+            justify-content: center;
+            max-width: 1000px;
+        }
+        
+        .card {
+                    background-color: #fff;
+                    border-radius: 10px;
+                    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                    padding: 20px;
+                    text-align: center;
+                    margin: 0 10px;
+                    width: 300px;
+                    transition: transform 0.3s ease-in-out;
+                }
+                .card:hover {
+                    transform: translateY(-5px);
+                }
+                .card h2 {
+                    color: #e50914;
+                    margin-bottom: 10px;
+                }
+                .card p {
+                    font-size: 14px;
+                    line-height: 1.6;
+                }
+                .card strong {
+                    display: block;
+                    margin-top: 10px;
+                    font-size: 18px;
+                }
+
+
     </style>
     
     <main style="">
         <section id="login-form-section">
-
-            <div class="contenedor-planes">
-
-                <div class="card" style="width: 18rem;">
-                    <div class="card-body">
-                      <h5 class="card-title">Plan Básico</h5>
-                      <p class="card-text">Con este plan, podrás disfrutar de una amplia variedad de películas, series y documentales a un bajo precio</p>
-                      <p class="card-text">Lps. 120</p>
-                      <p class="card-text">Cantidad perfiles: 2</p>
-                      <p class="card-text">Resolución: 720p</p>
-                    </div>
-                  </div>
-
-                  <div class="card" style="width: 18rem;">
-                    <div class="card-body">
-                      <h5 class="card-title">Plan Estándar</h5>
-                      <p class="card-text">Con este plan, podrás disfrutar de contenido en alta definición HD, para disfrutar con toda la familia</p>
-                      <p class="card-text">Lps. 250</p>
-                      <p class="card-text">Cantidad perfiles: 3</p>
-                      <p class="card-text">Resolución: 1080p</p>
-                    </div>
-                  </div>
-
-                  <div class="card" style="width: 18rem;">
-                    <div class="card-body">
-                      <h5 class="card-title">Plan Premium</h5>
-                      <p class="card-text"> Este plan te permite disfrutar de contenido en calidad ultra alta definición (UHD o 4K) en hasta cuatro dispositivos al mismo tiempoo</p>
-                      <p class="card-text">Lps. 400</p>
-                      <p class="card-text">Cantidad perfiles: 4</p>
-                      <p class="card-text">Resolución: 4k</p>
-                    </div>
-                  </div>
-
+            <h2 style="
+            text-align: center;
+            color: white;
+            font-size: 3rem;
+            ">Selecciona Tu Plan</h2>
+            <div id="cartas">
+                    @foreach ($planes as $plan )      
+                        <div class="card"">
+                            <h2>{{$plan->nombrePlan}}</h2>
+                            <p>{{$plan->descripcion}}</p>
+                            <p>Precio: <strong>{{$plan->costoMensual}}</strong></p>
+                            <form action="{{route('planes.siguiente')}}" id="loginForm" class="d-flex direction-column" method="post" name="loginForm">
+                              @csrf
+                              <!-- Campos ocultos para enviar información desde la vista -->
+                              <input type="hidden" name="nombre" value="{{ $informacion['nombre'] }}">
+                              <input type="hidden" name="apellido" value="{{ $informacion['apellido'] }}">
+                              <input type="hidden" name="correo" value="{{ $informacion['correo'] }}">
+                              <input type="hidden" name="contrasenia" value="{{ $informacion['contrasenia'] }}">
+          
+      {{--                         <select class="form-select form-select-lg mb-2" aria-label="Large select example" name="seleccionar-plan">
+                                  <option selected>Seleccionar plan</option>
+                                  <option value="1">1. Plan básico</option>
+                                  <option value="2">2. Plan estándar</option>
+                                  <option value="3">3. Plan premium</option>
+                              </select> --}}
+          
+                              <input type="hidden" name="seleccionar-plan" value="1" >
+      
+                                <button type="submit" class="button submitButton" id="signInButton">
+                                  Comprar Plan
+                                </button>
+                          </form>
+                        </div>
+                    @endforeach
             </div>
 
-            <div class="loginContainer d-flex direction-column">
 
-                <form action="{{route('planes.siguiente')}}" id="loginForm" class="d-flex direction-column" method="post" name="loginForm">
+{{--                 <form action="{{route('planes.siguiente')}}" id="loginForm" class="d-flex direction-column" method="post" name="loginForm">
                     @csrf
                     
                     <!-- Campos ocultos para enviar información desde la vista -->
@@ -81,9 +118,8 @@
                         Siguiente
                       </button>
 
-                </form>
+                </form> --}}
 
-            </div>
         </section>
     </main>
 </body>
