@@ -51,9 +51,9 @@ Route::get('/perfiles/ayuda', [PerfilController::class,'mostrarAyuda'])->name('u
 
 Route::get('/usuarios/{idUsuario}/cuenta', [PerfilController::class,'mostrarCuenta'])->name('usuario.cuentaConfig');
 
-Route::get('/perfiles/{idPerfil}/mi-lista', [PerfilController::class,'mostrarMiLista'])->name('perfil.miLista');
+Route::get('/usuarios/{idUsuario}/perfiles/{idPerfil}/mi-lista', [PerfilController::class,'mostrarMiLista'])->name('perfil.miLista');
 
-Route::get('/perfiles/{idPerfil}/continuar-viendo', [PerfilController::class,'mostrarContinuarViendo'])->name('perfil.continuarViendo');
+Route::get('/usuarios/{idUsuario}/perfiles/{idPerfil}/continuar-viendo', [PerfilController::class,'mostrarContinuarViendo'])->name('perfil.continuarViendo');
 
 Route::get('/perfiles/{idPerfil}/inicio', [PeliculaController::class,'mostrarInicio'])->name('perfil.inicio');
 

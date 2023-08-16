@@ -28,8 +28,8 @@
                         <h2 class="second-logo-text red-color f-s-28">N</h2>
                     </a>
                     <a href="{{route('peliculas.mostrar')}}" class="nav-item">Peliculas</a>
-                    <a href="{{route('perfil.miLista', ['idPerfil' => $perfil->idPerfil])}}" class="nav-item latest">Mi Lista</a>
-                    <a href="{{route('perfil.continuarViendo', ['idPerfil' => $perfil->idPerfil])}}" class="nav-item">Continuar Viendo</a>
+                    <a href="{{route('perfil.miLista', ['idUsuario' => $idUsuario ,'idPerfil' => $perfil->idPerfil])}}" class="nav-item latest">Mi Lista</a>
+                    <a href="{{route('perfil.continuarViendo', ['idUsuario' => $idUsuario ,'idPerfil' => $perfil->idPerfil])}}" class="nav-item">Continuar Viendo</a>
                 </div>
                 <div class="righticons d-flex flex-end flex-middle">
                     <div class="dropdown">
@@ -58,7 +58,6 @@
                     </div>              
                 </div> 
             </header>
-            
 
             <!-- hero section -->
             <div class="">
@@ -66,8 +65,8 @@
                     <div>
                         <!--trailer video-->
                         <video class="hero-background-image" id="hero-video"
-                            poster="../images/tv-show/poster/never-have-ever-tv-show.webp">
-                            <source src="../images/tv-show/videos/Never Have I Ever - Official Trailer - Netflix_2.mp4"
+                            poster="{{asset('images/movies/poster/never-have-ever-tv-show.webp')}}">
+                            <source src="asset('images/movies/videos/Never Have I Ever - Official Trailer - Netflix_2.mp4')"
                                 type="video/mp4">
                             Your browser does not support the video tag.
                         </video>

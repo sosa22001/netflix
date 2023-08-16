@@ -294,12 +294,23 @@ class PerfilController extends Controller
         $usuario = json_decode($resultado->getBody());
         
         return redirect()->route('usuario.cuentaConfig', ['idUsuario' => $usuario->idUsuario]);
-        
     }
 
-    public function mostrarMiLista($idPerfil){
+    public function mostrarMiLista($idUsuario, $idPerfil){
+        $peliculaController = new PeliculaController();
+        $peliculas = $peliculaController->obtenerVerMasTarde($idPerfil);
+        $perfiles = $this->obtenerPerfiles($idUsuario);
+        $perfil = $this->obtenerPerfil($idPerfil);
+
+        return view('usuario.miLista', compact('peliculas', 'perfiles', 'perfil', 'idUsuario'));
     }
 
-    public function mostrarContinuarViendo($idPerfil){
+    public function mostrarContinuarViendo($idUsuario, $idPerfil){
+        $peliculaController = new PeliculaController();
+        $peliculas = $peliculaController->obtenerVerMasTarde($idPerfil);
+        $perfiles = $this->obtenerPerfiles($idUsuario);
+        $perfil = $this->obtenerPerfil($idPerfil);
+
+        return view('usuario.continuarViendo', compact('peliculas', 'perfiles', 'perfil', 'idUsuario'));
     }
 }
