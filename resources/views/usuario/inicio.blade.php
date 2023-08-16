@@ -185,7 +185,7 @@
                     <h4 class="romantic-heading">
                         Peliculas Romanticas
                     </h4>
-                    <div class="romantic-container d-flex flex-start flex-middle flex-no-wrap owl-carousel">
+                    <div class="romantic-container d-flex flex-start flex-middle flex-wrap owl-carousel">
                         @foreach ($peliculas as $pelicula)
                             @if($pelicula->categoria->genero == "romantico")
                                 <a href="{{route('agregar.continuarviendo', ['idPerfil'=>$perfil->idPerfil, 'idPelicula'=>$pelicula->idPeliculas, 'idUsuario'=>$idUsuario])}}">
@@ -202,7 +202,7 @@
                     <h4 class="romantic-heading">
                         Thrillers que hielan la sangre
                     </h4>
-                    <div class="romantic-container d-flex flex-start flex-middle flex-no-wrap owl-carousel">
+                    <div class="romantic-container d-flex flex-start flex-middle flex-wrap owl-carousel">
                         @foreach ($peliculas as $pelicula)
                             @if($pelicula->categoria->genero == "terror")
                                 <a href="#">
@@ -219,7 +219,7 @@
                     <h4 class="romantic-heading">
                         Comedia
                     </h4>
-                    <div class="romantic-container d-flex flex-start flex-middle flex-no-wrap owl-carousel">
+                    <div class="romantic-container d-flex flex-start flex-middle flex-wrap owl-carousel">
                         @foreach ($peliculas as $pelicula)
                             @if($pelicula->categoria->genero == "comedia")
                                 <a href="#">
