@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.min.css" integrity="sha256-t2kyTgkh+fZJYRET5l9Sjrrl4UDain5jxdbqe8ejO8A=" crossorigin="anonymous" />
     <link rel="stylesheet" href="{{asset('css/global.css')}}">
     <link rel="stylesheet" href="{{asset('css/browse.css')}}">
+    <link rel="stylesheet" href="{{asset('css/mi-lista-seguir-viendo.css')}}">
 
 </head>
 <body>
@@ -33,7 +34,7 @@
                 <div class="righticons d-flex flex-end flex-middle">
                     <div class="dropdown">
                         <img src="{{asset('images/' . $perfil->imagen)}}" alt="user profile icon" class="user-icon"> <span class="profile-arrow"></span>
-   
+
                         <div class="dropdown-content">
                             <div class="profile-links">
                                  @foreach ($perfiles as $perfilIt)
@@ -143,9 +144,10 @@
                     <div class="romantic-container d-flex flex-start flex-middle flex-no-wrap owl-carousel">
                         @foreach ($miLista as $peliculaL)
                             <a href="#">
-                                <img src="{{asset('images/movies/' . $peliculaL->imagen)}}" alt=""
+                                <img src="{{asset('images/movies/' . $peliculaL->imagen)}}" alt="" width="250px"
                                     class="mylist-img p-r-10 p-t-10 image-size item">
-                            </a>    
+                            </a>
+                            
                         @endforeach
                     </div>
                 </section>
@@ -158,7 +160,7 @@
                     <div class="romantic-container d-flex flex-start flex-middle flex-no-wrap owl-carousel">
                         @foreach ($continuarViendo as $cv)
                             <a href="#">
-                                <img src="{{asset('images/movies/' . $peliculaL->imagen)}}" alt=""
+                                <img src="{{asset('images/movies/' . $peliculaL->imagen)}}"  alt="" width="250px"
                                     class="mylist-img p-r-10 p-t-10 image-size item">
                             </a>    
                         @endforeach
@@ -173,10 +175,10 @@
                     <div class="romantic-container d-flex flex-start flex-middle flex-no-wrap owl-carousel">
                         @foreach ($peliculas as $pelicula)
                             @if($pelicula->categoria->genero == "romantico")
-                                <a href="#">
-                                    <img src="{{asset('images/movies/' . $pelicula->imagen)}}" alt=""
+                                <a href="{{route('agregar.continuarviendo', ['idPerfil'=>$perfil->idPerfil, 'idPelicula'=>$pelicula->idPeliculas, 'idUsuario'=>$idUsuario])}}">
+                                    <img src="{{asset('images/movies/' . $pelicula->imagen)}}" alt="" width="250px"
                                         class="mylist-img p-r-10 p-t-10 image-size item">
-                                </a>    
+                                </a>
                             @endif
                         @endforeach
                     </div>
@@ -191,7 +193,7 @@
                         @foreach ($peliculas as $pelicula)
                             @if($pelicula->categoria->genero == "terror")
                                 <a href="#">
-                                    <img src="{{asset('images/movies/' . $pelicula->imagen)}}" alt=""
+                                    <img src="{{asset('images/movies/' . $pelicula->imagen)}}" alt="" width="250px"
                                         class="mylist-img p-r-10 p-t-10 image-size item">
                                 </a>    
                             @endif
@@ -208,7 +210,7 @@
                         @foreach ($peliculas as $pelicula)
                             @if($pelicula->categoria->genero == "comedia")
                                 <a href="#">
-                                    <img src="{{asset('images/movies/' . $pelicula->imagen)}}" alt=""
+                                    <img src="{{asset('images/movies/' . $pelicula->imagen)}}" alt="" width="250px"
                                         class="mylist-img p-r-10 p-t-10 image-size item">
                                 </a>    
                             @endif

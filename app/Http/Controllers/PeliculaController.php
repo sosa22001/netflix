@@ -89,7 +89,19 @@ class PeliculaController extends Controller
     }
 
     public function mostrarPeliculas(){
-        //ocupo endpoint que retorne todas las peliculas
+        
+    }
+
+    public function agregarContinuarViendo($idPerfil,$idPelicula, $idUsuario){
+        $cliente = new Client();
+
+        $headers = [
+            'Content-Type' => 'application/json'
+        ];
+
+        $resultado = $cliente->post("http://localhost:8080/api/perfil/guardarSeguirViendo/$idPerfil/$idPelicula");
+
+        return redirect()->route('perfiles.inicio', ['idUsuario'=>$idUsuario,'idPerfil'=>$idPerfil]);
     }
 
 

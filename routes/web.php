@@ -75,3 +75,5 @@ Route::get('/usuarios/{idUsuario}/guardar-plan/{idPlan}', [PerfilController::cla
 Route::get('/peliculas', [PeliculaController::class, 'mostrarPeliculas'])->name('peliculas.mostrar');
 
 Route::get('/perfiles/{idPerfil}/ver-mas-tarde', [PeliculaController::class, 'mostrarVerMasTarde'])->name('peliculas.verMasTarde');
+
+Route::get('/perfiles/{idPerfil}/peliculas/{idPelicula}/agregar-continuar-viendo/{idUsuario}',[PeliculaController::class,'agregarContinuarViendo'])->name('agregar.continuarviendo');
