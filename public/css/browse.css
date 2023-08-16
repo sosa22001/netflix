@@ -634,5 +634,20 @@ footer ul li{
     }
 
 }
-  
-  
+
+
+#seleccionar-categoria {
+    border-radius: 5px;
+    height: 30px;
+    width: 300px;
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.331);
+    font-weight: 800;
+    color: white;
+    border: black;
+
+}
+
+.opciones {
+    color: black;
+}

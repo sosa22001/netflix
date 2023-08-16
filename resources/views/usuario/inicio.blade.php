@@ -30,6 +30,20 @@
                     <a href="{{route('peliculas.mostrar')}}" class="nav-item">Peliculas</a>
                     <a href="{{route('perfil.miLista', ['idUsuario' => $idUsuario ,'idPerfil' => $perfil->idPerfil])}}" class="nav-item latest">Mi Lista</a>
                     <a href="{{route('perfil.continuarViendo', ['idUsuario' => $idUsuario ,'idPerfil' => $perfil->idPerfil])}}" class="nav-item">Continuar Viendo</a>
+                    <form action="{{route('categoria.seleccionar',['idUsuario' => $idUsuario ,'idPerfil' => $perfil->idPerfil])}}">
+                        @csrf
+                        <select name="idCategoria" id="seleccionar-categoria">
+                            <option class="opciones" disabled selected>Seleccionar Categoria</option>
+                            <option class="opciones" value="1">Terror</option>
+                            <option class="opciones" value="2">Romantico</option>
+                            <option class="opciones" value="3">Acción</option>
+                            <option class="opciones" value="4">Comedia</option>
+                            <option class="opciones" value="7">Drama</option>
+                            <option class="opciones" value="8">Ciencia ficcion</option>
+                            <option class="opciones" value="9">Fantasía</option>
+                        </select>
+                        <button type="submit">Enviar</button>
+                    </form>
                 </div>
                 <div class="righticons d-flex flex-end flex-middle">
                     <div class="dropdown">

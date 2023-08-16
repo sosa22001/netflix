@@ -28,21 +28,22 @@ class PeliculaController extends Controller
 
     }
 
-    public function obtenerPeliculasPorCategoria($idCategoria){
+    public function obtenerPeliculasPorCategoria($idPerfil,$idUsuario, Request $request){
+
         $cliente = new Client();
 
         $headers = [
             'Content-Type' => 'application/json'
         ];
 
-       
-        $resultado = $cliente->get("http://localhost:8080/api/pelicula/categoria/{$idCategoria}", [
+
+        $resultado = $cliente->get("http://localhost:8080/api/pelicula/categoria/{$request->idCategoria}", [
             'headers' => $headers,
         ]);
 
         $peliculas = json_decode($resultado->getBody());
         
-        return $peliculas;
+        return view('usuario.categorias', compact('peliculas','idPerfil','idUsuario'));
 
     }
 

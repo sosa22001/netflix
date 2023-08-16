@@ -77,3 +77,5 @@ Route::get('/peliculas', [PeliculaController::class, 'mostrarPeliculas'])->name(
 Route::get('/perfiles/{idPerfil}/ver-mas-tarde', [PeliculaController::class, 'mostrarVerMasTarde'])->name('peliculas.verMasTarde');
 
 Route::get('/perfiles/{idPerfil}/peliculas/{idPelicula}/agregar-continuar-viendo/{idUsuario}',[PeliculaController::class,'agregarContinuarViendo'])->name('agregar.continuarviendo');
+
+Route::get('/categorias/{idPerfil}/buscar/{idUsuario}', [PeliculaController::class,'obtenerPeliculasPorCategoria'])->name('categoria.seleccionar');
