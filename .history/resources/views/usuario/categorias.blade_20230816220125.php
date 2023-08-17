@@ -14,36 +14,7 @@
 </head>
 
 <body>
-    <header class="d-flex space-between flex-center flex-middle">
-        <div class="nav-links d-flex flex-center flex-middle">
-            <a href="#">
-                <h2 class="logo logo-text red-color f-s-28 m-r-25">NETFLIX</h2>
-                <h2 class="second-logo-text red-color f-s-28">N</h2>
-            </a>
-        </div>
-        <div class="flex">
-            <div>
-                <a href="{{route('perfiles.mostrar', ['idUsuario' => 1])}}">
-                    <i class="fa-solid fa-xmark" style="color: #aaa; font-size:2rem;"></i>
-                </a>
-            </div>
-            <div class="righticons d-flex flex-end flex-middle">
-                <div class="dropdown">
-                    <i class="fa-solid fa-grip-lines" style="color: #aaa; font-size:2rem;"></i>
 
-                    <div class="dropdown-content">
-                        <div class="line"></div>
-                        <div class="links d-flex direction-column">
-                            <a href="{{route('usuario.cuentaConfig', ['idUsuario' => $idUsuario])}}">Cuenta</a>
-                            <a href="{{route('usuario.ayuda')}}">Ayuda</a>
-                            <a href="{{route('login.formulario')}}">Salir de Netflix</a>
-                        </div>
-                        
-                    </div>
-                </div>              
-            </div>             
-        </div>
-    </header>
     <section id="continue-watching" class="container p-t-40">
         <h4 class="continue-watching-heading">
             Peliculas en la categoria de 

@@ -174,7 +174,7 @@
                         <div class="romantic-container d-flex flex-start flex-middle flex-no-wrap owl-carousel">
                             @if(count($miLista) > 0)
                                 @foreach ($continuarViendo as $cv)
-                                    <a href="{{route('agregar.continuarviendo', ['idPerfil'=>$perfil->idPerfil, 'idPelicula'=>$peliculaL->idPeliculas, 'idUsuario'=>$idUsuario])}}">
+                                    <a href="{{route('agregar.continuarviendo', ['idPerfil'=>$perfil->idPerfil, 'idPelicula'=>$pelicula->idPeliculas, 'idUsuario'=>$idUsuario])}}">
                                         <img src="{{asset('images/movies/' . $cv->imagen)}}"  alt="" width="250px"
                                             class="mylist-img p-r-10 p-t-10 image-size item">
                                     </a>    

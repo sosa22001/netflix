@@ -16,7 +16,7 @@
 <body>
     <header class="d-flex space-between flex-center flex-middle">
         <div class="nav-links d-flex flex-center flex-middle">
-            <a href="#">
+            <a href="{{route('perfiles.inicio', ['idUsuario' => $idUsuario, 'idPerfil' => $perfil->idPerfil])}}">
                 <h2 class="logo logo-text red-color f-s-28 m-r-25">NETFLIX</h2>
                 <h2 class="second-logo-text red-color f-s-28">N</h2>
             </a>
