@@ -38,7 +38,6 @@
                         <div class="dropdown-content">
                             <div class="line"></div>
                             <div class="links d-flex direction-column">
-                                <a href="{{route('usuario.cuentaConfig', ['idUsuario' => $idUsuario])}}">Cuenta</a>
                                 <a href="{{route('usuario.ayuda', ['idUsuario' => $idUsuario])}}">Ayuda</a>
                                 <a href="{{route('login.formulario')}}">Salir de Netflix</a>
                             </div>
@@ -104,7 +103,7 @@
                         <h4 class="headline">ICONOS</h4> 
                     </div>
                     <div id="grid">
-                        <input type="hidden" name="icono" id="iconoSeleccionado" value="1">
+                        <input type="hidden" name="icono" id="iconoSeleccionado" value="{{$perfil->imagen}}">
                         <img src="{{ asset('images/user1.png') }}" alt="" data-value="1" onclick="seleccionarIcono(1)">
                         <img src="{{ asset('images/user2.png') }}" alt="" data-value="2" onclick="seleccionarIcono(2)">
                         <img src="{{ asset('images/user3.png') }}" alt="" data-value="3" onclick="seleccionarIcono(3)">

@@ -23,7 +23,7 @@ Route::post('/registro/planes/tarjeta', [AutenticacionController::class,'store']
 
 Route::get('/registro/{idUsuario}/perfil', [AutenticacionController::class, 'crearPerfil'])->name('registro.crearPerfilVista');
 
-Route::get('/registro/{idUsuario}/perfil/{idPerfil}', [PerfilController::class, 'eliminarPerfil'])->name('perfil.eliminarPerfil');
+Route::get('/registro/{idUsuario}/{idPerfilActual}/perfil/{idPerfil}', [PerfilController::class, 'eliminarPerfil'])->name('perfil.eliminarPerfil');
 
 Route::post('/registro/perfil/guardar', [AutenticacionController::class, 'guardarPerfil'])->name('registro.crearPerfil');
 
@@ -49,9 +49,9 @@ Route::get('/perfiles/{idUsuario}/{idPerfil}/peliculas/{idPelicula}', [PerfilCon
 //dashboard
 Route::get('/usuarios/{idUsuario}/perfiles/{idPerfil}/inicio',[PerfilController::class,'mostrarInicio'])->name('perfiles.inicio');
 
-Route::get('/perfiles/ayuda', [PerfilController::class,'mostrarAyuda'])->name('usuario.ayuda');
+Route::get('/perfiles/{idUsuario}/ayuda', [PerfilController::class,'mostrarAyuda'])->name('usuario.ayuda');
 
-Route::get('/usuarios/{idUsuario}/cuenta', [PerfilController::class,'mostrarCuenta'])->name('usuario.cuentaConfig');
+Route::get('/usuarios/{idUsuario}/{idPerfil}/cuenta-configuracion', [PerfilController::class,'mostrarCuenta'])->name('usuario.cuentaConfig');
 
 Route::get('/usuarios/{idUsuario}/perfiles/{idPerfil}/mi-lista', [PerfilController::class,'mostrarMiLista'])->name('perfil.miLista');
 
@@ -64,14 +64,14 @@ Route::get('/perfiles/{idPerfil}/inicio', [PeliculaController::class,'mostrarIni
 Route::get('/usuarios/{idUsuario}/perfiles/{idPerfil}/editar', [PerfilController::class,'mostrarEditarPerfil'])->name('usuario.editarPerfil');
 Route::put('/usuarios/{idUsuario}/perfiles/{idPerfil}/editar/guardar', [PerfilController::class, 'guardarPerfil'])->name('usuario.guardarPerfilEditado');
 
-Route::get('/usuarios/{idUsuario}/editar-usuario', [PerfilController::class,'mostrarEditarUsuario'])->name('usuario.editarUsuario');
-Route::put('/usuarios/{idUsuario}/guardar-usuario', [PerfilController::class, 'guardarUsuario'])->name('usuario.guardarUsuarioEditado');
+Route::get('/usuarios/{idUsuario}/{idPerfil}/editar-usuario', [PerfilController::class,'mostrarEditarUsuario'])->name('usuario.editarUsuario');
+Route::put('/usuarios/{idUsuario}/{idPerfil}/guardar-usuario', [PerfilController::class, 'guardarUsuario'])->name('usuario.guardarUsuarioEditado');
 
-Route::get('/usuarios/{idUsuario}/editar-forma-pago', [PerfilController::class,'mostrarEditarFormaPago'])->name('usuario.editarFormaPago');
-Route::put('/usuarios/{idUsuario}/guardar-forma-pago', [PerfilController::class, 'guardarFormaPago'])->name('usuario.guardarFormaPagoEditada');
+Route::get('/usuarios/{idUsuario}/{idPerfil}/editar-forma-pago', [PerfilController::class,'mostrarEditarFormaPago'])->name('usuario.editarFormaPago');
+Route::put('/usuarios/{idUsuario}/{idPerfil}/guardar-forma-pago', [PerfilController::class, 'guardarFormaPago'])->name('usuario.guardarFormaPagoEditada');
 
-Route::get('/usuarios/{idUsuario}/editar-plan', [PerfilController::class, 'mostrarEditarPlan'])->name('usuario.editarPlan');
-Route::get('/usuarios/{idUsuario}/guardar-plan/{idPlan}', [PerfilController::class, 'guardarPlan'])->name('usuario.guardarPlanEditado');
+Route::get('/usuarios/{idUsuario}/{idPerfil}/editar-plan', [PerfilController::class, 'mostrarEditarPlan'])->name('usuario.editarPlan');
+Route::get('/usuarios/{idUsuario}/{idPerfil}/guardar-plan/{idPlan}', [PerfilController::class, 'guardarPlan'])->name('usuario.guardarPlanEditado');
 
 //peliculas
 Route::get('/peliculas', [PeliculaController::class, 'mostrarPeliculas'])->name('peliculas.mostrar');

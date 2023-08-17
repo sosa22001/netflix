@@ -44,7 +44,7 @@
                             </div>
                             <div class="line"></div>
                             <div class="links d-flex direction-column">
-                                <a href="{{route('usuario.cuentaConfig', ['idUsuario' => $idUsuario])}}">Cuenta</a>
+                                <a href="{{route('usuario.cuentaConfig', ['idUsuario' => $idUsuario, 'idPerfil' => $perfil->idPerfil])}}">Cuenta</a>
                                 <a href="{{route('usuario.ayuda', ['idUsuario' => $idUsuario])}}">Ayuda</a>
                                 <a href="{{route('login.formulario')}}">Salir de Netflix</a>
                             </div>
@@ -131,33 +131,6 @@
             Account
         </a>
     </div>
-
-    <script>
-        $(document).ready(function() {
-            $(".owl-carousel").owlCarousel({
-                margin: 10,
-                nav: true,
-                responsive: {
-                    0: {
-                        items: 2
-                    },
-                    600: {
-                        items: 2
-                    },
-                    1000: {
-                        items: 5
-                    }
-                }
-            });
-        });
-    </script>
-    Con estos cambios, las imágenes dentro del contenedor div ahora serán manejadas por Owl Carousel y se mostrarán en forma de carrusel con las opciones de configuración que proporcionaste anteriormente. Asegúrate de que estás incluyendo las bibliotecas jQuery y Owl Carousel correctamente en tu página para que el carrusel funcione correctamente.
-    
-    
-    
-    
-    
-    
 </body>
 
 </html>

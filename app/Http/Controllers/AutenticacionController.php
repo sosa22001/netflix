@@ -100,47 +100,6 @@ class AutenticacionController extends Controller
         return view('login.crearPerfil', compact('informacion'));
     }
 
-    //Reune todos los inputs de los formularios anteriores y crea el usuario
-    public function crearUsuario(Request $request){
-        $cliente = new Client();
-
-        $headers = [
-            'Content-Type' => 'application/json'
-        ];
-
-        $usuario = [ 
-            "nombre" => $request->input('nombre'),
-            "apellido" => $request->input('apellido'),
-            "correo" => $request->input('correo'),
-            "contrasena" => $request->input('contrasenia'),
-            "plan" => [
-                "idPlan" => $request->input('idPlan'),
-            ], 
-            "tarjeta" => [
-                "numeroTarjeta" => $request->input('numeroTarjeta'),
-                "cvv" => $request->input('cvv'),
-                "fechaVencimiento" => $request->input('fecha')
-            ],
-            "perfiles" => [
-                "nombre" => $request->input('nombrePerfil'),
-                "contraseniaperfil" => $request->input('psw'),
-                "imagen" => $request->input('icono')
-            ]
-        ];
-
-        $jsonBody = json_encode($usuario);
-        $resultado = $cliente->post('http://localhost:8080/api/usuario/crear',[
-            'headers' => $headers,
-            'body' => $jsonBody
-        ]);
-
-        $resultadoBackend = json_decode($resultado->getBody(),true);
-
-        return $resultadoBackend;
-
-/*         return redirect()->route('perfiles.mostrar', ['idUsuario' =>]);
- */    }
-
     public function store(Request $request){
         $cliente = new Client();
 
@@ -162,12 +121,11 @@ class AutenticacionController extends Controller
         $jsonBody = json_encode($body);
         $resultado = $cliente->post('http://localhost:8080/api/usuario/crear',[
             'headers' => $headers,
-            'body' => $jsonBody
+            'json' => $body        
         ]);
 
 
         $resultadoBackend = json_decode($resultado->getBody()->getContents());
-   
         return view('login.crearPerfil', compact('resultadoBackend'));
      }
 

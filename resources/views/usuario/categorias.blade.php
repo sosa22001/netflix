@@ -34,8 +34,7 @@
                     <div class="dropdown-content">
                         <div class="line"></div>
                         <div class="links d-flex direction-column">
-                            <a href="{{route('usuario.cuentaConfig', ['idUsuario' => $idUsuario])}}">Cuenta</a>
-                            <a href="{{route('usuario.ayuda')}}">Ayuda</a>
+                            <a href="{{route('usuario.ayuda', ['idUsuario' => $idUsuario])}}">Ayuda</a>
                             <a href="{{route('login.formulario')}}">Salir de Netflix</a>
                         </div>
                         
@@ -45,8 +44,10 @@
         </div>
     </header>
     <section id="continue-watching" class="container p-t-40">
+        <br>
+        <br>
         <h4 class="continue-watching-heading">
-            Peliculas en la categoria de 
+            Peliculas en la categoria de {{$peliculas[0]->categoria->genero}}
         </h4>
         <div class="romantic-container d-flex flex-start flex-middle flex-wrap owl-carousel">
             @foreach ($peliculas as $pelicula)

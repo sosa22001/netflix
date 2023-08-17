@@ -39,17 +39,17 @@
                         <input type="text" class="inputs" name="apellido" id="" placeholder="Apellido" name="apellido">
 
                         <input type="text" name="correo" id="email" class="email" placeholder="Correo" required/>
-                        <p id="errorEmail">Please enter a valid email address or phone number.</p>
+                        <p id="errorEmail">Ingresa un correo valido.</p>
 
                         <input type="password" name="contraseña" id="password" placeholder="Contraseña" required/>
-                        <p id="errorPassword">Your password must contain between 4 and 60 characters.</p>
+                        <p id="errorPassword"></p>
 
                         <button type="submit" class="button submitButton" id="signInButton">
                             Siguiente
                         </button>
-                        <p class="signUpText para">
+                        <a href="{{route('login.formulario')}}">
                             Tengo una cuenta?
-                        </p>
+                        </a>
                     </form>
                 </div>
         </section>

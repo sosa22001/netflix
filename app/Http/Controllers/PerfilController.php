@@ -133,14 +133,16 @@ class PerfilController extends Controller
         return view('usuario.inicio', compact('perfil', 'perfiles', 'idUsuario', 'peliculas', 'miLista', 'continuarViendo', 'peliculaNueva'));
     }
   
-     public function mostrarCuenta($idUsuario){
+     public function mostrarCuenta($idUsuario, $idPerfil){
         $perfiles = $this->obtenerPerfiles($idUsuario);
         $usuario = $this->obtenerUsuario($idUsuario);
-        return view('usuario.cuenta', compact('perfiles', 'usuario', 'idUsuario'));
+        $perfil = $this->obtenerPerfil($idPerfil);
+        return view('usuario.cuenta', compact('perfiles', 'usuario', 'idUsuario', 'perfil'));
     }
 
     public function mostrarAyuda($idUsuario){
-        return view('usuario.ayuda', compact('idUsuario'));
+
+        return view('usuario.preguntas', compact('idUsuario'));
     }
 
     public function crearPerfilVista($idUsuario){
@@ -173,7 +175,7 @@ class PerfilController extends Controller
         return redirect()->route('perfiles.mostrar', ['idUsuario' => $idUsuario]);
     }
 
-    public function eliminarPerfil($idUsuario, $idPerfil){
+    public function eliminarPerfil($idUsuario, $idPerfilActual, $idPerfil){
         $cliente = new Client();
 
         $headers = [
@@ -183,8 +185,12 @@ class PerfilController extends Controller
         $resultado = $cliente->get("http://localhost:8080/api/perfil/eliminar/{$idPerfil}", [
             'headers' => $headers,
         ]);
+
+        if($idPerfil == $idPerfilActual){
+            return redirect()->route('perfiles.mostrar', ['idUsuario' => $idUsuario]);
+        }
                
-        return redirect()->route('usuario.cuentaConfig', ['idUsuario' => $idUsuario]);
+        return redirect()->route('usuario.cuentaConfig', ['idUsuario' => $idUsuario, 'idPerfil' => $idPerfil]);
     }
 
     public function mostrarEditarPerfil($idUsuario, $idPerfil){
@@ -192,20 +198,20 @@ class PerfilController extends Controller
         return view('usuario.editarMiPerfil', compact('perfil', 'idPerfil', 'idUsuario'));
     }
 
-    public function mostrarEditarUsuario($idUsuario){
+    public function mostrarEditarUsuario($idUsuario, $idPerfil){
         $usuario = $this->obtenerUsuario($idUsuario);
-        return view('usuario.editarMiUsuario', compact('usuario', 'idUsuario'));
+        return view('usuario.editarMiUsuario', compact('usuario', 'idUsuario', 'idPerfil'));
     }
 
-    public function mostrarEditarFormaPago($idUsuario){
+    public function mostrarEditarFormaPago($idUsuario, $idPerfil){
         $usuario = $this->obtenerUsuario($idUsuario);
-        return view('usuario.editarMiFormaPago', compact('usuario', 'idUsuario'));
+        return view('usuario.editarMiFormaPago', compact('usuario', 'idUsuario', 'idPerfil'));
     }
 
-    public function mostrarEditarPlan($idUsuario){
+    public function mostrarEditarPlan($idUsuario, $idPerfil){
         $planes = $this->obtenerPlanes();
         $usuario = $this->obtenerUsuario($idUsuario);
-        return view('usuario.editarMiPlan', compact('usuario', 'planes', 'idUsuario'));
+        return view('usuario.editarMiPlan', compact('usuario', 'planes', 'idUsuario', 'idPerfil'));
     }
 
     public function guardarPerfil($idUsuario, $idPerfil, Request $request){
@@ -229,10 +235,10 @@ class PerfilController extends Controller
 
         $planes = json_decode($resultado->getBody());
         
-        return redirect()->route('usuario.cuentaConfig', ['idUsuario' => $idUsuario]);
+        return redirect()->route('usuario.cuentaConfig', ['idUsuario' => $idUsuario, 'idPerfil' => $idPerfil]);
     }
 
-    public function guardarUsuario($idUsuario, Request $request){
+    public function guardarUsuario($idUsuario, $idPerfil, Request $request){
         $cliente = new Client();
     
         $headers = [
@@ -254,10 +260,10 @@ class PerfilController extends Controller
     
         $usuario = json_decode($resultado->getBody());
     
-        return redirect()->route('usuario.cuentaConfig', ['idUsuario' => $usuario->idUsuario]);
+        return redirect()->route('usuario.cuentaConfig', ['idUsuario' => $usuario->idUsuario, 'idPerfil' => $idPerfil]);
     }
 
-    public function guardarFormaPago($idUsuario, Request $request){
+    public function guardarFormaPago($idUsuario, $idPerfil, Request $request){
         $cliente = new Client();
 
         $headers = [
@@ -277,11 +283,11 @@ class PerfilController extends Controller
 
         $usuario = json_decode($resultado->getBody());
         
-        return redirect()->route('usuario.cuentaConfig', ['idUsuario' => $usuario->idUsuario]);
+        return redirect()->route('usuario.cuentaConfig', ['idUsuario' => $usuario->idUsuario, 'idPerfil' => $idPerfil]);
         
     }
 
-    public function guardarPlan($idUsuario, $idPlan){
+    public function guardarPlan($idUsuario, $idPerfil, $idPlan){
         $cliente = new Client();
 
         $headers = [
@@ -294,7 +300,7 @@ class PerfilController extends Controller
 
         $usuario = json_decode($resultado->getBody());
         
-        return redirect()->route('usuario.cuentaConfig', ['idUsuario' => $usuario->idUsuario]);
+        return redirect()->route('usuario.cuentaConfig', ['idUsuario' => $usuario->idUsuario, 'idPerfil' => $idPerfil]);
     }
 
     public function mostrarMiLista($idUsuario, $idPerfil){
@@ -308,7 +314,7 @@ class PerfilController extends Controller
 
     public function mostrarContinuarViendo($idUsuario, $idPerfil){
         $peliculaController = new PeliculaController();
-        $peliculas = $peliculaController->obtenerVerMasTarde($idPerfil);
+        $peliculas = $peliculaController->obtenerContinuarViendo($idPerfil);
         $perfiles = $this->obtenerPerfiles($idUsuario);
         $perfil = $this->obtenerPerfil($idPerfil);
 

@@ -78,7 +78,7 @@
                               <input type="hidden" name="correo" value="{{ $informacion['correo'] }}">
                               <input type="hidden" name="contrasenia" value="{{ $informacion['contrasenia'] }}">
           
-                              <input type="hidden" name="seleccionar-plan" value="1" >
+                              <input type="hidden" name="seleccionar-plan" value="{{$plan->idPlan}}" >
       
                                 <button type="submit" class="button submitButton" id="signInButton">
                                   Comprar Plan

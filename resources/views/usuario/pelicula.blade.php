@@ -49,7 +49,7 @@
                         </div>
                         <div class="line"></div>
                         <div class="links d-flex direction-column">
-                            <a href="{{route('usuario.cuentaConfig', ['idUsuario' => $idUsuario])}}">Cuenta</a>
+                            <a href="{{route('usuario.cuentaConfig', ['idUsuario' => $idUsuario, 'idPerfil' => $perfil->idPerfil])}}">Cuenta</a>
                             <a href="{{route('usuario.ayuda', ['idUsuario' => $idUsuario])}}">Ayuda</a>
                             <a href="{{route('login.formulario')}}">Salir de Netflix</a>
                         </div>
@@ -109,12 +109,12 @@
         <!--similares-->
         <section id="similar" class="container p-t-40">
             <h4 class="romantic-heading">
-                More LIke This
+                Mas de la catgoria <b>{{$pelicula->categoria->genero}}</b>
             </h4>
             <div class="romantic-container d-flex flex-start flex-middle">
                 @foreach ($pelicRelacionadas as $pelic)
                     <a href="{{route('agregar.continuarviendo', ['idPerfil'=>$perfil->idPerfil, 'idPelicula'=>$pelic->idPeliculas, 'idUsuario'=>$idUsuario])}}">
-                        <img src="{{asset('images/movies/' . $pelic->imagen)}}" alt="pelicula"
+                        <img src="{{asset('images/movies/' . $pelic->imagen)}}"
                             class="mylist-img p-r-10 p-t-10 image-size item"></a>
                 @endforeach
             </div>

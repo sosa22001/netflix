@@ -20,14 +20,14 @@
 
         <header class="d-flex space-between flex-center flex-middle">
             <div class="nav-links d-flex flex-center flex-middle">
-                <a href="{{route('perfiles.inicio', ['idUsuario' => $idUsuario, 'idPerfil' => $perfil->idPerfil])}}">
+                <a href="{{route('perfiles.inicio', ['idUsuario' => $idUsuario, 'idPerfil' => $idPerfil])}}">
                     <h2 class="logo logo-text red-color f-s-28 m-r-25">NETFLIX</h2>
                     <h2 class="second-logo-text red-color f-s-28">N</h2>
                 </a>
             </div>
             <div class="flex">
                 <div>
-                    <a href="{{route('perfiles.mostrar', ['idUsuario' => 1])}}">
+                    <a href="{{route('perfiles.mostrar', ['idUsuario' => $idUsuario])}}">
                         <i class="fa-solid fa-xmark" style="color: #aaa; font-size:2rem;"></i>
                     </a>
                 </div>
@@ -38,8 +38,8 @@
                         <div class="dropdown-content">
                             <div class="line"></div>
                             <div class="links d-flex direction-column">
-                                <a href="{{route('usuario.cuentaConfig', ['idUsuario' => $idUsuario])}}">Cuenta</a>
-                                <a href="{{route('usuario.ayuda')}}">Ayuda</a>
+                                <a href="{{route('usuario.cuentaConfig', ['idUsuario' => $idUsuario, 'idPerfil' => $idPerfil])}}">Cuenta</a>
+                                <a href="{{route('usuario.ayuda', ['idUsuario' => $idUsuario])}}">Ayuda</a>
                                 <a href="{{route('login.formulario')}}">Salir de Netflix</a>
                             </div>
                             
@@ -62,7 +62,7 @@
 
             <div class="line"></div>
 
-            <form action="{{route('usuario.guardarUsuarioEditado', ['idUsuario' => $idUsuario])}}" method="POST">
+            <form action="{{route('usuario.guardarUsuarioEditado', ['idUsuario' => $idUsuario, 'idPerfil' => $idPerfil])}}" method="POST">
                 @csrf
                 @method('PUT')
                 {{-- perfil nombre --}}

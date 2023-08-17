@@ -72,7 +72,7 @@
                     </div>
                     <div class="right">
                         <div class="d-flex space-between">
-                            <input type="text" class="netflix-input" required name="numeroTarjeta">
+                            <input type="number" class="netflix-input" required name="numeroTarjeta">
                         </div>
                     </div>  
                 </div>

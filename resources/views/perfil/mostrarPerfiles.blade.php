@@ -48,7 +48,6 @@
                         <div class="dropdown-content">
                             <div class="line"></div>
                             <div class="links d-flex direction-column">
-                                <a href="{{route('usuario.cuentaConfig', ['idUsuario' => $idUsuario])}}">Cuenta</a>
                                 <a href="{{route('usuario.ayuda', ['idUsuario' => $idUsuario])}}">Ayuda</a>
                                 <a href="{{route('login.formulario')}}">Salir de Netflix</a>
                             </div>

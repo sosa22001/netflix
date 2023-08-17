@@ -48,7 +48,7 @@
         <section class="userprofile" id="userprofilecontainer">
             <div>
                 <h2 class="heading f-s-40">
-                    Cuenta
+                    Informacion de la Cuenta
                 </h2>
             </div>
             <div class="line"></div>
@@ -64,7 +64,7 @@
                             <strong>correo: {{$usuario->correo}}</strong>
                         </div>
                         <div class="link">
-                            <a href="{{route('usuario.editarUsuario', ['idUsuario' => $idUsuario])}}" class="link-item">
+                            <a href="{{route('usuario.editarUsuario', ['idUsuario' => $idUsuario, 'idPerfil' => $perfil->idPerfil])}}" class="link-item">
                                 Cambiar informacion
                             </a>
                         </div>
@@ -72,7 +72,11 @@
 
                     <div class="d-flex space-between">
                         <div class="password">
-                            Contraseña: ********* 
+                            Contraseña: 
+                            @foreach (str_split($usuario->contrasena) as $caracter)
+                                *
+                            @endforeach
+ 
                         </div>
                     </div>
 
@@ -92,10 +96,18 @@
 
                     <div class="carddetail d-flex space-between">
                         <div class="card">
-                            <h4><span class="icon-visa">VISA</span> •••• •••• •••• 5350</h4>
+                            <h4><span class="icon-visa">VISA</span>
+                                @php
+                                    $cadena = $usuario->tarjeta->numeroTarjeta;
+                                    $asteriscos = str_repeat('*', strlen($cadena) - 3);
+                                    $ultimosTres = substr($cadena, -3);
+                                @endphp
+
+                                {{ $asteriscos . $ultimosTres }}
+                            </h4>
                         </div>
                         <div class="link">
-                            <a href="{{route('usuario.editarFormaPago', ['idUsuario' => $idUsuario])}}" class="link-item">
+                            <a href="{{route('usuario.editarFormaPago', ['idUsuario' => $idUsuario, 'idPerfil' => $perfil->idPerfil])}}" class="link-item">
                                 Actualizar informacion de pago
                             </a>
                         </div>
@@ -111,7 +123,7 @@
                 </div>
                 <div class="right d-flex space-between">
                     <p>{{$usuario->plan->nombrePlan}}</p>
-                    <a href="{{route('usuario.editarPlan', ['idUsuario' => $idUsuario])}}" class="link-item">Cambiar Plan</a>
+                    <a href="{{route('usuario.editarPlan', ['idUsuario' => $idUsuario, 'idPerfil' => $perfil->idPerfil])}}" class="link-item">Cambiar Plan</a>
                 </div>
             </div>
             <div class="line"></div>
@@ -135,7 +147,7 @@
     
                             <div class="righticon">
                                 <div class="link">
-                                    <a href="{{route('perfil.eliminarPerfil', ['idUsuario' => $idUsuario, 'idPerfil' => $perfilIt->idPerfil])}}" class="link-item">
+                                    <a href="{{route('perfil.eliminarPerfil', ['idUsuario' => $idUsuario, 'idPerfilActual' => $perfil->idPerfil, 'idPerfil' => $perfilIt->idPerfil])}}" class="link-item">
                                         Eliminar
                                     </a>
                                     <a href="{{route('usuario.editarPerfil', ['idUsuario' => $idUsuario, 'idPerfil' => $perfilIt->idPerfil])}}" class="link-item">

@@ -27,13 +27,14 @@
                         <h2 class="logo logo-text red-color f-s-28 m-r-25">NETFLIX</h2>
                         <h2 class="second-logo-text red-color f-s-28">N</h2>
                     </a>
-                    <a href="{{route('peliculas.mostrar')}}" class="nav-item">Peliculas</a>
                     <a href="{{route('perfil.miLista', ['idUsuario' => $idUsuario ,'idPerfil' => $perfil->idPerfil])}}" class="nav-item latest">Mi Lista</a>
                     <a href="{{route('perfil.continuarViendo', ['idUsuario' => $idUsuario ,'idPerfil' => $perfil->idPerfil])}}" class="nav-item">Continuar Viendo</a>
+                </div>
+                <div class="righticons d-flex flex-end flex-middle" style="gap:1rem;">
                     <form action="{{route('categoria.seleccionar',['idUsuario' => $idUsuario ,'idPerfil' => $perfil->idPerfil])}}">
                         @csrf
                         <select name="idCategoria" id="seleccionar-categoria">
-                            <option class="opciones" disabled selected>Seleccionar Categoria</option>
+                            <option class="opciones" disabled hidden selected>Seleccionar Categoria</option>
                             <option class="opciones" value="1">Terror</option>
                             <option class="opciones" value="2">Romantico</option>
                             <option class="opciones" value="3">Acción</option>
@@ -42,10 +43,8 @@
                             <option class="opciones" value="8">Ciencia ficcion</option>
                             <option class="opciones" value="9">Fantasía</option>
                         </select>
-                        <button type="submit">Enviar</button>
+                        <button type="submit" class="netflix-button">Enviar</button>
                     </form>
-                </div>
-                <div class="righticons d-flex flex-end flex-middle">
                     <div class="dropdown">
                         <img src="{{asset('images/' . $perfil->imagen)}}" alt="user profile icon" class="user-icon"> <span class="profile-arrow"></span>
 
@@ -64,7 +63,7 @@
                             </div>
                             <div class="line"></div>
                             <div class="links d-flex direction-column">
-                                <a href="{{route('usuario.cuentaConfig', ['idUsuario' => $idUsuario])}}">Cuenta</a>
+                                <a href="{{route('usuario.cuentaConfig', ['idUsuario' => $idUsuario, 'idPerfil' => $perfil->idPerfil])}}">Cuenta</a>
                                 <a href="{{route('usuario.ayuda', ['idUsuario' => $idUsuario])}}">Ayuda</a>
                                 <a href="{{route('login.formulario')}}">Salir de Netflix</a>
                             </div>
@@ -80,7 +79,7 @@
                         <!--trailer video-->
                         <video class="hero-background-image" id="hero-video"
                             poster="{{asset('images/movies/poster/never-have-ever-tv-show.webp')}}">
-                            <source src="asset('images/movies/videos/Never Have I Ever - Official Trailer - Netflix_2.mp4')"
+                            <source src="{{asset('images/movies/videos/Never Have I Ever - Official Trailer - Netflix_2.mp4')}}"
                                 type="video/mp4">
                             Your browser does not support the video tag.
                         </video>
@@ -278,7 +277,7 @@
                     <div class="romantic-container d-flex flex-start flex-middle flex-no-wrap owl-carousel">
                         @foreach ($peliculas as $pelicula)
                             @if($pelicula->categoria->genero == "accion")
-                                <a hhref="{{route('agregar.continuarviendo', ['idPerfil'=>$perfil->idPerfil, 'idPelicula'=>$pelicula->idPeliculas, 'idUsuario'=>$idUsuario])}}">
+                                <a href="{{route('agregar.continuarviendo', ['idPerfil'=>$perfil->idPerfil, 'idPelicula'=>$pelicula->idPeliculas, 'idUsuario'=>$idUsuario])}}">
                                     <img src="{{asset('images/movies/' . $pelicula->imagen)}}" alt=""
                                         class="mylist-img p-r-10 p-t-10 image-size item">
                                 </a>    
@@ -290,7 +289,7 @@
                 <!--series-->
                 <section id="romantic" class="container p-t-40">
                     <h4 class="romantic-heading">
-                        Series
+                        Ciencia Ficcion
                     </h4>
                     <div class="romantic-container d-flex flex-start flex-middle flex-no-wrap owl-carousel">
                         @foreach ($peliculas as $pelicula)
@@ -307,7 +306,7 @@
                 <!--Animadas-->
                 <section id="romantic" class="container p-t-40">
                     <h4 class="romantic-heading">
-                        Hollywood Action Movies
+                        Fantasia
                     </h4>
                     <div class="romantic-container d-flex flex-start flex-middle flex-no-wrap owl-carousel">
                         @foreach ($peliculas as $pelicula)

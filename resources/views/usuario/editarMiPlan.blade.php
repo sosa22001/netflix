@@ -78,11 +78,6 @@
                 </a>
             </div>
             <div class="flex">
-                <div>
-                    <a href="{{route('perfiles.mostrar', ['idUsuario' => $idUsuario])}}">
-                        <i class="fa-solid fa-xmark" style="color: #aaa; font-size:2rem;"></i>
-                    </a>
-                </div>
                 <div class="righticons d-flex flex-end flex-middle">
                     <div class="dropdown">
                         <i class="fa-solid fa-grip-lines" style="color: #aaa; font-size:2rem;"></i>
@@ -90,8 +85,7 @@
                         <div class="dropdown-content">
                             <div class="line"></div>
                             <div class="links d-flex direction-column">
-                                <a href="{{route('usuario.cuentaConfig', ['idUsuario' => $idUsuario])}}">Cuenta</a>
-                                <a href="{{route('usuario.ayuda')}}">Ayuda</a>
+                                <a href="{{route('usuario.ayuda', ['idUsuario' => $idUsuario])}}">Ayuda</a>
                                 <a href="{{route('login.formulario')}}">Salir de Netflix</a>
                             </div>
                             
@@ -109,7 +103,7 @@
                             <h2>{{$plan->nombrePlan}}</h2>
                             <p>{{$plan->descripcion}}</p>
                             <p><strong>{{$plan->costoMensual}}</strong></p>
-                            <a href="{{route('usuario.guardarPlanEditado', ['idUsuario' => $idUsuario, 'idPlan' => $plan->idPlan])}}" class="btn">Elegir Plan</a>
+                            <a href="{{route('usuario.guardarPlanEditado', ['idUsuario' => $idUsuario, 'idPerfil' => $idPerfil,'idPlan' => $plan->idPlan])}}" class="btn">Elegir Plan</a>
                         </div>
                     @endif
                     @if($usuario->plan->idPlan !== $plan->idPlan)
@@ -117,7 +111,7 @@
                         <h2>{{$plan->nombrePlan}}</h2>
                         <p>{{$plan->descripcion}}</p>
                         <p><strong>{{$plan->costoMensual}}</strong></p>
-                        <a href="{{route('usuario.guardarPlanEditado', ['idUsuario' => $idUsuario, 'idPlan' => $plan->idPlan])}}" class="btn">Elegir Plan</a>
+                        <a href="{{route('usuario.guardarPlanEditado', ['idUsuario' => $idUsuario, 'idPerfil' => $idPerfil, 'idPlan' => $plan->idPlan])}}" class="btn">Elegir Plan</a>
                     </div>
                 @endif
                 @endforeach
