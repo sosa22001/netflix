@@ -94,7 +94,7 @@
                 <p><span class="name">Año de lanzamiento:</span> {{$pelicula->aniolanzamiento}}</p>
                 <p><span class="name">Categoria:</span> {{$pelicula->categoria->genero}}</p>
                 <p><span class="name">Popularidad:</span> {{$popularidad}} vistas</p>
-                <p><span class="name">Likes:</span>{{$like}} </p>
+                <p><span class="name">Likes:</span> {{$like}}</p>
             </div>
             <div class="actions d-flex flex-start flex-middle">
                 <a href="{{route('perfil.agregarMiLista', ['idPerfil'=>$perfil->idPerfil, 'idPelicula'=>$pelicula->idPeliculas,   'idUsuario'=>$idUsuario])}}" class="link-item">

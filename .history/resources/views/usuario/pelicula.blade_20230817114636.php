@@ -93,7 +93,7 @@
                 <p><span class="name">Duracion:</span> {{$pelicula->duracion}} mins</p>
                 <p><span class="name">Año de lanzamiento:</span> {{$pelicula->aniolanzamiento}}</p>
                 <p><span class="name">Categoria:</span> {{$pelicula->categoria->genero}}</p>
-                <p><span class="name">Popularidad:</span> {{$popularidad}} vistas</p>
+                <p><span class="name">Popularidad:</span> vistas</p>
                 <p><span class="name">Likes:</span>{{$like}} </p>
             </div>
             <div class="actions d-flex flex-start flex-middle">

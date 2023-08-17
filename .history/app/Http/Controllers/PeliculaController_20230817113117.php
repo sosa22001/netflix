@@ -123,14 +123,12 @@ class PeliculaController extends Controller
         $resultado = $cliente->post("http://localhost:8080/api/perfil/guardarSeguirViendo/$idPerfil/$idPelicula");
 
         $pelicula = $this->obtenerPelicula($idPelicula);
-        $like = $this->like($idPelicula);
-        $popularidad = $this->popularidad($idPelicula);
         $perfilController = new PerfilController();
         $perfil = $perfilController->obtenerPerfil($idPerfil);
         $perfiles = $perfilController->obtenerPerfiles($idUsuario);
         $pelicRelacionadas = $this->obtenerPeliculasPorCategorias($pelicula->categoria->idCategorias);
 
-        return view('usuario.pelicula', compact('pelicula', 'idUsuario', 'perfil', 'perfiles', 'pelicRelacionadas', 'like', 'popularidad'));
+        return view('usuario.pelicula', compact('pelicula', 'idUsuario', 'perfil', 'perfiles', 'pelicRelacionadas'));
     }
 
     public function obtenerPeliculaMasReciente(){

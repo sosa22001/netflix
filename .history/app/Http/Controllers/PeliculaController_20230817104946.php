@@ -123,14 +123,12 @@ class PeliculaController extends Controller
         $resultado = $cliente->post("http://localhost:8080/api/perfil/guardarSeguirViendo/$idPerfil/$idPelicula");
 
         $pelicula = $this->obtenerPelicula($idPelicula);
-        $like = $this->like($idPelicula);
-        $popularidad = $this->popularidad($idPelicula);
         $perfilController = new PerfilController();
         $perfil = $perfilController->obtenerPerfil($idPerfil);
         $perfiles = $perfilController->obtenerPerfiles($idUsuario);
         $pelicRelacionadas = $this->obtenerPeliculasPorCategorias($pelicula->categoria->idCategorias);
 
-        return view('usuario.pelicula', compact('pelicula', 'idUsuario', 'perfil', 'perfiles', 'pelicRelacionadas', 'like', 'popularidad'));
+        return view('usuario.pelicula', compact('pelicula', 'idUsuario', 'perfil', 'perfiles', 'pelicRelacionadas'));
     }
 
     public function obtenerPeliculaMasReciente(){
@@ -173,7 +171,6 @@ class PeliculaController extends Controller
         return redirect()->route('agregar.continuarviendo', ['idPerfil' => $idPerfil, 'idPelicula' => $idPelicula, 'idUsuario' => $idUsuario]);
 
     }
-
     function like($idPelicula){
         $cliente = new Client();
 
@@ -181,25 +178,16 @@ class PeliculaController extends Controller
             'Content-Type' => 'application/json'
         ];
 
-        $resultado = $cliente->get("http://localhost:8080/api/pelicula/Like/{$idPelicula}");
+        $resultado = $cliente->get("http://localhost:8080/api/pelicula/like/{$idPelicula}");
 
         $like = json_decode($resultado->getBody());
         
         return $like; 
     }
-    function popularidad($idPelicula){
-        $cliente = new Client();
 
-        $headers = [
-            'Content-Type' => 'application/json'
-        ];
 
-        $resultado = $cliente->get("http://localhost:8080/api/pelicula/popularidad/{$idPelicula}");
 
-        $popularidad = json_decode($resultado->getBody());
-        
-        return $popularidad; 
-    }
-    
+
+
 
 }
