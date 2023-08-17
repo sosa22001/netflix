@@ -147,35 +147,42 @@
             <div class="black-background">
 
                 <!--mi lista -->
-                <section id="mylist" class="container">
+                @if(count($miLista) > 0)
+                    <section id="mylist" class="container">
 
-                    <h4 class="mylist-heading">
-                        Mi Lista
-                    </h4>
-                    <div class="romantic-container d-flex flex-start flex-middle flex-no-wrap owl-carousel">
-                        @foreach ($miLista as $peliculaL)
-                            <a href="#">
-                                <img src="{{asset('images/movies/' . $peliculaL->imagen)}}" alt="" width="250px"
-                                    class="mylist-img p-r-10 p-t-10 image-size item">
-                            </a>
-                        @endforeach
-                    </div>
-                </section>
+                        <h4 class="mylist-heading">
+                            Mi Lista
+                        </h4>
+                        <div class="romantic-container d-flex flex-start flex-middle flex-no-wrap owl-carousel">
+                                @foreach ($miLista as $peliculaL)
+                                    <a href="{{route('agregar.continuarviendo', ['idPerfil'=>$perfil->idPerfil, 'idPelicula'=>$pelicula->idPeliculas, 'idUsuario'=>$idUsuario])}}">
+                                        <img src="{{asset('images/movies/' . $peliculaL->imagen)}}" alt="" width="250px"
+                                            class="mylist-img p-r-10 p-t-10 image-size item">
+                                    </a>
+                                @endforeach
+                        </div>
+                    </section>
+                @endif
+
 
                 <!--continuar viendo-->
-                <section id="continue-watching" class="container p-t-40">
-                    <h4 class="continue-watching-heading">
-                        Continuar viendo contenido de {{$perfil->nombre}}
-                    </h4>
-                    <div class="romantic-container d-flex flex-start flex-middle flex-no-wrap owl-carousel">
-                        @foreach ($continuarViendo as $cv)
-                            <a href="#">
-                                <img src="{{asset('images/movies/' . $cv->imagen)}}"  alt="" width="250px"
-                                    class="mylist-img p-r-10 p-t-10 image-size item">
-                            </a>    
-                        @endforeach
-                    </div>
-                </section>
+                @if(count($continuarViendo) > 0)
+                    <section id="continue-watching" class="container p-t-40">
+                        <h4 class="continue-watching-heading">
+                            Continuar viendo contenido de {{$perfil->nombre}}
+                        </h4>
+                        <div class="romantic-container d-flex flex-start flex-middle flex-no-wrap owl-carousel">
+                            @if(count($miLista) > 0)
+                                @foreach ($continuarViendo as $cv)
+                                    <a href="{{route('agregar.continuarviendo', ['idPerfil'=>$perfil->idPerfil, 'idPelicula'=>$pelicula->idPeliculas, 'idUsuario'=>$idUsuario])}}">
+                                        <img src="{{asset('images/movies/' . $cv->imagen)}}"  alt="" width="250px"
+                                            class="mylist-img p-r-10 p-t-10 image-size item">
+                                    </a>    
+                                @endforeach
+                            @endif
+                        </div>
+                    </section>
+                @endif
 
                 <!--peliculas romanticas-->
                 <section id="romantic" class="container p-t-40">
@@ -202,7 +209,7 @@
                     <div class="romantic-container d-flex flex-start flex-middle flex-wrap owl-carousel">
                         @foreach ($peliculas as $pelicula)
                             @if($pelicula->categoria->genero == "terror")
-                                <a href="#">
+                                <a href="{{route('agregar.continuarviendo', ['idPerfil'=>$perfil->idPerfil, 'idPelicula'=>$pelicula->idPeliculas, 'idUsuario'=>$idUsuario])}}">
                                     <img src="{{asset('images/movies/' . $pelicula->imagen)}}" alt="" width="250px"
                                         class="mylist-img p-r-10 p-t-10 image-size item">
                                 </a>    
@@ -219,7 +226,7 @@
                     <div class="romantic-container d-flex flex-start flex-middle flex-wrap owl-carousel">
                         @foreach ($peliculas as $pelicula)
                             @if($pelicula->categoria->genero == "comedia")
-                                <a href="#">
+                                <a href="{{route('agregar.continuarviendo', ['idPerfil'=>$perfil->idPerfil, 'idPelicula'=>$pelicula->idPeliculas, 'idUsuario'=>$idUsuario])}}">
                                     <img src="{{asset('images/movies/' . $pelicula->imagen)}}" alt="" width="250px"
                                         class="mylist-img p-r-10 p-t-10 image-size item">
                                 </a>    
@@ -271,7 +278,7 @@
                     <div class="romantic-container d-flex flex-start flex-middle flex-no-wrap owl-carousel">
                         @foreach ($peliculas as $pelicula)
                             @if($pelicula->categoria->genero == "accion")
-                                <a href="#">
+                                <a hhref="{{route('agregar.continuarviendo', ['idPerfil'=>$perfil->idPerfil, 'idPelicula'=>$pelicula->idPeliculas, 'idUsuario'=>$idUsuario])}}">
                                     <img src="{{asset('images/movies/' . $pelicula->imagen)}}" alt=""
                                         class="mylist-img p-r-10 p-t-10 image-size item">
                                 </a>    
@@ -288,7 +295,7 @@
                     <div class="romantic-container d-flex flex-start flex-middle flex-no-wrap owl-carousel">
                         @foreach ($peliculas as $pelicula)
                             @if($pelicula->categoria->genero == "serie")
-                                <a href="#">
+                                <a href="{{route('agregar.continuarviendo', ['idPerfil'=>$perfil->idPerfil, 'idPelicula'=>$pelicula->idPeliculas, 'idUsuario'=>$idUsuario])}}">
                                     <img src="{{asset('images/movies/' . $pelicula->imagen)}}" alt=""
                                         class="mylist-img p-r-10 p-t-10 image-size item">
                                 </a>    
@@ -305,7 +312,7 @@
                     <div class="romantic-container d-flex flex-start flex-middle flex-no-wrap owl-carousel">
                         @foreach ($peliculas as $pelicula)
                             @if($pelicula->categoria->genero == "animadas")
-                                <a href="#">
+                                <a href="{{route('agregar.continuarviendo', ['idPerfil'=>$perfil->idPerfil, 'idPelicula'=>$pelicula->idPeliculas, 'idUsuario'=>$idUsuario])}}">
                                     <img src="{{asset('images/movies/' . $pelicula->imagen)}}" alt=""
                                         class="mylist-img p-r-10 p-t-10 image-size item">
                                 </a>    

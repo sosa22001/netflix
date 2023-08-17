@@ -61,7 +61,7 @@
                 </h4>
                 <div class="my-list-page-container d-flex flex-start flex-middle">
                     @foreach ($peliculas as $pelicula)
-                        <a href="#">
+                        <a href="{{route('agregar.continuarviendo', ['idPerfil'=>$perfil->idPerfil, 'idPelicula'=>$pelicula->idPeliculas, 'idUsuario'=>$idUsuario])}}">
                             <img src="{{asset('images/movies/' . $pelicula->imagen)}}" alt=""
                                 class="mylist-img p-r-10 p-t-10 image-size item"></a>
                     @endforeach

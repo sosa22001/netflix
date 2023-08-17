@@ -94,6 +94,25 @@ class PeliculaController extends Controller
         
     }
 
+    public function obtenerPeliculasPorCategorias($idCategoria){
+
+        $cliente = new Client();
+
+        $headers = [
+            'Content-Type' => 'application/json'
+        ];
+
+
+        $resultado = $cliente->get("http://localhost:8080/api/pelicula/categoria/{$idCategoria}", [
+            'headers' => $headers,
+        ]);
+
+        $peliculas = json_decode($resultado->getBody());
+        
+        return $peliculas;
+
+    }
+
     public function agregarContinuarViendo($idPerfil, $idPelicula, $idUsuario){
         $cliente = new Client();
 
@@ -107,7 +126,7 @@ class PeliculaController extends Controller
         $perfilController = new PerfilController();
         $perfil = $perfilController->obtenerPerfil($idPerfil);
         $perfiles = $perfilController->obtenerPerfiles($idUsuario);
-        $pelicRelacionadas = $this->obtenerPeliculasPorCategoria($pelicula->categoria->idCategorias);
+        $pelicRelacionadas = $this->obtenerPeliculasPorCategorias($pelicula->categoria->idCategorias);
 
         return view('usuario.pelicula', compact('pelicula', 'idUsuario', 'perfil', 'perfiles', 'pelicRelacionadas'));
     }
