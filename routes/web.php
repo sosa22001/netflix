@@ -81,3 +81,5 @@ Route::get('/perfiles/{idPerfil}/ver-mas-tarde', [PeliculaController::class, 'mo
 Route::get('/perfiles/{idPerfil}/peliculas/{idPelicula}/agregar-continuar-viendo/{idUsuario}',[PeliculaController::class,'agregarContinuarViendo'])->name('agregar.continuarviendo');
 
 Route::get('/perfiles/{idUsuario}/{idPerfil}/peliculas/{idPelicula}/me-gusta',[PeliculaController::class,'darMeGusta'])->name('pelicula.meGusta');
+
+Route::get('/categorias/{idPerfil}/buscar/{idUsuario}', [PeliculaController::class,'obtenerPeliculasPorCategoria'])->name('categoria.seleccionar');
