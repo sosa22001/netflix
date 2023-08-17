@@ -60,27 +60,11 @@
                     My List
                 </h4>
                 <div class="my-list-page-container d-flex flex-start flex-middle">
-                    <a href="#">
-                        <img src="../images/movies/horrible-bosses-middle-poster.webp" alt=""
-                            class="mylist-img p-r-10 p-t-10 image-size item"></a>
-                    <a href="#">
-                        <img src="../images/movies/kabir-singh-poster.webp" alt=""
-                            class="mylist-img p-r-10 p-t-10 image-size item"></a>
-                    <a href="#">
-                        <img src="../images/movies/extraction-poster.jpg" alt=""
-                            class="mylist-img p-r-10 p-t-10 image-size item"></a>
-                    <a href="#">
-                        <img src="../images/tv-show/poster/never-have-ever-short poster.jpg" alt=""
-                            class="mylist-img p-r-10 p-t-10 image-size item"></a>
-                    <a href="#">
-                        <img src="../images/movies/we-are-the-milers-poster-little.webp" alt=""
-                            class="mylist-img p-r-10 p-t-10 image-size item"></a>
-                    <a href="#">
-                        <img src="../images/movies/kabir-singh-poster.webp" alt=""
-                            class="mylist-img p-r-10 p-t-10 image-size item"></a>
-
-
-
+                    @foreach ($peliculas as $pelicula)
+                        <a href="#">
+                            <img src="{{asset('images/movies/' . $pelicula->imagen)}}" alt=""
+                                class="mylist-img p-r-10 p-t-10 image-size item"></a>
+                    @endforeach
                 </div>
             </section>
 
@@ -147,6 +131,33 @@
             Account
         </a>
     </div>
+
+    <script>
+        $(document).ready(function() {
+            $(".owl-carousel").owlCarousel({
+                margin: 10,
+                nav: true,
+                responsive: {
+                    0: {
+                        items: 2
+                    },
+                    600: {
+                        items: 2
+                    },
+                    1000: {
+                        items: 5
+                    }
+                }
+            });
+        });
+    </script>
+    Con estos cambios, las imágenes dentro del contenedor div ahora serán manejadas por Owl Carousel y se mostrarán en forma de carrusel con las opciones de configuración que proporcionaste anteriormente. Asegúrate de que estás incluyendo las bibliotecas jQuery y Owl Carousel correctamente en tu página para que el carrusel funcione correctamente.
+    
+    
+    
+    
+    
+    
 </body>
 
 </html>

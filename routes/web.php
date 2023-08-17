@@ -43,6 +43,8 @@ Route::get('/usuarios/{idUsuario}/perfiles/crearVista', [PerfilController::class
 //crea el perfil
 Route::post('/perfiles/crear/{idUsuario}', [PerfilController::class,'crearPerfil'])->name('perfil.crear');
 
+Route::get('/perfiles/{idUsuario}/{idPerfil}/peliculas/{idPelicula}', [PerfilController::class,'agregarMiLista'])->name('perfil.agregarMiLista');
+
 
 //dashboard
 Route::get('/usuarios/{idUsuario}/perfiles/{idPerfil}/inicio',[PerfilController::class,'mostrarInicio'])->name('perfiles.inicio');
@@ -77,3 +79,5 @@ Route::get('/peliculas', [PeliculaController::class, 'mostrarPeliculas'])->name(
 Route::get('/perfiles/{idPerfil}/ver-mas-tarde', [PeliculaController::class, 'mostrarVerMasTarde'])->name('peliculas.verMasTarde');
 
 Route::get('/perfiles/{idPerfil}/peliculas/{idPelicula}/agregar-continuar-viendo/{idUsuario}',[PeliculaController::class,'agregarContinuarViendo'])->name('agregar.continuarviendo');
+
+Route::get('/perfiles/{idUsuario}/{idPerfil}/peliculas/{idPelicula}/me-gusta',[PeliculaController::class,'darMeGusta'])->name('pelicula.meGusta');

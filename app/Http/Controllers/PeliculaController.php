@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\RequestException;
+use App\Http\Controllers\PerfilController;
 
 class PeliculaController extends Controller
 {
@@ -92,7 +93,7 @@ class PeliculaController extends Controller
         
     }
 
-    public function agregarContinuarViendo($idPerfil,$idPelicula, $idUsuario){
+    public function agregarContinuarViendo($idPerfil, $idPelicula, $idUsuario){
         $cliente = new Client();
 
         $headers = [
@@ -101,7 +102,54 @@ class PeliculaController extends Controller
 
         $resultado = $cliente->post("http://localhost:8080/api/perfil/guardarSeguirViendo/$idPerfil/$idPelicula");
 
-        return redirect()->route('perfiles.inicio', ['idUsuario'=>$idUsuario,'idPerfil'=>$idPerfil]);
+        $pelicula = $this->obtenerPelicula($idPelicula);
+        $perfilController = new PerfilController();
+        $perfil = $perfilController->obtenerPerfil($idPerfil);
+        $perfiles = $perfilController->obtenerPerfiles($idUsuario);
+        $pelicRelacionadas = $this->obtenerPeliculasPorCategoria($pelicula->categoria->idCategorias);
+
+        return view('usuario.pelicula', compact('pelicula', 'idUsuario', 'perfil', 'perfiles', 'pelicRelacionadas'));
+    }
+
+    public function obtenerPeliculaMasReciente(){
+        $cliente = new Client();
+
+        $headers = [
+            'Content-Type' => 'application/json'
+        ];
+
+        $resultado = $cliente->get("http://localhost:8080/api/pelicula/reciente");
+
+        $peliculas = json_decode($resultado->getBody());
+        
+        return $peliculas; 
+    }
+
+    function obtenerPelicula($idPelicula){
+        $cliente = new Client();
+
+        $headers = [
+            'Content-Type' => 'application/json'
+        ];
+
+        $resultado = $cliente->get("http://localhost:8080/api/pelicula/buscar/{$idPelicula}");
+
+        $pelicula = json_decode($resultado->getBody());
+        
+        return $pelicula; 
+    }
+
+    public function darMeGusta($idUsuario, $idPerfil, $idPelicula){
+        $cliente = new Client();
+
+        $headers = [
+            'Content-Type' => 'application/json'
+        ];
+
+        $resultado = $cliente->post("http://localhost:8080/api/pelicula/guardarLike/{$idPerfil}/{$idPelicula}");
+
+        return redirect()->route('agregar.continuarviendo', ['idPerfil' => $idPerfil, 'idPelicula' => $idPelicula, 'idUsuario' => $idUsuario]);
+
     }
 
 

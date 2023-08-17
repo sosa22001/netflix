@@ -128,8 +128,9 @@ class PerfilController extends Controller
         $peliculas = $peliculaController->obtenerPeliculas();
         $miLista = $peliculaController->obtenerVerMasTarde($idPerfil);
         $continuarViendo = $peliculaController->obtenerContinuarViendo($idPerfil);
+        $peliculaNueva = $peliculaController->obtenerPeliculaMasReciente();
         
-        return view('usuario.inicio', compact('perfil', 'perfiles', 'idUsuario', 'peliculas', 'miLista', 'continuarViendo'));
+        return view('usuario.inicio', compact('perfil', 'perfiles', 'idUsuario', 'peliculas', 'miLista', 'continuarViendo', 'peliculaNueva'));
     }
   
      public function mostrarCuenta($idUsuario){
@@ -312,5 +313,18 @@ class PerfilController extends Controller
         $perfil = $this->obtenerPerfil($idPerfil);
 
         return view('usuario.continuarViendo', compact('peliculas', 'perfiles', 'perfil', 'idUsuario'));
+    }
+
+    public function agregarMiLista($idUsuario, $idPerfil, $idPelicula){
+        $cliente = new Client();
+
+        $headers = [
+            'Content-Type' => 'application/json'
+        ];
+
+        $resultado = $cliente->post("http://localhost:8080/api/perfil/guardarVerMasTarde/{$idPerfil}/{$idPelicula}");
+
+        return redirect()->route('agregar.continuarviendo', ['idPerfil' => $idPerfil, 'idPelicula' => $idPelicula, 'idUsuario' => $idUsuario]);
+
     }
 }
