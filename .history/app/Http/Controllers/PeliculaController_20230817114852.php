@@ -124,7 +124,7 @@ class PeliculaController extends Controller
 
         $pelicula = $this->obtenerPelicula($idPelicula);
         $like = $this->like($idPelicula);
-        $popularidad = $this->popularidad($idPelicula);
+        $popularidad = $this->like($idPelicula);
         $perfilController = new PerfilController();
         $perfil = $perfilController->obtenerPerfil($idPerfil);
         $perfiles = $perfilController->obtenerPerfiles($idUsuario);

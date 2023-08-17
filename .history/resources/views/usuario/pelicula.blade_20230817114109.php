@@ -49,7 +49,7 @@
                         </div>
                         <div class="line"></div>
                         <div class="links d-flex direction-column">
-                            <a href="{{route('usuario.cuentaConfig', ['idUsuario' => $idUsuario, 'idPerfil' => $perfil->idPerfil])}}">Cuenta</a>
+                            <a href="{{route('usuario.cuentaConfig', ['idUsuario' => $idUsuario])}}">Cuenta</a>
                             <a href="{{route('usuario.ayuda', ['idUsuario' => $idUsuario])}}">Ayuda</a>
                             <a href="{{route('login.formulario')}}">Salir de Netflix</a>
                         </div>
@@ -93,8 +93,8 @@
                 <p><span class="name">Duracion:</span> {{$pelicula->duracion}} mins</p>
                 <p><span class="name">Año de lanzamiento:</span> {{$pelicula->aniolanzamiento}}</p>
                 <p><span class="name">Categoria:</span> {{$pelicula->categoria->genero}}</p>
-                <p><span class="name">Popularidad:</span> {{$popularidad}} vistas</p>
-                <p><span class="name">Likes:</span>{{$like}} </p>
+                <p><span class="name">Popularidad:</span> vistas</p>
+                <p><span class="name">Likes:</span> </p>
             </div>
             <div class="actions d-flex flex-start flex-middle">
                 <a href="{{route('perfil.agregarMiLista', ['idPerfil'=>$perfil->idPerfil, 'idPelicula'=>$pelicula->idPeliculas,   'idUsuario'=>$idUsuario])}}" class="link-item">
@@ -111,12 +111,12 @@
         <!--similares-->
         <section id="similar" class="container p-t-40">
             <h4 class="romantic-heading">
-                Mas de la catgoria <b>{{$pelicula->categoria->genero}}</b>
+                More LIke This
             </h4>
             <div class="romantic-container d-flex flex-start flex-middle">
                 @foreach ($pelicRelacionadas as $pelic)
                     <a href="{{route('agregar.continuarviendo', ['idPerfil'=>$perfil->idPerfil, 'idPelicula'=>$pelic->idPeliculas, 'idUsuario'=>$idUsuario])}}">
-                        <img src="{{asset('images/movies/' . $pelic->imagen)}}"
+                        <img src="{{asset('images/movies/' . $pelic->imagen)}}" alt="pelicula"
                             class="mylist-img p-r-10 p-t-10 image-size item"></a>
                 @endforeach
             </div>
